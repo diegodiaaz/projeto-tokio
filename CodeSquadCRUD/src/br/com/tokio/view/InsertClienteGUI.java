@@ -63,7 +63,7 @@ public class InsertClienteGUI {
 		lblNewLabel_1.setBounds(51, 66, 231, 442);
 		panel.add(lblNewLabel_1);
 		
-		JLabel lblAquiVocPode = new JLabel("Aqui vocÃª pode criar um cliente!");
+		JLabel lblAquiVocPode = new JLabel("Aqui você pode criar um cliente!");
 		lblAquiVocPode.setForeground(Color.WHITE);
 		lblAquiVocPode.setFont(new Font("Tahoma", Font.BOLD, 26));
 		lblAquiVocPode.setBounds(387, 43, 421, 88);
