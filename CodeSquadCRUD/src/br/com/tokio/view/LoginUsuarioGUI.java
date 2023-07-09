@@ -144,20 +144,9 @@ public class LoginUsuarioGUI {
 
 					if (rsClienteDAO.next()) {
 						// CHAMAR TELA PARA ABRIR
-						Cliente clienteFull = new Cliente();
-						
-						clienteDAO.selectByCPF(cpfUsuario);
-						clienteFull.getNomeCliente();
-						clienteFull.getCpfCliente();
-						clienteFull.getDataNascimento();
-						clienteFull.getTelefoneCliente();
-						clienteFull.getEmailCliente();
-						
-						clienteFull.setNomeCliente();						
-						
 						
 						CrudClienteGUI cliente = new CrudClienteGUI();
-						cliente.frmTokioMarineSeguradora.setVisible(true);
+						cliente.frameCliente.setVisible(true);
 						frameUsuario.dispose();
 					} else {
 						JOptionPane.showMessageDialog(null, "Email ou CPF inválido!");
