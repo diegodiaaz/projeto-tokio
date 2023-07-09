@@ -1,0 +1,16 @@
+
+
+
+IDADE 
+SEXO
+ESTADO CIVIL 
+VALOR DO VEÍCULO
+TIPO DE UTILIZAÇÃO 
+SE TEM GARAGEM EM CASA
+
+1 - REGIAO
+
+MÉDIA DO PRÊMIO (VALOR DO SEGURO) = 15% DO VALOR DO VEICULO
+
+* Campo para inserir foto de documentos *
+* Colocar comissão para o corretor *
