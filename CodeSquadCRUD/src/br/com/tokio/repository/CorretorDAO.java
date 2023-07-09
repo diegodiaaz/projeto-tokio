@@ -22,25 +22,25 @@ public class CorretorDAO {
 	}
 
 	// -------------LOGIN CORRETOR------------- //
-	public ResultSet loginCorretor(Corretor corretor) {
+		public ResultSet loginCorretor(Corretor corretor) {
 
-		try {
-			String sql = "SELECT * FROM T_TOK_CORRETOR WHERE DS_EMAIL_COR = ? AND DS_SENHA_COR = ?";
+			try {
+				String sql = "SELECT * FROM T_TOK_CORRETOR WHERE DS_EMAIL_COR = ? AND DS_SENHA_COR = ?";
 
-			PreparedStatement stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, corretor.getEmailCorretor());
-			stmt.setString(2, corretor.getSenhaCorretor());
+				PreparedStatement stmt = conexao.prepareStatement(sql);
+				stmt.setString(1, corretor.getEmailCorretor());
+				stmt.setString(2, corretor.getSenhaCorretor());
 
-			ResultSet rs = stmt.executeQuery();
+				ResultSet rs = stmt.executeQuery();
 
-			return rs;
+				return rs;
 
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "CorretorDAO: " + e);
-			return null;
+			} catch (SQLException e) {
+				JOptionPane.showMessageDialog(null, "CorretorDAO: " + e);
+				return null;
+			}
+
 		}
-
-	}
 
 	// ------------Insert Corretor------------
 	public void insertCorretor(Corretor corretor) {

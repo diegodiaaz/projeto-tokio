@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import br.com.tokio.connection.ConnectionFactory;
 import br.com.tokio.model.Cliente;
@@ -23,6 +24,27 @@ public class ClienteDAO {
 	}
 
 	// -----------Operações de CRUD:-----------//
+
+	// -------------LOGIN Cliente------------- //
+	public ResultSet loginCliente(Cliente cliente) {
+
+		try {
+			String sql = "SELECT * FROM T_TOK_CLIENTE WHERE DS_EMAIL_CLI = ? AND NR_CPF_CLI = ?";
+
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, cliente.getEmailCliente());
+			stmt.setString(2, cliente.getCpfCliente());
+
+			ResultSet rs = stmt.executeQuery();
+
+			return rs;
+
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "ClienteDAO: " + e);
+			return null;
+		}
+
+	}
 
 	// ------------Insert do Cliente------------
 	public void insertCadastroCliente(Cliente cliente) {
@@ -82,6 +104,9 @@ public class ClienteDAO {
 		return usuarios;
 	}
 
+	
+	
+
 	// ------------Select TipoSeguro by CPFCliente------------ //
 	public Cliente selectTipoSeguro(String cpf) {
 
@@ -114,18 +139,18 @@ public class ClienteDAO {
 		}
 		return cliente;
 	}
+	
 
 	// ------------SelectByCPF------------
 
-	public Cliente selectByCPF(String cpf, String nome) {
+	public Cliente selectByCPF(String txtCpf) {
 
 		Cliente cliente = null;
-		String sql = "select * from t_tok_cliente where nr_cpf_cli=? and nm_cliente=?";
+		String sql = "select * from t_tok_cliente where nr_cpf_cli=?";
 
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, cpf);
-			stmt.setString(2, nome);
+			stmt.setString(1, txtCpf);
 
 			ResultSet rs = stmt.executeQuery();
 
@@ -140,7 +165,7 @@ public class ClienteDAO {
 				cliente.setDataCadastro(rs.getDate("dt_Cadastro_cli"));
 
 			} else {
-				JOptionPane.showMessageDialog(null, "Cliente nao encontrado");
+				System.out.println("Cliente não encontrado");
 			}
 			rs.close();
 			stmt.close();

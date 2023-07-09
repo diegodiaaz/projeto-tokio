@@ -48,18 +48,18 @@ public class InicioFrameGUI {
 		panel_principal.setLayout(null);
 		
 		JButton botaoComecar = new JButton("Vamos começar?");
-		botaoComecar.setBackground(new Color(255, 255, 255));
+		botaoComecar.setBackground(new Color(51, 204, 102));
 		botaoComecar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ChatBotFrameGUI corretor = new ChatBotFrameGUI();
+				UsuarioFrameGUI corretor = new UsuarioFrameGUI();
                 corretor.newScreen();
                 frameInicio.dispose();
 			}
 		});
 		
 		JLabel labelCodeSquadLogo = new JLabel("");
-		labelCodeSquadLogo.setIcon(new ImageIcon(InicioFrameGUI.class.getResource("/br/com/tokio/images/logoCodeSquad1.png")));
-		labelCodeSquadLogo.setBounds(811, 386, 165, 166);
+		labelCodeSquadLogo.setIcon(new ImageIcon(InicioFrameGUI.class.getResource("/br/com/tokio/images/CodeSquadLogo.png")));
+		labelCodeSquadLogo.setBounds(806, 377, 170, 175);
 		panel_principal.add(labelCodeSquadLogo);
 		
 		JLabel labelTitulo = new JLabel("Seja muito bem-vindo(a) ao nosso CRUD!");
@@ -73,7 +73,7 @@ public class InicioFrameGUI {
 		labelSubTitulo.setForeground(new Color(255, 255, 255));
 		labelSubTitulo.setBounds(295, 41, 567, 104);
 		panel_principal.add(labelSubTitulo);
-		botaoComecar.setFont(new Font("Arial", Font.BOLD, 21));
+		botaoComecar.setFont(new Font("Arial", Font.BOLD, 14));
 		botaoComecar.setBounds(413, 273, 268, 72);
 		panel_principal.add(botaoComecar);
 		

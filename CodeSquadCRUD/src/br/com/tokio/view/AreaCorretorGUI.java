@@ -7,23 +7,25 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import br.com.tokio.connection.ConnectionFactory;
 import br.com.tokio.model.Cliente;
 import br.com.tokio.repository.ClienteDAO;
+import javax.swing.JTextField;
 
 public class AreaCorretorGUI {
 
@@ -32,7 +34,7 @@ public class AreaCorretorGUI {
 	public JFrame frmT;
 	private JLabel labelBackground;
 	private JTable tableInfoClientes;
-	private JTextArea textCPF, textNome;
+	private JTextField textCPF, textNome;
 	ClienteDAO clienteDao = new ClienteDAO();
 	private DefaultTableModel TABELACRUD;
 	private JTextField txtNome;
@@ -68,18 +70,8 @@ public class AreaCorretorGUI {
 		frmT.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmT.getContentPane().setLayout(null);
 
-		JButton botaoLimparTabela = new JButton("Limpar Tabela");
-		botaoLimparTabela.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				limparTabela();
-			}
-		});
-		botaoLimparTabela.setBounds(162, 441, 120, 23);
-		frmT.getContentPane().add(botaoLimparTabela);
-
 		txtCpf = new JTextField();
-		txtCpf.setBounds(23, 279, 259, 30);
+		txtCpf.setBounds(23, 279, 259, 30); 
 		frmT.getContentPane().add(txtCpf);
 		txtCpf.setColumns(10);
 
@@ -120,7 +112,7 @@ public class AreaCorretorGUI {
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmT.dispose();
-				LoginCorretorGUI login = new LoginCorretorGUI();
+				LoginFrameGUI login = new LoginFrameGUI();
 				login.frmCorretor.setVisible(true);
 
 			}
@@ -169,8 +161,6 @@ public class AreaCorretorGUI {
 			public void actionPerformed(ActionEvent e) {
 
 				PreencerTabelaCPF();
-
-				limpar();
 			}
 
 		});
@@ -179,35 +169,19 @@ public class AreaCorretorGUI {
 		frmT.getContentPane().add(botaoBuscar);
 
 		tableInfoClientes = new JTable();
-		tableInfoClientes.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"CPF", "NOME", "DATA NASC", "EMAIL", "TELEFONE"
-			}
-		));
-		tableInfoClientes.getColumnModel().getColumn(0).setPreferredWidth(132);
-		tableInfoClientes.getColumnModel().getColumn(1).setPreferredWidth(104);
-		tableInfoClientes.getColumnModel().getColumn(2).setPreferredWidth(114);
-		tableInfoClientes.getColumnModel().getColumn(3).setPreferredWidth(115);
-		tableInfoClientes.getColumnModel().getColumn(4).setPreferredWidth(107);
-		tableInfoClientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		TABELACRUD = (DefaultTableModel) tableInfoClientes.getModel();
 
 		TABELACRUD.addColumn("CPF do Cliente");
 		TABELACRUD.addColumn("Nome do Cliente");
+		TABELACRUD.addColumn("E-mail do Cliente");
+		TABELACRUD.addColumn("Telefone do Cliente");
+		TABELACRUD.addColumn("Data Nascimento do Cliente");
+		TABELACRUD.addColumn("Gênero do Cliente");
+		
+		
 
 		tableInfoClientes.setBounds(320, 187, 646, 352);
 		frmT.getContentPane().add(tableInfoClientes);
-
-		JButton botaoBuscarTodos = new JButton("Buscar Todos");
-		botaoBuscarTodos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				preencherTabela();
-			}
-		});
-		botaoBuscarTodos.setBounds(23, 441, 120, 23);
-		frmT.getContentPane().add(botaoBuscarTodos);
 
 		labelBackground = new JLabel("\r\n");
 		labelBackground.setIcon(
@@ -230,34 +204,23 @@ public class AreaCorretorGUI {
 		String cpf;
 		cpf = txtCpf.getText();
 		txtCpf.setText(cpf);
-		
-		String nome;
-		nome = txtNome.getText();
-		txtNome.setText(nome);
 
-		Cliente cliente = clienteDao.selectByCPF(cpf, nome);
+		Cliente cliente = clienteDao.selectByCPF(cpf);
 
-		TABELACRUD.addRow(new Object[] { cliente.getCpfCliente(), cliente.getNomeCliente(), cliente.getDataNascimento(),
-				cliente.getEmailCliente(), cliente.getGeneroCliente(), cliente.getTelefoneCliente(),
-				cliente.getDataCadastro() });
+		TABELACRUD.addRow(new String[] { cliente.getCpfCliente(), cliente.getNomeCliente(), cliente.getEmailCliente(), cliente.getTelefoneCliente(), cliente.getGeneroCliente() });
 	}
 
-	private void limparTabela() {
-		((DefaultTableModel) TABELACRUD).setRowCount(0);
-	}
-
-	private void preencherTabela() {
-		List<Cliente> clientes = clienteDao.selectAll();
-		try {
-			for (Cliente cliente : clientes) {
-				TABELACRUD.addRow(new Object[] { cliente.getCpfCliente(), cliente.getNomeCliente(),
-						cliente.getDataNascimento(), cliente.getEmailCliente(), cliente.getGeneroCliente(),
-						cliente.getTelefoneCliente(), cliente.getDataCadastro() });
-			}
-		} catch (Exception e) {
-			throw e;
-		}
-	}
+//	private void preencherTabela() {
+//		List<Cliente> clientes = clienteDao.selectAll();
+//		try {
+//			for (Cliente cliente : clientes) {
+//				TABELACRUD.addRow(
+//						new Object[] { cliente.getCpfCliente(), cliente.getNomeCliente(), cliente.getEmailCliente() });
+//			}
+//		} catch (Exception e) {
+//			throw e;
+//		}
+//	}
 
 	private void deletar() {
 		Object objetoDaLinha = (Object) TABELACRUD.getValueAt(tableInfoClientes.getSelectedRow(),
@@ -266,7 +229,7 @@ public class AreaCorretorGUI {
 			String CPF = (String) objetoDaLinha;
 			this.clienteDao.deleteCliente(CPF);
 			TABELACRUD.removeRow(tableInfoClientes.getSelectedRow());
-			JOptionPane.showMessageDialog(null, "Item excluido com sucesso!");
+			JOptionPane.showMessageDialog(null, "Item exclu�do com sucesso!");
 		} else {
 			JOptionPane.showMessageDialog(null, "Por favor, selecionar o ID");
 		}

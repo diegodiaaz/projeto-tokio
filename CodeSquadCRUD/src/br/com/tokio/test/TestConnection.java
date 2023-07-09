@@ -1,5 +1,7 @@
 package br.com.tokio.test;
 
+import java.util.List;
+
 import br.com.tokio.model.Cliente;
 import br.com.tokio.model.Corretor;
 import br.com.tokio.model.Seguro;
@@ -20,10 +22,15 @@ public class TestConnection {
 
 		// -------- INSERT CLIENTE-------- TESTADO! //
 //			
-
-		Cliente vinicius1 = new Cliente("35557777771", "vinicius", "05/11/2001", "vinicius@gmail.com", "11967274444",
+/*
+		Cliente vinicius = new Cliente("35557777777", "vinicius", "05/11/2001", "vinicius@gmail.com", "11967274444",
 				"masculino");
-		daoCliente.insertCadastroCliente(vinicius1);
+		daoCliente.insertCadastroCliente(vinicius);
+		
+		Cliente vitor = new Cliente("50422658925", "vitor", "11/11/2001", "vitor@gmail.com", "11967274422",
+				"masculino");
+		daoCliente.insertCadastroCliente(vitor);
+*/
 
 		// -------- DELETE CLIENTE --------- TESTADO! //
 //		 daoCliente.deleteCliente("35557777777");
@@ -44,7 +51,7 @@ public class TestConnection {
 //		}
 
 //		 --------SELECTBYCPF CLIENTE-------- TESTADO! 
-//		Cliente cliente = daoCliente.selectByCPF("35557777777", "vinicius");
+//		Cliente cliente = daoCliente.selectByCPF("35557777777");
 //		System.out.println("Nome: " + cliente.getNomeCliente());
 //		System.out.println("CPF: " + cliente.getCpfCliente());
 //		System.out.println("Data Nascimento: " + cliente.getDataNascimento());
@@ -55,7 +62,7 @@ public class TestConnection {
 
 // 		--------UPDATE CLIENTE TESTADO!!--------
 //		 Selecionando o usuário que já existe.
-//		Cliente update = daoCliente.selectByCPF("24452799841");
+//		Cliente update = daoCliente.selectByCPF("35557777777");
 //		update.setEmailCliente("ALTERADO@gmail.com");
 //		daoCliente.updateCliente(update);
 
