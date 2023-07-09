@@ -18,6 +18,15 @@ public class Cliente {
 		this.telefoneCliente = telefoneCliente;
 		this.generoCliente = generoCliente;
 		this.data = new Date(System.currentTimeMillis());
+
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	public String getCpfCliente() {

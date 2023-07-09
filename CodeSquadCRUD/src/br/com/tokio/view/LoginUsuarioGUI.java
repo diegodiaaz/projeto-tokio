@@ -6,21 +6,15 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
-
-import br.com.tokio.model.Cliente;
-import br.com.tokio.repository.ClienteDAO;
 
 
 public class LoginUsuarioGUI {
@@ -29,13 +23,15 @@ public class LoginUsuarioGUI {
 	private JTextField txtEmail;
 	private JTextField txtCPF;
 
-
-	public static void newScreen() {
+	/**
+	 * Launch the application.
+	 */
+	public static void newScreen(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginUsuarioGUI login = new LoginUsuarioGUI();
-					login.frameUsuario.setVisible(true);
+					LoginUsuarioGUI window = new LoginUsuarioGUI();
+					window.frameUsuario.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,10 +39,16 @@ public class LoginUsuarioGUI {
 		});
 	}
 
+	/**
+	 * Create the application.
+	 */
 	public LoginUsuarioGUI() {
 		initialize();
 	}
 
+	/**
+	 * Initialize the contents of the frame.
+	 */
 	private void initialize() {
 		frameUsuario = new JFrame();
 		frameUsuario.setIconImage(Toolkit.getDefaultToolkit().getImage(LoginUsuarioGUI.class.getResource("/br/com/tokio/images/logo_tokio.png")));
@@ -64,7 +66,7 @@ public class LoginUsuarioGUI {
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frameUsuario.dispose();
-				UsuarioFrameGUI telaChat = new UsuarioFrameGUI();
+				ChatBotFrameGUI telaChat = new ChatBotFrameGUI();
 				telaChat.newScreen();
 			}
 		});
@@ -116,58 +118,19 @@ public class LoginUsuarioGUI {
 		lbl_senha.setBounds(44, 180, 124, 37);
 		painelLogin.add(lbl_senha);
 		
-		setTxtCPF(new JTextField());
-		getTxtCPF().setForeground(Color.BLACK);
-		getTxtCPF().setFont(new Font("Tahoma", Font.BOLD, 14));
-		getTxtCPF().setBackground(UIManager.getColor("Button.background"));
-		getTxtCPF().setBounds(45, 214, 299, 37);
-		painelLogin.add(getTxtCPF());
+		txtCPF = new JTextField();
+		txtCPF.setForeground(Color.BLACK);
+		txtCPF.setFont(new Font("Tahoma", Font.BOLD, 14));
+		txtCPF.setBackground(UIManager.getColor("Button.background"));
+		txtCPF.setBounds(45, 214, 299, 37);
+		painelLogin.add(txtCPF);
 		
 		JButton btn_entrar = new JButton("ENTRAR");
 		btn_entrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		
-			
-				String emailUsuario, cpfUsuario;
-				emailUsuario = txtEmail.getText();
-				cpfUsuario = getTxtCPF().getText();
-
-				try {
-					// VALIDAÇÃO DO LOGIN
-
-					Cliente objCliente = new Cliente();
-					objCliente.setEmailCliente(emailUsuario);
-					objCliente.setCpfCliente(cpfUsuario);
-
-					ClienteDAO clienteDAO = new ClienteDAO();
-					ResultSet rsClienteDAO = clienteDAO.loginCliente(objCliente);
-
-					if (rsClienteDAO.next()) {
-						// CHAMAR TELA PARA ABRIR
-						Cliente clienteFull = new Cliente();
-						
-						clienteDAO.selectByCPF(cpfUsuario);
-						clienteFull.getNomeCliente();
-						clienteFull.getCpfCliente();
-						clienteFull.getDataNascimento();
-						clienteFull.getTelefoneCliente();
-						clienteFull.getEmailCliente();
-						
-						clienteFull.setNomeCliente();						
-						
-						
-						CrudClienteGUI cliente = new CrudClienteGUI();
-						cliente.frmTokioMarineSeguradora.setVisible(true);
-						frameUsuario.dispose();
-					} else {
-						JOptionPane.showMessageDialog(null, "Email ou CPF inválido!");
-					}
-					
-			
-
-				} catch (SQLException erro) {
-					JOptionPane.showMessageDialog(null, "VALIDACAO DE LOGIN: " + erro);
-				}
+				ClienteCrudGUI1 CrudUsuario = new ClienteCrudGUI1();
+				CrudUsuario.newscreen(null);
+				frameUsuario.dispose();
 				
 			}
 		});
@@ -181,13 +144,5 @@ public class LoginUsuarioGUI {
 		painelFundo.add(labelFundoGradiente);
 		
 		
-	}
-
-	public JTextField getTxtCPF() {
-		return txtCPF;
-	}
-
-	public void setTxtCPF(JTextField txtCPF) {
-		this.txtCPF = txtCPF;
 	}
 }
