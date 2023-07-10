@@ -14,7 +14,7 @@ import javax.swing.JButton;
 
 public class DadosCaminhaoGUI {
 
-	private JFrame frameDadosCaminhao;
+	public JFrame frameDadosCaminhao;
 	private JTextField txtPlacaCaminhao;
 	private JTextField txtAnoCaminhao;
 	private JTextField txtModeloCaminhao;

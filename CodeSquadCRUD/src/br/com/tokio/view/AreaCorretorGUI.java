@@ -7,25 +7,21 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
-import java.text.ParseException;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.MaskFormatter;
 
 import br.com.tokio.connection.ConnectionFactory;
 import br.com.tokio.model.Cliente;
 import br.com.tokio.repository.ClienteDAO;
-import javax.swing.JTextField;
 
 public class AreaCorretorGUI {
 
@@ -69,6 +65,24 @@ public class AreaCorretorGUI {
 		frmT.setBounds(100, 100, 1000, 600);
 		frmT.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmT.getContentPane().setLayout(null);
+		
+		JButton botaoListarTodos = new JButton("Listar Todos");
+		botaoListarTodos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				preencherTabela();
+			}
+		});
+		botaoListarTodos.setBounds(154, 438, 128, 23);
+		frmT.getContentPane().add(botaoListarTodos);
+		
+		JButton botaoLimparTabela = new JButton("Limpar Tabela");
+		botaoLimparTabela.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limparTabela();
+			}
+		});
+		botaoLimparTabela.setBounds(23, 438, 121, 23);
+		frmT.getContentPane().add(botaoLimparTabela);
 
 		txtCpf = new JTextField();
 		txtCpf.setBounds(23, 279, 259, 30); 
@@ -161,6 +175,7 @@ public class AreaCorretorGUI {
 			public void actionPerformed(ActionEvent e) {
 
 				PreencerTabelaCPF();
+				limpar();
 			}
 
 		});
@@ -204,23 +219,34 @@ public class AreaCorretorGUI {
 		String cpf;
 		cpf = txtCpf.getText();
 		txtCpf.setText(cpf);
+		
+		String nome;
+		nome = txtNome.getText();
+		txtNome.setText(nome);
 
-		Cliente cliente = clienteDao.selectByCPF(cpf);
+		Cliente cliente = clienteDao.selectByCPFAndName(cpf, nome);
 
-		TABELACRUD.addRow(new String[] { cliente.getCpfCliente(), cliente.getNomeCliente(), cliente.getEmailCliente(), cliente.getTelefoneCliente(), cliente.getGeneroCliente() });
+		TABELACRUD.addRow(new Object[] { cliente.getCpfCliente(), cliente.getNomeCliente(), cliente.getDataNascimento(),
+				cliente.getEmailCliente(), cliente.getGeneroCliente(), cliente.getTelefoneCliente(),
+				cliente.getDataCadastro() });
 	}
 
-//	private void preencherTabela() {
-//		List<Cliente> clientes = clienteDao.selectAll();
-//		try {
-//			for (Cliente cliente : clientes) {
-//				TABELACRUD.addRow(
-//						new Object[] { cliente.getCpfCliente(), cliente.getNomeCliente(), cliente.getEmailCliente() });
-//			}
-//		} catch (Exception e) {
-//			throw e;
-//		}
-//	}
+	private void limparTabela() {
+		((DefaultTableModel) TABELACRUD).setRowCount(0);
+	}
+
+	private void preencherTabela() {
+		List<Cliente> clientes = clienteDao.selectAll();
+		try {
+			for (Cliente cliente : clientes) {
+				TABELACRUD.addRow(new Object[] { cliente.getCpfCliente(), cliente.getNomeCliente(),
+						cliente.getDataNascimento(), cliente.getEmailCliente(), cliente.getGeneroCliente(),
+						cliente.getTelefoneCliente(), cliente.getDataCadastro() });
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 
 	private void deletar() {
 		Object objetoDaLinha = (Object) TABELACRUD.getValueAt(tableInfoClientes.getSelectedRow(),
@@ -229,7 +255,7 @@ public class AreaCorretorGUI {
 			String CPF = (String) objetoDaLinha;
 			this.clienteDao.deleteCliente(CPF);
 			TABELACRUD.removeRow(tableInfoClientes.getSelectedRow());
-			JOptionPane.showMessageDialog(null, "Item exclu�do com sucesso!");
+			JOptionPane.showMessageDialog(null, "Item excluido com sucesso!");
 		} else {
 			JOptionPane.showMessageDialog(null, "Por favor, selecionar o ID");
 		}
@@ -239,5 +265,4 @@ public class AreaCorretorGUI {
 		this.txtNome.setText("");
 		this.txtCpf.setText("");
 	}
-
 }

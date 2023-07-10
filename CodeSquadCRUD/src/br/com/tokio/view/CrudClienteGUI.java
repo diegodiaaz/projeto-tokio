@@ -1,10 +1,22 @@
 package br.com.tokio.view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
+import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.Date;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.itextpdf.text.Document;
@@ -12,16 +24,8 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import javax.swing.JButton;
-import java.awt.Color;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import java.awt.event.ActionListener;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
+import br.com.tokio.model.Cliente;
+import br.com.tokio.repository.ClienteDAO;
 
 public class CrudClienteGUI {
 
@@ -31,6 +35,9 @@ public class CrudClienteGUI {
 	private JTextField txtTelefone;
 	private JTextField txtDataNascimento;
 	private JTextField txtEmail;
+	ClienteDAO clienteDao = new ClienteDAO();
+	private JTextField txtGenero;
+	private JTextField txtTipoVeiculo;
 
 	/**
 	 * Launch the application.
@@ -79,67 +86,96 @@ public class CrudClienteGUI {
 				frameCliente.dispose();
 				LoginUsuarioGUI loginUsuario = new LoginUsuarioGUI();
 				loginUsuario.newScreen();
-				
 
 			}
 		});
+
+		JButton botaoInserir = new JButton("Inserir");
+		botaoInserir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Inserir();
+
+			}
+		});
+		
+		JButton botaoPreencher = new JButton("Preencher dados");
+		botaoPreencher.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				preencherCampos();
+			}
+		});
+		botaoPreencher.setBounds(487, 477, 153, 36);
+		contentPane.add(botaoPreencher);
+		botaoInserir.setBounds(190, 477, 89, 36);
+		contentPane.add(botaoInserir);
 		botaoVoltar.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
 		botaoVoltar.setBounds(20, 20, 47, 30);
 		contentPane.add(botaoVoltar);
 
-		JButton btnGerarContrato = new JButton("Gerar contrato");
-		btnGerarContrato.addActionListener(new ActionListener() {
+		JButton botaoGerarContrato = new JButton("Gerar contrato");
+		botaoGerarContrato.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				Document document = new Document();
-		          try {
+				try {
 
-		              PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\Administrator\\Desktop\\contrato-seguro.pdf"));
-		              document.open();
+					PdfWriter.getInstance(document,
+							new FileOutputStream("C:\\Users\\Administrator\\Desktop\\contrato-seguro.pdf"));
+					document.open();
 
-		              // adicionando um parágrafo no documento
-		              document.add(new Paragraph("CODESQUAD®, 2023."));
-		              document.add(new Paragraph("\n"));
-		              document.add(new Paragraph("CONTRATO DO SEGURO AUTOMOTIVO"));
-		              document.add(new Paragraph("______________________________________________________________________"));
-		              document.add(new Paragraph("\n"));
-		              document.add(new Paragraph("Nome do cliente: "+txtNomeCliente.getText()));
-		              document.add(new Paragraph("CPF: "+txtNomeCliente.getText()));
-		              document.add(new Paragraph("Telefone: "+txtTelefone.getText()));
-		              document.add(new Paragraph("Data de nascimento: "+txtDataNascimento.getText()));
-		              document.add(new Paragraph("E-mail: "+txtEmail.getText()));
-		              document.add(new Paragraph("\n_____________________________________________________________________\n"));
-		              document.add(new Paragraph("Dados do veículo:"));
-		              document.add(new Paragraph("----------------------------"));
-		              document.add(new Paragraph("Tipo do veículo: "));
-		              document.add(new Paragraph("Placa do veículo: "));
-		              document.add(new Paragraph("Marca: "));
-		              document.add(new Paragraph("Modelo: "));
-		              document.add(new Paragraph("Ano: "));
-		              
-		    }
-		          catch(DocumentException de) {
-		              System.err.println(de.getMessage());
-		          }
-		          catch(IOException ioe) {
-		              System.err.println(ioe.getMessage());
-		          }
-		          document.close();
-		      }
+					// adicionando um parágrafo no documento
+					document.add(new Paragraph("CODESQUAD®, 2023."));
+					document.add(new Paragraph("\n"));
+					document.add(new Paragraph("CONTRATO DO SEGURO AUTOMOTIVO"));
+					document.add(
+							new Paragraph("______________________________________________________________________"));
+					document.add(new Paragraph("\n"));
+					document.add(new Paragraph("Nome do cliente: " + txtNomeCliente.getText()));
+					document.add(new Paragraph("CPF: " + txtNomeCliente.getText()));
+					document.add(new Paragraph("Telefone: " + txtTelefone.getText()));
+					document.add(new Paragraph("Data de nascimento: " + txtDataNascimento.getText()));
+					document.add(new Paragraph("E-mail: " + txtEmail.getText()));
+					document.add(
+							new Paragraph("\n_____________________________________________________________________\n"));
+					document.add(new Paragraph("Dados do veículo:"));
+					document.add(new Paragraph("----------------------------"));
+					document.add(new Paragraph("Tipo do veículo: "));
+					document.add(new Paragraph("Placa do veículo: "));
+					document.add(new Paragraph("Marca: "));
+					document.add(new Paragraph("Modelo: "));
+					document.add(new Paragraph("Ano: "));
+
+				} catch (DocumentException de) {
+					System.err.println(de.getMessage());
+				} catch (IOException ioe) {
+					System.err.println(ioe.getMessage());
+				}
+				document.close();
+			}
 
 		});
-		btnGerarContrato.setForeground(Color.WHITE);
-		btnGerarContrato.setBackground(new Color(64, 128, 128));
-		btnGerarContrato.setBounds(667, 477, 126, 36);
-		contentPane.add(btnGerarContrato);
+		botaoGerarContrato.setForeground(Color.WHITE);
+		botaoGerarContrato.setBackground(new Color(64, 128, 128));
+		botaoGerarContrato.setBounds(650, 477, 126, 36);
+		contentPane.add(botaoGerarContrato);
 
-		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(273, 477, 89, 36);
-		contentPane.add(btnExcluir);
+		JButton botaoExcluir = new JButton("Excluir");
+		botaoExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				deletar();
+			}
+		});
+		botaoExcluir.setBounds(388, 477, 89, 36);
+		contentPane.add(botaoExcluir);
 
-		JButton btnNewButton = new JButton("Editar");
-		btnNewButton.setBounds(172, 477, 89, 36);
-		contentPane.add(btnNewButton);
+		JButton botaoEditar = new JButton("Editar");
+		botaoEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Alterar();
+			}
+		});
+		botaoEditar.setBounds(289, 477, 89, 36);
+		contentPane.add(botaoEditar);
 
 		JLabel lblSejaBemvindoaA = new JLabel("Seja bem-vindo(a) a área do cliente!");
 		lblSejaBemvindoaA.setForeground(Color.WHITE);
@@ -162,30 +198,30 @@ public class CrudClienteGUI {
 		lblIconeUsuario.setBounds(27, 27, 70, 70);
 		panel.add(lblIconeUsuario);
 
-		JLabel lblNewLabel_2_3 = new JLabel("Telefone:");
-		lblNewLabel_2_3.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_3.setBounds(27, 241, 193, 25);
-		panel.add(lblNewLabel_2_3);
+		JLabel lblTelefone = new JLabel("Telefone:");
+		lblTelefone.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblTelefone.setBounds(27, 241, 193, 25);
+		panel.add(lblTelefone);
 
-		JLabel lblNewLabel_2_4 = new JLabel("CPF:");
-		lblNewLabel_2_4.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_4.setBounds(27, 177, 193, 25);
-		panel.add(lblNewLabel_2_4);
+		JLabel lblCpf = new JLabel("CPF:");
+		lblCpf.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblCpf.setBounds(27, 177, 193, 25);
+		panel.add(lblCpf);
 
-		JLabel lblNewLabel_2_3_1 = new JLabel("E-mail:");
-		lblNewLabel_2_3_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_3_1.setBounds(321, 192, 193, 25);
-		panel.add(lblNewLabel_2_3_1);
+		JLabel lblEmail = new JLabel("E-mail:");
+		lblEmail.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblEmail.setBounds(321, 177, 193, 25);
+		panel.add(lblEmail);
 
-		JLabel lblNewLabel_2_4_1 = new JLabel("Data de nascimento:");
-		lblNewLabel_2_4_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_4_1.setBounds(321, 121, 193, 25);
-		panel.add(lblNewLabel_2_4_1);
+		JLabel lblDataNasc = new JLabel("Data de nascimento:");
+		lblDataNasc.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblDataNasc.setBounds(321, 108, 193, 25);
+		panel.add(lblDataNasc);
 
-		JLabel lblNewLabel_2_4_2 = new JLabel("Nome:");
-		lblNewLabel_2_4_2.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_4_2.setBounds(27, 108, 193, 25);
-		panel.add(lblNewLabel_2_4_2);
+		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblNome.setBounds(27, 108, 193, 25);
+		panel.add(lblNome);
 
 		txtNomeCliente = new JTextField();
 		txtNomeCliente.setBounds(27, 131, 207, 33);
@@ -204,18 +240,113 @@ public class CrudClienteGUI {
 
 		txtDataNascimento = new JTextField();
 		txtDataNascimento.setColumns(10);
-		txtDataNascimento.setBounds(321, 149, 207, 33);
+		txtDataNascimento.setBounds(321, 131, 207, 33);
 		panel.add(txtDataNascimento);
 
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
-		txtEmail.setBounds(321, 215, 207, 33);
+		txtEmail.setBounds(321, 197, 207, 33);
 		panel.add(txtEmail);
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(
-				new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
-		lblNewLabel.setBounds(0, 0, 984, 561);
-		contentPane.add(lblNewLabel);
+		txtGenero = new JTextField();
+		txtGenero.setBounds(321, 261, 207, 33);
+		panel.add(txtGenero);
+		txtGenero.setColumns(10);
+
+		JLabel lblGenero = new JLabel("Genero:");
+		lblGenero.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblGenero.setBounds(321, 241, 193, 25);
+		panel.add(lblGenero);
+
+		JLabel lblTipoVeiculo = new JLabel("Tipo Veiculo:");
+		lblTipoVeiculo.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblTipoVeiculo.setBounds(321, 27, 193, 25);
+		panel.add(lblTipoVeiculo);
+
+		txtTipoVeiculo = new JTextField();
+		txtTipoVeiculo.setColumns(10);
+		txtTipoVeiculo.setBounds(321, 51, 207, 33);
+		panel.add(txtTipoVeiculo);
+
+		JLabel lblPrincipal = new JLabel("");
+		lblPrincipal
+				.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
+		lblPrincipal.setBounds(0, 0, 984, 561);
+		contentPane.add(lblPrincipal);
+	}
+
+	public void Inserir() {
+
+		Cliente cliente = new Cliente();
+		Date data;
+		data = new Date(System.currentTimeMillis());
+		cliente.setNomeCliente(txtNomeCliente.getText());
+		cliente.setCpfCliente(txtCpf.getText());
+		cliente.setTelefoneCliente(txtTelefone.getText());
+		cliente.setDataNascimento(txtDataNascimento.getText());
+		cliente.setEmailCliente(txtEmail.getText());
+		cliente.setGeneroCliente(txtGenero.getText());
+		cliente.setDataCadastro(data);
+		clienteDao.insertCadastroCliente(cliente);
+
+		if (txtTipoVeiculo.getText().equalsIgnoreCase("carro")) {
+			DadosCarroGUI areaInsertCarro = new DadosCarroGUI();
+			frameCliente.dispose();
+			areaInsertCarro.frameDadosCarro.setVisible(true);
+		} else if (txtTipoVeiculo.getText().equalsIgnoreCase("moto")) {
+			DadosMotoGUI areaInsertMoto = new DadosMotoGUI();
+			frameCliente.dispose();
+			areaInsertMoto.frameDadosMoto.setVisible(true);
+		} else if (txtTipoVeiculo.getText().equalsIgnoreCase("caminhao")) {
+			DadosCaminhaoGUI areaInsertCaminhao = new DadosCaminhaoGUI();
+			frameCliente.dispose();
+			areaInsertCaminhao.frameDadosCaminhao.setVisible(true);
+		}
+
+	}
+
+	public void Alterar() {
+		Cliente update = clienteDao.selectByCPF(txtCpf.getText());
+		update.setNomeCliente(txtNomeCliente.getText());
+		update.setCpfCliente(txtCpf.getText());
+		update.setTelefoneCliente(txtTelefone.getText());
+		update.setDataNascimento(txtDataNascimento.getText());
+		update.setEmailCliente(txtEmail.getText());
+		update.setGeneroCliente(txtGenero.getText());
+		clienteDao.updateCliente(update);
+
+	}
+	
+	public void deletar() {
+		 String cpf = JOptionPane.showInputDialog(null, "Digite o CPF:");
+		 clienteDao.deleteCliente(cpf);
+	}
+	
+	public void preencherCampos() {
+		String cpf = JOptionPane.showInputDialog(null, "Digite o CPF:");
+		Cliente cliente = clienteDao.selectByCPF(cpf);
+		txtCpf.setText(cliente.getCpfCliente());
+		txtNomeCliente.setText(cliente.getNomeCliente());
+		txtTelefone.setText(cliente.getTelefoneCliente());
+		txtEmail.setText(cliente.getEmailCliente());
+		txtDataNascimento.setText(cliente.getDataNascimento());
+		txtGenero.setText(cliente.getGeneroCliente());
+		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,7 +14,7 @@ import javax.swing.JButton;
 
 public class DadosMotoGUI {
 
-	private JFrame frameDadosMoto;
+	public JFrame frameDadosMoto;
 	private JTextField txtPlacaMoto;
 	private JTextField txtAnoMoto;
 	private JTextField txtModeloMoto;
