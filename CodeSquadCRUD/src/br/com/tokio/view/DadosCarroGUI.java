@@ -14,7 +14,7 @@ import javax.swing.JButton;
 
 public class DadosCarroGUI {
 
-	private JFrame frameDadosCarro;
+	public JFrame frameDadosCarro;
 	private JTextField txtPlacaCarro;
 	private JTextField txtAnoCarro;
 	private JTextField txtModeloCarro;
@@ -27,12 +27,12 @@ public class DadosCarroGUI {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void newScreen() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DadosCarroGUI window = new DadosCarroGUI();
-					window.frameDadosCarro.setVisible(true);
+					DadosCarroGUI dadosCarroGUI = new DadosCarroGUI();
+					dadosCarroGUI.frameDadosCarro.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -173,5 +173,9 @@ public class DadosCarroGUI {
 		labelGradiente.setBounds(0, 0, 984, 561);
 		labelGradiente.setIcon(new ImageIcon(DadosCarroGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
 		panel.add(labelGradiente);
+	}
+	
+	public void inserir() {
+		
 	}
 }
