@@ -20,12 +20,13 @@ import javax.swing.border.EtchedBorder;
 
 import br.com.tokio.model.Corretor;
 import br.com.tokio.repository.CorretorDAO;
+import javax.swing.JPasswordField;
 
 public class LoginFrameGUI {
 
 	public JFrame frmCorretor;
 	private JTextField emailTextField;
-	private JTextField senhaTextField;
+	private JPasswordField txtSenha;
 
 	public static void newScreen() {
 		EventQueue.invokeLater(new Runnable() {
@@ -116,20 +117,14 @@ public class LoginFrameGUI {
 		lbl_senha.setBounds(44, 180, 124, 37);
 		panel.add(lbl_senha);
 
-		senhaTextField = new JTextField();
-		senhaTextField.setFont(new Font("Tahoma", Font.BOLD, 14));
-		senhaTextField.setForeground(new Color(0, 0, 0));
-		senhaTextField.setBackground(new Color(240, 240, 240));
-		senhaTextField.setBounds(45, 214, 299, 37);
-		panel.add(senhaTextField);
-
 		JButton btn_entrar = new JButton("ENTRAR");
 		btn_entrar.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				
 				String emailCorretor, senhaCorretor;
 				emailCorretor = emailTextField.getText();
-				senhaCorretor = senhaTextField.getText();
+				senhaCorretor = txtSenha.getText();
 
 				try {
 					// VALIDAÇÃO DO LOGIN
@@ -160,6 +155,11 @@ public class LoginFrameGUI {
 		btn_entrar.setFont(new Font("Arial", Font.BOLD, 14));
 		btn_entrar.setBounds(123, 288, 136, 37);
 		panel.add(btn_entrar);
+		
+		txtSenha = new JPasswordField();
+		txtSenha.setBackground(new Color(240, 240, 240));
+		txtSenha.setBounds(45, 214, 299, 37);
+		panel.add(txtSenha);
 
 		JLabel labelFundoGradient = new JLabel("");
 		labelFundoGradient

@@ -11,6 +11,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DadosCaminhaoGUI {
 
@@ -65,6 +67,17 @@ public class DadosCaminhaoGUI {
 		panel.setBounds(0, 0, 984, 561);
 		frameDadosCaminhao.getContentPane().add(panel);
 		panel.setLayout(null);
+		
+		JButton btnVoltar = new JButton("");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CrudClienteGUI telaCliente = new CrudClienteGUI();
+				telaCliente.newscreen(null);
+			}
+		});
+		btnVoltar.setIcon(new ImageIcon(DadosCaminhaoGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
+		btnVoltar.setBounds(10, 11, 46, 23);
+		panel.add(btnVoltar);
 		
 		JLabel lblAquiVocPode_1 = new JLabel("Aqui você pode adicionar o caminão de um cliente!");
 		lblAquiVocPode_1.setForeground(Color.WHITE);

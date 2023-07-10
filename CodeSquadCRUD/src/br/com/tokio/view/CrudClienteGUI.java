@@ -91,6 +91,8 @@ public class CrudClienteGUI {
 		});
 
 		JButton botaoInserir = new JButton("Inserir");
+		botaoInserir.setForeground(new Color(255, 255, 255));
+		botaoInserir.setBackground(new Color(64, 128, 128));
 		botaoInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Inserir();
@@ -104,69 +106,13 @@ public class CrudClienteGUI {
 				preencherCampos();
 			}
 		});
-		botaoPreencher.setBounds(487, 477, 153, 36);
+		botaoPreencher.setBounds(427, 477, 153, 36);
 		contentPane.add(botaoPreencher);
-		botaoInserir.setBounds(190, 477, 89, 36);
+		botaoInserir.setBounds(686, 477, 89, 36);
 		contentPane.add(botaoInserir);
 		botaoVoltar.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
 		botaoVoltar.setBounds(20, 20, 47, 30);
 		contentPane.add(botaoVoltar);
-
-		JButton botaoGerarContrato = new JButton("Gerar contrato");
-		botaoGerarContrato.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				Document document = new Document();
-				try {
-
-					PdfWriter.getInstance(document,
-							new FileOutputStream("C:\\Users\\Administrator\\Desktop\\contrato-seguro.pdf"));
-					document.open();
-
-					// adicionando um parágrafo no documento
-					document.add(new Paragraph("CODESQUAD®, 2023."));
-					document.add(new Paragraph("\n"));
-					document.add(new Paragraph("CONTRATO DO SEGURO AUTOMOTIVO"));
-					document.add(
-							new Paragraph("______________________________________________________________________"));
-					document.add(new Paragraph("\n"));
-					document.add(new Paragraph("Nome do cliente: " + txtNomeCliente.getText()));
-					document.add(new Paragraph("CPF: " + txtNomeCliente.getText()));
-					document.add(new Paragraph("Telefone: " + txtTelefone.getText()));
-					document.add(new Paragraph("Data de nascimento: " + txtDataNascimento.getText()));
-					document.add(new Paragraph("E-mail: " + txtEmail.getText()));
-					document.add(
-							new Paragraph("\n_____________________________________________________________________\n"));
-					document.add(new Paragraph("Dados do veículo:"));
-					document.add(new Paragraph("----------------------------"));
-					document.add(new Paragraph("Tipo do veículo: "));
-					document.add(new Paragraph("Placa do veículo: "));
-					document.add(new Paragraph("Marca: "));
-					document.add(new Paragraph("Modelo: "));
-					document.add(new Paragraph("Ano: "));
-
-				} catch (DocumentException de) {
-					System.err.println(de.getMessage());
-				} catch (IOException ioe) {
-					System.err.println(ioe.getMessage());
-				}
-				document.close();
-			}
-
-		});
-		botaoGerarContrato.setForeground(Color.WHITE);
-		botaoGerarContrato.setBackground(new Color(64, 128, 128));
-		botaoGerarContrato.setBounds(650, 477, 126, 36);
-		contentPane.add(botaoGerarContrato);
-
-		JButton botaoExcluir = new JButton("Excluir");
-		botaoExcluir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				deletar();
-			}
-		});
-		botaoExcluir.setBounds(388, 477, 89, 36);
-		contentPane.add(botaoExcluir);
 
 		JButton botaoEditar = new JButton("Editar");
 		botaoEditar.addActionListener(new ActionListener() {
@@ -174,7 +120,7 @@ public class CrudClienteGUI {
 				Alterar();
 			}
 		});
-		botaoEditar.setBounds(289, 477, 89, 36);
+		botaoEditar.setBounds(589, 477, 89, 36);
 		contentPane.add(botaoEditar);
 
 		JLabel lblSejaBemvindoaA = new JLabel("Seja bem-vindo(a) a área do cliente!");
@@ -315,11 +261,6 @@ public class CrudClienteGUI {
 		update.setGeneroCliente(txtGenero.getText());
 		clienteDao.updateCliente(update);
 
-	}
-	
-	public void deletar() {
-		 String cpf = JOptionPane.showInputDialog(null, "Digite o CPF:");
-		 clienteDao.deleteCliente(cpf);
 	}
 	
 	public void preencherCampos() {

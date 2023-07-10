@@ -11,6 +11,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DadosCarroGUI {
 
@@ -62,6 +64,17 @@ public class DadosCarroGUI {
 		panel.setBounds(0, 0, 984, 561);
 		frameDadosCarro.getContentPane().add(panel);
 		panel.setLayout(null);
+		
+		JButton botaoVoltar = new JButton("");
+		botaoVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CrudClienteGUI telaLogin = new CrudClienteGUI();
+				telaLogin.newscreen(null);
+			}
+		});
+		botaoVoltar.setIcon(new ImageIcon(DadosCarroGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
+		botaoVoltar.setBounds(10, 11, 47, 30);
+		panel.add(botaoVoltar);
 		
 		JLabel lblAquiVocPode_1 = new JLabel("Aqui você pode adicionar o carro de um cliente!");
 		lblAquiVocPode_1.setForeground(Color.WHITE);

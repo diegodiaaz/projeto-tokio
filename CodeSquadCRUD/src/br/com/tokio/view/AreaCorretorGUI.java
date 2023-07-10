@@ -152,6 +152,17 @@ public class AreaCorretorGUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Object[] arrayOpcoes = {"Sim", "Nao"};
+                
+	            int opcoes = JOptionPane.showOptionDialog(null, "Deseja deletar este cliente?", "Cuidado",
+	                     JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+	                     null, arrayOpcoes, arrayOpcoes[0]);        
+	            
+	            if(opcoes == 0) {
+	                deletar();
+	            }else {
+	                JOptionPane.showMessageDialog(null, "Exclusão cancelada!");
+	            }
 				deletar();
 
 			}
