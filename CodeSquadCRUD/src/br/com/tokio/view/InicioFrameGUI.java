@@ -51,8 +51,8 @@ public class InicioFrameGUI {
 		botaoComecar.setBackground(new Color(0, 204, 102));
 		botaoComecar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ChatbotGUI corretor = new ChatbotGUI();
-                corretor.newScreen();
+				InsertClienteGUI insertCliente = new InsertClienteGUI();
+                insertCliente.newScreen();
                 frameInicio.dispose();
 			}
 		});

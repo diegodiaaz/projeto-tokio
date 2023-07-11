@@ -71,8 +71,9 @@ public class DadosCaminhaoGUI {
 		JButton btnVoltar = new JButton("");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CrudClienteGUI telaCliente = new CrudClienteGUI();
-				telaCliente.newscreen(null);
+				InsertClienteGUI insertCliente = new InsertClienteGUI();
+				insertCliente.insertCliente.setVisible(true);
+				frameDadosCaminhao.dispose();
 			}
 		});
 		btnVoltar.setIcon(new ImageIcon(DadosCaminhaoGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));

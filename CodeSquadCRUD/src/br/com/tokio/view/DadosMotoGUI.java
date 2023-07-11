@@ -1,18 +1,22 @@
 package br.com.tokio.view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Date;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Toolkit;
 import javax.swing.JPanel;
-import java.awt.Font;
 import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import br.com.tokio.model.Moto;
+import br.com.tokio.repository.MotoDAO;
 
 public class DadosMotoGUI {
 
@@ -69,8 +73,9 @@ public class DadosMotoGUI {
 		JButton botaoVoltar = new JButton("");
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CrudClienteGUI telaLogin = new CrudClienteGUI();
-				telaLogin.newscreen(null);
+				InsertClienteGUI insertCliente = new InsertClienteGUI();
+				insertCliente.insertCliente.setVisible(true);
+				frameDadosMoto.dispose();
 			}
 		});
 		botaoVoltar.setIcon(new ImageIcon(DadosMotoGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
@@ -89,6 +94,11 @@ public class DadosMotoGUI {
 		panel.add(lblNewLabel_1);
 		
 		JButton btnAdicionarMoto = new JButton("Adicionar moto");
+		btnAdicionarMoto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InserirMoto();
+			}
+		});
 		btnAdicionarMoto.setBounds(506, 507, 146, 43);
 		panel.add(btnAdicionarMoto);
 		
@@ -197,5 +207,23 @@ public class DadosMotoGUI {
 		labelGradiente.setBounds(0, 0, 984, 561);
 		labelGradiente.setIcon(new ImageIcon(DadosMotoGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
 		panel.add(labelGradiente);
+	}
+	
+	public void InserirMoto() {
+		String anoMoto = txtAnoMoto.getText();
+		int anoMotoI = Integer.parseInt(anoMoto);
+		
+		MotoDAO motoDao = new MotoDAO();
+		Moto moto = new Moto();
+		moto.setCepPernoiteMoto(txtCepMoto.getText());
+		moto.setCorMoto(txtCorMoto.getText());
+		moto.setAnoMoto(anoMotoI);
+		moto.setTipoCombustivelMoto(txtCombustivelMoto.getText());
+		moto.setMarcaMoto(txtMarcaMoto.getText());
+		moto.setModeloMoto(txtModeloMoto.getText());
+		moto.setPlacaMoto(txtPlacaMoto.getText());
+		moto.setProprietarioMoto(txtProprietarioMoto.getText());
+		motoDao.insertCadastroMoto(moto);
+
 	}
 }

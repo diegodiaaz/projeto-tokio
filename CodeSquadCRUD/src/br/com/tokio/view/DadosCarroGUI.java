@@ -79,8 +79,9 @@ public class DadosCarroGUI {
 		JButton botaoVoltar = new JButton("");
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CrudClienteGUI telaLogin = new CrudClienteGUI();
-				telaLogin.newscreen(null);
+				InsertClienteGUI insertCliente = new InsertClienteGUI();
+				insertCliente.insertCliente.setVisible(true);
+				frameDadosCarro.dispose();
 			}
 		});
 		botaoVoltar.setIcon(new ImageIcon(DadosCarroGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
@@ -99,6 +100,10 @@ public class DadosCarroGUI {
 		panel.add(lblNewLabel_1);
 		
 		JButton btnAdicionarCarro = new JButton("Adicionar carro");
+		btnAdicionarCarro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAdicionarCarro.setBounds(526, 492, 146, 43);
 		btnAdicionarCarro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
