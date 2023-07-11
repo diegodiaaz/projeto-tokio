@@ -22,13 +22,14 @@ public class SeguroDAO {
 	// ------------Insert da SEGURO------------
 	public void insertCadastroSeguro(Seguro seguro) {
 
-		String sql = "insert into t_tok_seguro (TP_SEGURO, nr_cpf_cli) values (?, ?)";
+		String sql = "insert into t_tok_seguro (TP_SEGURO, nr_cpf_cli, ds_email_cor) values (?, ?, ?)";
 
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 
 			stmt.setString(1, seguro.getTipoSeguro());
 			stmt.setString(2, seguro.getCpfCliente());
+			stmt.setString(3, seguro.getEmailCorretor());
 
 			stmt.execute();
 

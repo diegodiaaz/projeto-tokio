@@ -2,13 +2,13 @@ package br.com.tokio.model;
 
 public class Carro {
 
-	private int anoCarro;
+	private int anoCarro, codigoContrato;
 
 	private String placaCarro, modeloCarro, marcaCarro, corCarro, tipoCombustivelCarro, cepPernoiteCarro,
 			proprietarioCarro;
 
 	public Carro(String placaCarro, int anoCarro, String modeloCarro, String marcaCarro,
-			String corCarro, String tipoCombustivelCarro, String cepPernoiteCarro, String proprietarioCarro) {
+			String corCarro, String tipoCombustivelCarro, String cepPernoiteCarro, String proprietarioCarro, int codigoContrato) {
 
 		this.anoCarro = anoCarro;
 		this.placaCarro = placaCarro;
@@ -18,11 +18,21 @@ public class Carro {
 		this.tipoCombustivelCarro = tipoCombustivelCarro;
 		this.cepPernoiteCarro = cepPernoiteCarro;
 		this.proprietarioCarro = proprietarioCarro;
+		this.codigoContrato = codigoContrato;
 	}
-
+	
 	public Carro() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public int getCodigoContrato() {
+		return codigoContrato;
+	}
+
+	public void setCodigoContrato(int codigoContrato) {
+		this.codigoContrato = codigoContrato;
+	}
+
 
 	public int getAnoCarro() {
 		return anoCarro;

@@ -22,7 +22,7 @@ public class CarroDAO {
 	// ------------Insert do Carro------------
 	public void insertCadastroCarro(Carro carro) {
 
-		String sql = "insert into t_tok_carro (cd_placa, nr_ano, ds_modelo, ds_marca, ds_cor, tp_combustivel, cd_cep_pernoite, ds_proprietario) values (?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into t_tok_carro (cd_placa, nr_ano, ds_modelo, ds_marca, ds_cor, tp_combustivel, cd_cep_pernoite, ds_proprietario, cd_contrato) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -36,6 +36,7 @@ public class CarroDAO {
 			stmt.setString(6, carro.getTipoCombustivelCarro());
 			stmt.setString(7, carro.getCepPernoiteCarro());
 			stmt.setString(8, carro.getProprietarioCarro());
+			stmt.setInt(9, carro.getCodigoContrato());
 
 			// Executar a query
 			stmt.execute();

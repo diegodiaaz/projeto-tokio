@@ -1,12 +1,9 @@
 package br.com.tokio.test;
 
-import java.util.List;
-
-import br.com.tokio.model.Cliente;
-import br.com.tokio.model.Corretor;
+import br.com.tokio.model.Carro;
 import br.com.tokio.model.Seguro;
+import br.com.tokio.repository.CarroDAO;
 import br.com.tokio.repository.ClienteDAO;
-import br.com.tokio.repository.CorretorDAO;
 import br.com.tokio.repository.SeguroDAO;
 
 public class TestConnection {
@@ -22,16 +19,17 @@ public class TestConnection {
 
 		// -------- INSERT CLIENTE-------- TESTADO! //
 //			
-/*
-		Cliente vinicius = new Cliente("35557777777", "vinicius", "05/11/2001", "vinicius@gmail.com", "11967274444",
-				"masculino");
-		daoCliente.insertCadastroCliente(vinicius);
-		
+
+//		Cliente vinicius = new Cliente("35557777777", "vinicius", "05/11/2001", "vinicius@gmail.com", "11967274444",
+//				"masculino");
+//		daoCliente.insertCadastroCliente(vinicius);
+
+/*		
 		Cliente vitor = new Cliente("50422658925", "vitor", "11/11/2001", "vitor@gmail.com", "11967274422",
 				"masculino");
 		daoCliente.insertCadastroCliente(vitor);
 */
-
+		
 		// -------- DELETE CLIENTE --------- TESTADO! //
 //		 daoCliente.deleteCliente("35557777777");
 
@@ -67,11 +65,11 @@ public class TestConnection {
 //		daoCliente.updateCliente(update);
 
 		// -------CARRO--------
-//		CarroDAO daoCarro = new CarroDAO();
+		CarroDAO daoCarro = new CarroDAO();
 
 		// -----------INSERT CARRO----------------//
-//		Carro carro = new Carro("QWX3433", 2020, "LOGAN", "RENAULT", "PRETO", "GASOLINA", "08554300", "Empresarial");
-//		daoCarro.insertCadastroCarro(carro);
+		Carro carro = new Carro("QWX3433", 2020, "LOGAN", "RENAULT", "PRETO", "GASOLINA", "08554300", "Empresarial", 1025);
+		daoCarro.insertCadastroCarro(carro);
 
 		// ----------SELECTBYPLACA CARRO------------/
 //
@@ -100,7 +98,7 @@ public class TestConnection {
 //			System.out.println("-------------------------------------");
 //			
 //		}
-
+		
 		// ---------DELETE CARRO----------//
 //		daoCarro.deleteCarro("ABC1234");	
 
@@ -132,8 +130,8 @@ public class TestConnection {
 //		System.out.println("Porte: " + caminhaozao.getPorte());
 
 		// ---------- INSERT SEGURO ------------- //
-//		Seguro seguro = new Seguro("AUTO", "24452799841");	
 //		SeguroDAO daoSeguro = new SeguroDAO();
+//		Seguro seguro = new Seguro("Carro", "35557777777", "mariane@gmail.com");	
 //		daoSeguro.insertCadastroSeguro(seguro);
 
 		// ------SELECTALL CAMINHAO------ //
