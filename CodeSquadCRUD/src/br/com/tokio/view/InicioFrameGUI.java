@@ -48,7 +48,7 @@ public class InicioFrameGUI {
 		panel_principal.setLayout(null);
 		
 		JButton botaoComecar = new JButton("Vamos começar?");
-		botaoComecar.setBackground(new Color(51, 204, 102));
+		botaoComecar.setBackground(new Color(0, 204, 102));
 		botaoComecar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UsuarioFrameGUI corretor = new UsuarioFrameGUI();
