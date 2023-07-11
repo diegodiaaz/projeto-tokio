@@ -26,7 +26,6 @@ import br.com.tokio.repository.ClienteDAO;
 public class LoginUsuarioGUI {
 
 	public JFrame frameUsuario;
-	private JTextField txtEmail;
 	private JTextField txtCPF;
 
 
@@ -64,7 +63,7 @@ public class LoginUsuarioGUI {
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frameUsuario.dispose();
-				UsuarioFrameGUI telaChat = new UsuarioFrameGUI();
+				ChatbotGUI telaChat = new ChatbotGUI();
 				telaChat.newScreen();
 			}
 		});
@@ -90,37 +89,23 @@ public class LoginUsuarioGUI {
 		painelFundo.add(painelLogin);
 		painelLogin.setLayout(null);
 		
-		JLabel lbl_msg_login = new JLabel("Faça seu login");
-		lbl_msg_login.setBounds(123, 40, 152, 43);
+		JLabel lbl_msg_login = new JLabel("Entre com seu CPF.");
+		lbl_msg_login.setBounds(95, 51, 190, 43);
 		painelLogin.add(lbl_msg_login);
 		lbl_msg_login.setForeground(new Color(0, 51, 51));
 		lbl_msg_login.setFont(new Font("Arial", Font.BOLD, 20));
 		
-		JLabel lbl_email = new JLabel("E-mail:");
-		lbl_email.setForeground(new Color(0, 51, 51));
-		lbl_email.setFont(new Font("Arial", Font.BOLD, 14));
-		lbl_email.setBounds(45, 93, 105, 43);
-		painelLogin.add(lbl_email);
-		
-		txtEmail = new JTextField();
-		txtEmail.setForeground(Color.BLACK);
-		txtEmail.setFont(new Font("Tahoma", Font.BOLD, 14));
-		txtEmail.setColumns(10);
-		txtEmail.setBackground(UIManager.getColor("Button.background"));
-		txtEmail.setBounds(45, 132, 299, 37);
-		painelLogin.add(txtEmail);
-		
 		JLabel lbl_senha = new JLabel("CPF:");
 		lbl_senha.setForeground(new Color(0, 51, 51));
 		lbl_senha.setFont(new Font("Arial", Font.BOLD, 14));
-		lbl_senha.setBounds(44, 180, 124, 37);
+		lbl_senha.setBounds(52, 125, 124, 37);
 		painelLogin.add(lbl_senha);
 		
 		setTxtCPF(new JTextField());
 		getTxtCPF().setForeground(Color.BLACK);
 		getTxtCPF().setFont(new Font("Tahoma", Font.BOLD, 14));
 		getTxtCPF().setBackground(UIManager.getColor("Button.background"));
-		getTxtCPF().setBounds(45, 214, 299, 37);
+		getTxtCPF().setBounds(52, 157, 299, 37);
 		painelLogin.add(getTxtCPF());
 		
 		JButton btn_entrar = new JButton("ENTRAR");
@@ -129,14 +114,12 @@ public class LoginUsuarioGUI {
 		
 			
 				String emailUsuario, cpfUsuario;
-				emailUsuario = txtEmail.getText();
 				cpfUsuario = getTxtCPF().getText();
 
 				try {
 					// VALIDAÇÃO DO LOGIN
 
 					Cliente objCliente = new Cliente();
-					objCliente.setEmailCliente(emailUsuario);
 					objCliente.setCpfCliente(cpfUsuario);
 
 					ClienteDAO clienteDAO = new ClienteDAO();
@@ -161,7 +144,7 @@ public class LoginUsuarioGUI {
 			}
 		});
 		btn_entrar.setFont(new Font("Arial", Font.BOLD, 14));
-		btn_entrar.setBounds(123, 288, 136, 37);
+		btn_entrar.setBounds(126, 249, 136, 43);
 		painelLogin.add(btn_entrar);
 		
 		JLabel labelFundoGradiente = new JLabel("");
