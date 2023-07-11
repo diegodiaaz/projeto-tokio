@@ -67,41 +67,41 @@ public class AreaCorretorGUI {
 		frmT.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmT.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("TELEFONE");
-		lblNewLabel_1_1_1_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_1_1_1_1_1.setBounds(869, 166, 92, 14);
-		frmT.getContentPane().add(lblNewLabel_1_1_1_1_1);
+		JLabel lblTelefone = new JLabel("TELEFONE");
+		lblTelefone.setForeground(Color.WHITE);
+		lblTelefone.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblTelefone.setBounds(869, 166, 92, 14);
+		frmT.getContentPane().add(lblTelefone);
 		
-		JLabel lblNewLabel_1_1_1_1 = new JLabel("GÊNERO");
-		lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_1_1_1_1.setBounds(768, 166, 82, 14);
-		frmT.getContentPane().add(lblNewLabel_1_1_1_1);
+		JLabel lblGenero = new JLabel("GÊNERO");
+		lblGenero.setForeground(Color.WHITE);
+		lblGenero.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblGenero.setBounds(768, 166, 82, 14);
+		frmT.getContentPane().add(lblGenero);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("E-MAIL");
-		lblNewLabel_1_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_1_1_1.setBounds(667, 166, 82, 14);
-		frmT.getContentPane().add(lblNewLabel_1_1_1);
+		JLabel lblEmail = new JLabel("E-MAIL");
+		lblEmail.setForeground(Color.WHITE);
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblEmail.setBounds(667, 166, 82, 14);
+		frmT.getContentPane().add(lblEmail);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("DATA NASC");
-		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_1_1.setBounds(534, 165, 104, 14);
-		frmT.getContentPane().add(lblNewLabel_1_1);
+		JLabel lblDataNasc = new JLabel("DATA NASC");
+		lblDataNasc.setForeground(Color.WHITE);
+		lblDataNasc.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblDataNasc.setBounds(534, 165, 104, 14);
+		frmT.getContentPane().add(lblDataNasc);
 		
-		JLabel lblNewLabel_1 = new JLabel("NOME");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel_1.setBounds(451, 165, 82, 14);
-		frmT.getContentPane().add(lblNewLabel_1);
+		JLabel lblNome = new JLabel("NOME");
+		lblNome.setForeground(Color.WHITE);
+		lblNome.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNome.setBounds(451, 165, 82, 14);
+		frmT.getContentPane().add(lblNome);
 		
-		JLabel lblNewLabel = new JLabel("CPF");
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel.setBounds(359, 165, 82, 14);
-		frmT.getContentPane().add(lblNewLabel);
+		JLabel lblCpf = new JLabel("CPF");
+		lblCpf.setForeground(new Color(255, 255, 255));
+		lblCpf.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblCpf.setBounds(359, 165, 82, 14);
+		frmT.getContentPane().add(lblCpf);
 		
 		JButton botaoLimparTabela = new JButton("Limpar Tela");
 		botaoLimparTabela.addActionListener(new ActionListener() {
