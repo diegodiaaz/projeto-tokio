@@ -22,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
 import br.com.tokio.connection.ConnectionFactory;
 import br.com.tokio.model.Cliente;
 import br.com.tokio.repository.ClienteDAO;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.BevelBorder;
 
 public class AreaCorretorGUI {
 
@@ -33,7 +35,6 @@ public class AreaCorretorGUI {
 	private JTextField textCPF, textNome;
 	ClienteDAO clienteDao = new ClienteDAO();
 	private DefaultTableModel TABELACRUD;
-	private JTextField txtNome;
 	private JTextField txtCpf;
 
 	/**
@@ -66,33 +67,55 @@ public class AreaCorretorGUI {
 		frmT.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmT.getContentPane().setLayout(null);
 		
-		JButton botaoListarTodos = new JButton("Listar Todos");
-		botaoListarTodos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				preencherTabela();
-			}
-		});
-		botaoListarTodos.setBounds(154, 438, 128, 23);
-		frmT.getContentPane().add(botaoListarTodos);
+		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("TELEFONE");
+		lblNewLabel_1_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_1_1_1_1_1.setBounds(869, 166, 92, 14);
+		frmT.getContentPane().add(lblNewLabel_1_1_1_1_1);
 		
-		JButton botaoLimparTabela = new JButton("Limpar Tabela");
+		JLabel lblNewLabel_1_1_1_1 = new JLabel("GÊNERO");
+		lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_1_1_1_1.setBounds(768, 166, 82, 14);
+		frmT.getContentPane().add(lblNewLabel_1_1_1_1);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("E-MAIL");
+		lblNewLabel_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_1_1_1.setBounds(667, 166, 82, 14);
+		frmT.getContentPane().add(lblNewLabel_1_1_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("DATA NASC");
+		lblNewLabel_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_1_1.setBounds(534, 165, 104, 14);
+		frmT.getContentPane().add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("NOME");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel_1.setBounds(451, 165, 82, 14);
+		frmT.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel = new JLabel("CPF");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblNewLabel.setBounds(359, 165, 82, 14);
+		frmT.getContentPane().add(lblNewLabel);
+		
+		JButton botaoLimparTabela = new JButton("Limpar Tela");
 		botaoLimparTabela.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limparTabela();
 			}
 		});
-		botaoLimparTabela.setBounds(23, 438, 121, 23);
+		botaoLimparTabela.setBounds(96, 392, 121, 28);
 		frmT.getContentPane().add(botaoLimparTabela);
 
 		txtCpf = new JTextField();
 		txtCpf.setBounds(23, 279, 259, 30); 
 		frmT.getContentPane().add(txtCpf);
 		txtCpf.setColumns(10);
-
-		txtNome = new JTextField();
-		txtNome.setBounds(23, 341, 259, 30);
-		frmT.getContentPane().add(txtNome);
-		txtNome.setColumns(10);
 
 		JPanel linhaTextoClientes = new JPanel();
 		linhaTextoClientes.setBackground(new Color(51, 204, 153));
@@ -141,12 +164,12 @@ public class AreaCorretorGUI {
 				limpar();
 			}
 		});
-		botaoLimpar.setBounds(200, 407, 82, 23);
+		botaoLimpar.setBounds(115, 355, 82, 29);
 
 		frmT.getContentPane().add(botaoLimpar);
 
 		JButton botaoExcluir = new JButton("Excluir\r\n");
-		botaoExcluir.setBounds(108, 407, 82, 23);
+		botaoExcluir.setBounds(23, 355, 82, 29);
 		frmT.getContentPane().add(botaoExcluir);
 		botaoExcluir.addActionListener(new ActionListener() {
 
@@ -169,12 +192,6 @@ public class AreaCorretorGUI {
 
 		});
 
-		JLabel labelNome = new JLabel("Nome");
-		labelNome.setFont(new Font("Tahoma", Font.BOLD, 15));
-		labelNome.setForeground(Color.WHITE);
-		labelNome.setBounds(26, 316, 46, 14);
-		frmT.getContentPane().add(labelNome);
-
 		JLabel labelCPF = new JLabel("CPF");
 		labelCPF.setFont(new Font("Tahoma", Font.BOLD, 15));
 		labelCPF.setForeground(new Color(255, 255, 255));
@@ -182,6 +199,9 @@ public class AreaCorretorGUI {
 		frmT.getContentPane().add(labelCPF);
 
 		JButton botaoBuscar = new JButton("Buscar");
+		botaoBuscar.setForeground(new Color(255, 255, 255));
+		botaoBuscar.setFont(new Font("Tahoma", Font.BOLD, 11));
+		botaoBuscar.setBackground(new Color(0, 153, 102));
 		botaoBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -191,10 +211,11 @@ public class AreaCorretorGUI {
 
 		});
 
-		botaoBuscar.setBounds(23, 407, 75, 23);
+		botaoBuscar.setBounds(205, 354, 82, 31);
 		frmT.getContentPane().add(botaoBuscar);
 
 		tableInfoClientes = new JTable();
+		tableInfoClientes.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		TABELACRUD = (DefaultTableModel) tableInfoClientes.getModel();
 
 		TABELACRUD.addColumn("CPF do Cliente");
@@ -230,12 +251,8 @@ public class AreaCorretorGUI {
 		String cpf;
 		cpf = txtCpf.getText();
 		txtCpf.setText(cpf);
-		
-		String nome;
-		nome = txtNome.getText();
-		txtNome.setText(nome);
 
-		Cliente cliente = clienteDao.selectByCPFAndName(cpf, nome);
+		Cliente cliente = clienteDao.selectByCPF(cpf);
 
 		TABELACRUD.addRow(new Object[] { cliente.getCpfCliente(), cliente.getNomeCliente(), cliente.getDataNascimento(),
 				cliente.getEmailCliente(), cliente.getGeneroCliente(), cliente.getTelefoneCliente(),
@@ -244,19 +261,6 @@ public class AreaCorretorGUI {
 
 	private void limparTabela() {
 		((DefaultTableModel) TABELACRUD).setRowCount(0);
-	}
-
-	private void preencherTabela() {
-		List<Cliente> clientes = clienteDao.selectAll();
-		try {
-			for (Cliente cliente : clientes) {
-				TABELACRUD.addRow(new Object[] { cliente.getCpfCliente(), cliente.getNomeCliente(),
-						cliente.getDataNascimento(), cliente.getEmailCliente(), cliente.getGeneroCliente(),
-						cliente.getTelefoneCliente(), cliente.getDataCadastro() });
-			}
-		} catch (Exception e) {
-			throw e;
-		}
 	}
 
 	private void deletar() {
@@ -273,7 +277,6 @@ public class AreaCorretorGUI {
 	}
 
 	private void limpar() {
-		this.txtNome.setText("");
 		this.txtCpf.setText("");
 	}
 }
