@@ -3,10 +3,10 @@ package br.com.tokio.repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import java.util.HashMap;
+import java.util.Map;
 
 import br.com.tokio.connection.ConnectionFactory;
-import br.com.tokio.model.Chatbot;
 
 public class ChatbotDAO {
 	
@@ -19,23 +19,28 @@ public class ChatbotDAO {
 
 	public void insertDadosCliente(String mensagem) {
 
-        String sql = "INSERT INTO T_TOK_CHATBOT (DS_MENSAGEM) VALUES (?)";
 
+        Map<Integer, String> mapa = new HashMap<>();
+
+		String sql = "insert into t_tok_cliente (NR_CPF_CLI, NM_CLIENTE, DT_NASCIMENTO, DS_EMAIL_CLI, NR_TELEFONE_CLI, DS_GENERO_CLI, DT_CADASTRO_CLI) values (?, ?, ?, ?, ?, ?, ?)";
+
+		mapa.put(1, sql);
+        
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 
-			// Complemento da query
-			stmt.setString(1, mensagem);
+			String comandoSQLRecuperado = mapa.get(1);
+			executarComandoSQL(comandoSQLRecuperado);
 			
-			// Executar a query
-			stmt.execute();
-
-			// Fechar a operação
-			stmt.close();
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void executarComandoSQL(String comandoSQL) {
+
+        System.out.println("Executando o comando SQL: " + comandoSQL);
+
 	}
 }
 
