@@ -22,7 +22,7 @@ import br.com.tokio.model.Corretor;
 import br.com.tokio.repository.CorretorDAO;
 import javax.swing.JPasswordField;
 
-public class LoginFrameGUI {
+public class LoginCorretorGUI {
 
 	public JFrame frmCorretor;
 	private JTextField emailTextField;
@@ -32,7 +32,7 @@ public class LoginFrameGUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginFrameGUI login = new LoginFrameGUI();
+					LoginCorretorGUI login = new LoginCorretorGUI();
 					login.frmCorretor.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,14 +41,14 @@ public class LoginFrameGUI {
 		});
 	}
 
-	public LoginFrameGUI() {
+	public LoginCorretorGUI() {
 		initialize();
 	}
 
 	private void initialize() {
 		frmCorretor = new JFrame();
 		frmCorretor.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(LoginFrameGUI.class.getResource("/br/com/tokio/images/logo_tokio.png")));
+				.getImage(LoginCorretorGUI.class.getResource("/br/com/tokio/images/logo_tokio.png")));
 		frmCorretor.setTitle("TOKIO MARINE SEGURADORA");
 		frmCorretor.setBounds(100, 100, 1000, 600);
 		frmCorretor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,11 +61,11 @@ public class LoginFrameGUI {
 		panel_principal.setLayout(null);
 
 		JButton botaoVoltar = new JButton("");
-		botaoVoltar.setIcon(new ImageIcon(LoginFrameGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
+		botaoVoltar.setIcon(new ImageIcon(LoginCorretorGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmCorretor.dispose();
-				UsuarioFrameGUI corretor = new UsuarioFrameGUI();
+				ChatbotGUI corretor = new ChatbotGUI();
 				corretor.frmUsuario.setVisible(true);
 			}
 		});
@@ -80,7 +80,7 @@ public class LoginFrameGUI {
 		panel_principal.add(labelMensagemMarina);
 
 		JLabel labelMarinaIcone = new JLabel("");
-		labelMarinaIcone.setIcon(new ImageIcon(LoginFrameGUI.class.getResource("/br/com/tokio/images/marinaaaa.png")));
+		labelMarinaIcone.setIcon(new ImageIcon(LoginCorretorGUI.class.getResource("/br/com/tokio/images/marinaaaa.png")));
 		labelMarinaIcone.setBounds(458, 10, 105, 93);
 		panel_principal.add(labelMarinaIcone);
 
@@ -97,7 +97,7 @@ public class LoginFrameGUI {
 		lbl_msg_login.setBounds(123, 40, 152, 43);
 		panel.add(lbl_msg_login);
 
-		JLabel lbl_email = new JLabel("E-mail:");
+		JLabel lbl_email = new JLabel("Usuário:");
 		lbl_email.setForeground(new Color(0, 51, 51));
 		lbl_email.setFont(new Font("Arial", Font.BOLD, 14));
 		lbl_email.setBounds(45, 93, 105, 43);
@@ -163,14 +163,14 @@ public class LoginFrameGUI {
 
 		JLabel labelFundoGradient = new JLabel("");
 		labelFundoGradient
-				.setIcon(new ImageIcon(LoginFrameGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
+				.setIcon(new ImageIcon(LoginCorretorGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
 		labelFundoGradient.setBackground(new Color(240, 240, 240));
 		labelFundoGradient.setBounds(0, 0, 984, 561);
 		panel_principal.add(labelFundoGradient);
 	}
 
 	public void run() {
-		new LoginFrameGUI().setVisible(true);
+		new LoginCorretorGUI().setVisible(true);
 	}
 
 	public void setVisible(boolean b) {

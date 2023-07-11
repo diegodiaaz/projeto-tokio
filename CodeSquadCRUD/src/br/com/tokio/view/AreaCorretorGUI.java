@@ -149,7 +149,7 @@ public class AreaCorretorGUI {
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmT.dispose();
-				LoginFrameGUI login = new LoginFrameGUI();
+				LoginCorretorGUI login = new LoginCorretorGUI();
 				login.frmCorretor.setVisible(true);
 
 			}
