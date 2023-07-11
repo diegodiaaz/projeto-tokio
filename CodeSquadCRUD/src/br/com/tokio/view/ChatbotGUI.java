@@ -162,17 +162,32 @@ public class ChatbotGUI {
 			mensagem = textMensagem.getText();
 
 			String resposta = "Desculpe, não entendi.";
+			
+			String cpf = null, Nome = null, dtNascimento = null, email = null, genero = null, telefone = null;
 		
 			// Exemplo simples de resposta com base na mensagem do usuário
 
 			if (mensagem.equalsIgnoreCase("Olá" + "Oi")) {
-				resposta = "Olá, qual o seu nome?";
+				resposta = "\nInsira seu CPF.";
+				chatbot.insertDadosCliente(mensagem = cpf);
 			} else if (mensagem.equalsIgnoreCase(textMensagem.getText())) {
-				chatbot.insertDadosCliente(mensagem);
-				resposta = "Eu sou o Chatbot.";
-			} else if (mensagem.equalsIgnoreCase("Tchau")) {
-				resposta = "Até mais!";
+				resposta = "Certo! Insira seu nome:";
+				chatbot.insertDadosCliente(mensagem = Nome);
+			} else if (mensagem.equalsIgnoreCase(textMensagem.getText())) {
+				resposta = "Coloque sua data de nascimento: ";
+				chatbot.insertDadosCliente(mensagem = dtNascimento);
+			} else if (mensagem.equalsIgnoreCase(textMensagem.getText())) {
+				resposta = "Insira seu e-mail: ";
+				chatbot.insertDadosCliente(mensagem = email);
+			} else if (mensagem.equalsIgnoreCase(textMensagem.getText())) {
+				resposta = "Coloque seu número de telefone: ";
+				chatbot.insertDadosCliente(mensagem = telefone);
+			} else if (mensagem.equalsIgnoreCase(textMensagem.getText())) {
+				resposta = "Coloque seu gênero: ";
+				chatbot.insertDadosCliente(mensagem = genero);
 			}
+			
+			String[] dadosBot = {};
 
 			respostaMarina("Chatbot: " + resposta);
 
