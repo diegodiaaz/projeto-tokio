@@ -6,8 +6,6 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.sql.Date;
 
 import javax.swing.ImageIcon;
@@ -19,11 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-
+import br.com.tokio.controllers.ClienteController;
 import br.com.tokio.model.Cliente;
 import br.com.tokio.repository.ClienteDAO;
 
@@ -65,6 +59,8 @@ public class CrudClienteGUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
+	
 	private void initialize() {
 		frameCliente = new JFrame();
 		frameCliente.setTitle("TOKIO MARINE SEGURADORA");
@@ -95,6 +91,10 @@ public class CrudClienteGUI {
 		botaoInserir.setBackground(new Color(64, 128, 128));
 		botaoInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ClienteController control = new ClienteController();
+				control.setCPF(txtCpf.getText());
+				DadosCarroGUI areaInsertCarro = new DadosCarroGUI();
+				areaInsertCarro.importarCpf(control);
 				Inserir();
 
 			}
@@ -236,7 +236,12 @@ public class CrudClienteGUI {
 		clienteDao.insertCadastroCliente(cliente);
 
 		if (txtTipoVeiculo.getText().equalsIgnoreCase("carro")) {
+
+			
+			
 			DadosCarroGUI areaInsertCarro = new DadosCarroGUI();
+			
+			
 			frameCliente.dispose();
 			areaInsertCarro.frameDadosCarro.setVisible(true);
 		} else if (txtTipoVeiculo.getText().equalsIgnoreCase("moto")) {
@@ -263,6 +268,22 @@ public class CrudClienteGUI {
 
 	}
 	
+	public String getTxtCpf() {
+		return txtCpf.toString();
+	}
+
+	public void setTxtCpf(JTextField txtCpf) {
+		this.txtCpf = txtCpf;
+	}
+
+	public JTextField getTxtTelefone() {
+		return txtTelefone;
+	}
+
+	public void setTxtTelefone(JTextField txtTelefone) {
+		this.txtTelefone = txtTelefone;
+	}
+
 	public void preencherCampos() {
 		String cpf = JOptionPane.showInputDialog(null, "Digite o CPF:");
 		Cliente cliente = clienteDao.selectByCPF(cpf);
@@ -274,6 +295,7 @@ public class CrudClienteGUI {
 		txtGenero.setText(cliente.getGeneroCliente());
 		
 	}
+	
 }
 
 
