@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import br.com.tokio.controllers.CrudController;
 import br.com.tokio.model.Cliente;
 import br.com.tokio.repository.ClienteDAO;
 
@@ -29,6 +30,7 @@ public class CrudClienteGUI {
 	private JTextField txtDataNascimento;
 	private JTextField txtEmail;
 	ClienteDAO clienteDao = new ClienteDAO();
+	CrudController control = new CrudController();
 	private JTextField txtGenero;
 
 	/**
@@ -154,6 +156,7 @@ public class CrudClienteGUI {
 		txtCpf.setColumns(10);
 		txtCpf.setBounds(27, 121, 207, 33);
 		panel.add(txtCpf);
+		
 
 		txtTelefone = new JTextField();
 		txtTelefone.setColumns(10);
@@ -209,7 +212,9 @@ public class CrudClienteGUI {
 					dadosCaminhao.frameDadosCaminhao.setVisible(true);
 					frameCliente.dispose();
 				} else if (veiculo == 1) {
+					control.setCPF(txtCpf.getText());
 					DadosCarroGUI dadosCarro = new DadosCarroGUI();
+					dadosCarro.importarCpf(control);
 					dadosCarro.frameDadosCarro.setVisible(true);
 					frameCliente.dispose();
 				} else {

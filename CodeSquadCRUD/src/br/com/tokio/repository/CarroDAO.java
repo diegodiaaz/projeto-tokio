@@ -87,14 +87,14 @@ public class CarroDAO {
 
 	// ------------SelectByPlaca------------
 
-	public Carro selectByPlaca(String placa) {
+	public Carro selectByContrato(String cdContrato) {
 
 		Carro carro = null;
-		String sql = "select * from t_tok_carro where cd_placa=?";
+		String sql = "select * from t_tok_carro where cd_contrato=?";
 
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, placa);
+			stmt.setString(1, cdContrato);
 
 			ResultSet rs = stmt.executeQuery();
 

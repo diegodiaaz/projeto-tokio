@@ -17,14 +17,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import br.com.tokio.controllers.ClienteController;
+import br.com.tokio.controllers.CrudController;
+import br.com.tokio.controllers.PdfController;
 import br.com.tokio.model.Carro;
 import br.com.tokio.repository.CarroDAO;
-import br.com.tokio.repository.SeguroDAO;
 
 public class DadosCarroGUI {
 
 	public JFrame frameDadosCarro;
+	PdfController pdf = new PdfController();
 	private JTextField txtPlacaCarro;
 	private JTextField txtAnoCarro;
 	private JTextField txtModeloCarro;
@@ -32,7 +33,7 @@ public class DadosCarroGUI {
 	private JTextField txtCombustivelCarro;
 	private JTextField txtCepCarro;
 	private JTextField txtMarcaCarro;
-	private JLabel lblCpfCliente;
+	private JLabel lblTextCpfCli;
 
 	String cpfCliente;
 	private JTextField txtCodigoContrato;
@@ -61,13 +62,16 @@ public class DadosCarroGUI {
 		initialize();
 	}
 
-	public void importarCpf(ClienteController controller) {
-		lblCpfCliente.setText(controller.getCPF());
-	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
 	 */
+	
+	public void importarCpf(CrudController controller) {
+		lblTextCpfCli.setText(controller.getCPF());
+	}
+	
 	private void initialize() {
 		frameDadosCarro = new JFrame();
 		frameDadosCarro.setTitle("TOKIO MARINE SEGURADORA");
@@ -109,108 +113,114 @@ public class DadosCarroGUI {
 		panel_1.setLayout(null);
 		panel_1.setBounds(295, 87, 585, 429);
 		panel.add(panel_1);
+		
+		lblTextCpfCli = new JLabel("");
+		lblTextCpfCli.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		lblTextCpfCli .setBounds(48, 31, 253, 33);
+		panel_1.add(lblTextCpfCli);
 
 		JLabel lblModelo = new JLabel("Modelo:");
 		lblModelo.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblModelo.setBounds(49, 171, 193, 25);
+		lblModelo.setBounds(48, 209, 193, 25);
 		panel_1.add(lblModelo);
 
 		JLabel lblAno = new JLabel("Ano:");
 		lblAno.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblAno.setBounds(49, 104, 193, 25);
+		lblAno.setBounds(48, 142, 193, 25);
 		panel_1.add(lblAno);
 
 		JLabel lblTpComb = new JLabel("Tipo de combustível:");
 		lblTpComb.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblTpComb.setBounds(342, 171, 193, 25);
+		lblTpComb.setBounds(341, 209, 193, 25);
 		panel_1.add(lblTpComb);
 
 		JLabel lblCor = new JLabel("Cor:");
 		lblCor.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblCor.setBounds(342, 104, 193, 25);
+		lblCor.setBounds(341, 142, 193, 25);
 		panel_1.add(lblCor);
 
 		JLabel lblPlaca = new JLabel("Placa:");
 		lblPlaca.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblPlaca.setBounds(49, 37, 193, 25);
+		lblPlaca.setBounds(48, 75, 193, 25);
 		panel_1.add(lblPlaca);
 
 		txtPlacaCarro = new JTextField();
 		txtPlacaCarro.setColumns(10);
-		txtPlacaCarro.setBounds(49, 60, 207, 33);
+		txtPlacaCarro.setBounds(48, 98, 207, 33);
 		panel_1.add(txtPlacaCarro);
 
 		txtAnoCarro = new JTextField();
 		txtAnoCarro.setColumns(10);
-		txtAnoCarro.setBounds(49, 124, 207, 33);
+		txtAnoCarro.setBounds(48, 162, 207, 33);
 		panel_1.add(txtAnoCarro);
 
 		txtModeloCarro = new JTextField();
 		txtModeloCarro.setColumns(10);
-		txtModeloCarro.setBounds(49, 191, 207, 33);
+		txtModeloCarro.setBounds(48, 229, 207, 33);
 		panel_1.add(txtModeloCarro);
 
 		txtCorCarro = new JTextField();
 		txtCorCarro.setColumns(10);
-		txtCorCarro.setBounds(342, 127, 207, 33);
+		txtCorCarro.setBounds(341, 165, 207, 33);
 		panel_1.add(txtCorCarro);
 
 		txtCombustivelCarro = new JTextField();
 		txtCombustivelCarro.setColumns(10);
-		txtCombustivelCarro.setBounds(342, 191, 207, 33);
+		txtCombustivelCarro.setBounds(341, 229, 207, 33);
 		panel_1.add(txtCombustivelCarro);
 
 		JLabel lblCEP = new JLabel("CEP per noite:");
 		lblCEP.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblCEP.setBounds(342, 235, 193, 25);
+		lblCEP.setBounds(341, 273, 193, 25);
 		panel_1.add(lblCEP);
 
 		txtCepCarro = new JTextField();
 		txtCepCarro.setColumns(10);
-		txtCepCarro.setBounds(342, 255, 207, 33);
+		txtCepCarro.setBounds(341, 293, 207, 33);
 		panel_1.add(txtCepCarro);
 
 		JLabel lblMarca = new JLabel("Marca:");
 		lblMarca.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblMarca.setBounds(49, 235, 193, 25);
+		lblMarca.setBounds(48, 273, 193, 25);
 		panel_1.add(lblMarca);
 
 		txtMarcaCarro = new JTextField();
 		txtMarcaCarro.setColumns(10);
-		txtMarcaCarro.setBounds(49, 255, 207, 33);
+		txtMarcaCarro.setBounds(48, 293, 207, 33);
 		panel_1.add(txtMarcaCarro);
 
 		JLabel lblUsoVeic = new JLabel("Uso Veiculo:");
 		lblUsoVeic.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblUsoVeic.setBounds(49, 299, 193, 25);
+		lblUsoVeic.setBounds(48, 337, 193, 25);
 		panel_1.add(lblUsoVeic);
-
-		lblCpfCliente = new JLabel();
-		lblCpfCliente.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblCpfCliente.setBackground(new Color(255, 255, 255));
-		lblCpfCliente.setBounds(59, 69, 207, 33);
-		panel_1.add(lblCpfCliente);
 
 		txtCodigoContrato = new JTextField();
 		txtCodigoContrato.setColumns(10);
-		txtCodigoContrato.setBounds(342, 60, 207, 33);
+		txtCodigoContrato.setBounds(341, 98, 207, 33);
 		panel_1.add(txtCodigoContrato);
 
 		JLabel lblCodigoContrato = new JLabel("Codigo Contrato:");
 		lblCodigoContrato.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblCodigoContrato.setBounds(342, 37, 193, 25);
+		lblCodigoContrato.setBounds(341, 75, 193, 25);
 		panel_1.add(lblCodigoContrato);
 
 		JComboBox<String> comboUsoVeic = new JComboBox<String>();
-		comboUsoVeic.setBounds(49, 325, 207, 33);
+		comboUsoVeic.setBounds(48, 363, 207, 33);
 		panel_1.add(comboUsoVeic);
 		comboUsoVeic.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "<Selecione uma das opções>", "Pessoal", "Empresarial" }));
 
 		JButton btnAdicionarCarro = new JButton("Adicionar carro");
 		btnAdicionarCarro.setBackground(new Color(39, 153, 11));
-		btnAdicionarCarro.setBounds(377, 316, 158, 50);
+		btnAdicionarCarro.setBounds(376, 354, 158, 50);
 		panel_1.add(btnAdicionarCarro);
+		
+		JLabel lblCpfCli = new JLabel("Cliente: ");
+		lblCpfCli.setFont(new Font("Bahnschrift", Font.PLAIN, 15));
+		lblCpfCli.setBounds(49, 11, 81, 25);
+		panel_1.add(lblCpfCli);
+		
+		
 		btnAdicionarCarro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (comboUsoVeic.getSelectedItem().equals("<Selecione uma das opções>")) {
@@ -218,6 +228,9 @@ public class DadosCarroGUI {
 				} else if (comboUsoVeic.getSelectedItem().equals("Pessoal")) {
 					tipoVeic = "Pessoal";
 					InserirCarro();
+					
+					pdf.construirPdf(lblCpfCli, lblCodigoContrato);
+					
 					JOptionPane.showMessageDialog(null, "Veiculo cadastrado");
 				} else if (comboUsoVeic.getSelectedItem().equals("Empresarial")) {
 					tipoVeic = "Empresarial";
@@ -237,13 +250,15 @@ public class DadosCarroGUI {
 				.setIcon(new ImageIcon(DadosCarroGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
 		panel.add(labelGradiente);
 	}
+	
+	
 
 	public JLabel getLblCpfCliente() {
-		return lblCpfCliente;
+		return lblTextCpfCli;
 	}
 
 	public void setLblCpfCliente(JLabel txtCpfCliente) {
-		this.lblCpfCliente = txtCpfCliente;
+		this.lblTextCpfCli = txtCpfCliente;
 	}
 
 	public String getCpfCliente() {

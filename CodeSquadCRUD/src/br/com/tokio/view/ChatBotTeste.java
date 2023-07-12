@@ -12,7 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -59,7 +58,7 @@ public class ChatBotTeste {
 		frameChatTest = new JFrame();
 		frameChatTest.setForeground(new Color(0, 153, 102));
 		frameChatTest.setFont(new Font("Arial", Font.BOLD, 15));
-		frameChatTest.setIconImage(Toolkit.getDefaultToolkit().getImage(ChatbotGUI.class.getResource("/br/com/tokio/images/logo_tokio.png")));
+		frameChatTest.setIconImage(Toolkit.getDefaultToolkit().getImage(ChatBotTest.class.getResource("/br/com/tokio/images/logo_tokio.png")));
 		frameChatTest.setTitle("TOKIO MARINE SEGURADORA");
 		frameChatTest.setBounds(100, 100, 1000, 600);
 		frameChatTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,7 +71,7 @@ public class ChatBotTeste {
 		panel.setLayout(null);
 		
 		JLabel labelCodeSquadImage = new JLabel(""); 
-		labelCodeSquadImage.setIcon(new ImageIcon(ChatbotGUI.class.getResource("/br/com/tokio/images/CodeSquadLogo.png")));
+		labelCodeSquadImage.setIcon(new ImageIcon(ChatBotTest.class.getResource("/br/com/tokio/images/CodeSquadLogo.png")));
 		labelCodeSquadImage.setBounds(35, 339, 203, 170);
 		panel.add(labelCodeSquadImage);
 		
@@ -102,7 +101,7 @@ public class ChatBotTeste {
 		
 		botaoEnviarMensagem.setForeground(new Color(0, 153, 102));
 		botaoEnviarMensagem.setBackground(new Color(0, 153, 102));
-		botaoEnviarMensagem.setIcon(new ImageIcon(ChatbotGUI.class.getResource("/br/com/tokio/images/botao_enviar.png")));
+		botaoEnviarMensagem.setIcon(new ImageIcon(ChatBotTest.class.getResource("/br/com/tokio/images/botao_enviar.png")));
 		botaoEnviarMensagem.setBounds(942, 520, 32, 30);
 		panel.add(botaoEnviarMensagem);
 	}

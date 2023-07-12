@@ -27,6 +27,7 @@ public class AreaSeguroGUI {
 	private JTextField txtCPFCliente;
 	private JTextField txtEmailCorretor;
 	String tipoVeic;
+	private JTextField txtCdContrato;
 
 	/**
 	 * Launch the application.
@@ -174,6 +175,17 @@ public class AreaSeguroGUI {
 		lbltxtConfirme.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lbltxtConfirme.setBounds(186, 35, 244, 40);
 		panel_1.add(lbltxtConfirme);
+		
+		txtCdContrato = new JTextField();
+		txtCdContrato.setColumns(10);
+		txtCdContrato.setBounds(326, 115, 222, 40);
+		panel_1.add(txtCdContrato);
+		
+		JLabel lblCdContrato = new JLabel("Digite o código do contrato:");
+		lblCdContrato.setForeground(new Color(0, 51, 51));
+		lblCdContrato.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblCdContrato.setBounds(326, 90, 193, 25);
+		panel_1.add(lblCdContrato);
 
 		JLabel lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(AreaSeguroGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));

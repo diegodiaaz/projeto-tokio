@@ -11,10 +11,6 @@ public class CrudController {
 	public void setCPF(String cPF) {
 		CPF = cPF;
 	}
-	
-	public void resgatarClienteCpf() {
-		
-	}
 
 	
 }
