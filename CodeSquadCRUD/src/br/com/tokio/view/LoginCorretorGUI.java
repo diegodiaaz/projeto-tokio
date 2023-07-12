@@ -24,7 +24,7 @@ import javax.swing.JPasswordField;
 
 public class LoginCorretorGUI {
 
-	public JFrame frmCorretor;
+	public JFrame frameLoginCorretor;
 	private JTextField emailTextField;
 	private JPasswordField txtSenha;
 
@@ -33,7 +33,7 @@ public class LoginCorretorGUI {
 			public void run() {
 				try {
 					LoginCorretorGUI login = new LoginCorretorGUI();
-					login.frmCorretor.setVisible(true);
+					login.frameLoginCorretor.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,26 +46,26 @@ public class LoginCorretorGUI {
 	}
 
 	private void initialize() {
-		frmCorretor = new JFrame();
-		frmCorretor.setIconImage(Toolkit.getDefaultToolkit()
+		frameLoginCorretor = new JFrame();
+		frameLoginCorretor.setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(LoginCorretorGUI.class.getResource("/br/com/tokio/images/logo_tokio.png")));
-		frmCorretor.setTitle("TOKIO MARINE SEGURADORA");
-		frmCorretor.setBounds(100, 100, 1000, 600);
-		frmCorretor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmCorretor.getContentPane().setLayout(null);
+		frameLoginCorretor.setTitle("TOKIO MARINE SEGURADORA");
+		frameLoginCorretor.setBounds(100, 100, 1000, 600);
+		frameLoginCorretor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameLoginCorretor.getContentPane().setLayout(null);
 
 		JPanel panel_principal = new JPanel();
 		panel_principal.setBackground(new Color(127, 181, 119));
 		panel_principal.setBounds(0, 0, 984, 561);
-		frmCorretor.getContentPane().add(panel_principal);
+		frameLoginCorretor.getContentPane().add(panel_principal);
 		panel_principal.setLayout(null);
 
 		JButton botaoVoltar = new JButton("");
 		botaoVoltar.setIcon(new ImageIcon(LoginCorretorGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmCorretor.dispose();
-				ChatbotGUI corretor = new ChatbotGUI();
+				frameLoginCorretor.dispose();
+				AreaInicioGUI corretor = new AreaInicioGUI();
 				corretor.frmUsuario.setVisible(true);
 			}
 		});
@@ -138,9 +138,9 @@ public class LoginCorretorGUI {
 //
 //					if (rsCorretorDAO.next()) {
 //						// CHAMAR TELA PARA ABRIR
-						AreaSeguroGUI seguro = new AreaSeguroGUI();
-						seguro.frmTokioMarineSeguradora.setVisible(true);
-						frmCorretor.dispose();
+						AreaCorretorGUI areaCorretor = new AreaCorretorGUI();
+						areaCorretor.frameCorretor.setVisible(true);
+						frameLoginCorretor.dispose();
 //					} else {
 //						// ENVIAR MENSAGEM "LOGIN INCORRETO"
 //						JOptionPane.showMessageDialog(null, "Email ou Senha invalido");
