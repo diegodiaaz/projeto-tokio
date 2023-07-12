@@ -36,7 +36,7 @@ public class CarroDAO {
 			stmt.setString(6, carro.getTipoCombustivelCarro());
 			stmt.setString(7, carro.getCepPernoiteCarro());
 			stmt.setString(8, carro.getProprietarioCarro());
-			stmt.setInt(9, carro.getCodigoContrato());
+			stmt.setString(9, carro.getCodigoContrato());
 
 			// Executar a query
 			stmt.execute();

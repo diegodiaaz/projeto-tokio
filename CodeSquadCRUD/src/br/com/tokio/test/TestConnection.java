@@ -1,9 +1,10 @@
 package br.com.tokio.test;
 
 import br.com.tokio.model.Carro;
+import br.com.tokio.model.Corretor;
 import br.com.tokio.model.Seguro;
-import br.com.tokio.repository.CarroDAO;
 import br.com.tokio.repository.ClienteDAO;
+import br.com.tokio.repository.CorretorDAO;
 import br.com.tokio.repository.SeguroDAO;
 
 public class TestConnection {
@@ -65,11 +66,11 @@ public class TestConnection {
 //		daoCliente.updateCliente(update);
 
 		// -------CARRO--------
-		CarroDAO daoCarro = new CarroDAO();
+//		CarroDAO daoCarro = new CarroDAO();
 
 		// -----------INSERT CARRO----------------//
-		Carro carro = new Carro("QWX3433", 2020, "LOGAN", "RENAULT", "PRETO", "GASOLINA", "08554300", "Empresarial", 1025);
-		daoCarro.insertCadastroCarro(carro);
+//		Carro carro = new Carro("QWX3433", 2020, "LOGAN", "RENAULT", "PRETO", "GASOLINA", "08554300", "Empresarial", 1025);
+//		daoCarro.insertCadastroCarro(carro);
 
 		// ----------SELECTBYPLACA CARRO------------/
 //
@@ -166,7 +167,11 @@ public class TestConnection {
 //		CorretorDAO daoCorretor = new CorretorDAO();
 //		Corretor Mariane = new Corretor("mariane@gmail.com", "Mariane", "1234");
 //		daoCorretor.insertCorretor(Mariane);
-		
+
+//		CorretorDAO daoCorretor = new CorretorDAO();
+//		Corretor lucas = new Corretor("lucas@gmail.com", "lucas", "1234");
+//		daoCorretor.insertCorretor(lucas);
+//		
 //		CorretorDAO daoCorretor = new CorretorDAO();
 //		Corretor admin = new Corretor("admin1", "1234");
 //		daoCorretor.insertCorretor(admin);
@@ -177,8 +182,16 @@ public class TestConnection {
 
 		// ----------- INSERT TABELA SEGURO ------------ //
 //		SeguroDAO daoSeguro = new SeguroDAO();
+//		Seguro seguro = new Seguro();
+//		Carro carro = new Carro();
 //		Seguro seguroCarro = new Seguro(11, "25567899123", "Carro", 1);
 //		daoSeguro.insertCadastroSeguro(seguroCarro);
+		
+//		daoSeguro.selectCdContrato("23345677898");
+//		System.out.println("Codigo contrato: " + carro.getCodigoContrato());
+		
+//		daoSeguro.selectByContrato("1025");
+//		System.out.println("Contrato: " + seguro.getTipoSeguro());
 
 	}
 }

@@ -3,6 +3,7 @@ package br.com.tokio.view;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
@@ -17,21 +18,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import br.com.tokio.controllers.ClienteController;
+import br.com.tokio.model.Chatbot;
 import br.com.tokio.model.Cliente;
 import br.com.tokio.repository.ClienteDAO;
-import java.awt.Toolkit;
 
 public class InsertClienteGUI {
 
-	JFrame insertCliente;
+	public JFrame insertCliente;
 	private JTextField txtNomeInsert;
 	private JTextField txtCPFInsert;
 	private JTextField txtTelefoneInsert;
 	private JTextField txtDataNascimentoInsert;
 	private JTextField txtEmailInsert;
-	ClienteController control = new ClienteController();
 	String Genero;
+	String tipoVeic;
 
 	/**
 	 * Launch the application.
@@ -73,15 +73,32 @@ public class InsertClienteGUI {
 		insertCliente.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JLabel lblMarina = new JLabel("");
-		lblMarina.setIcon(new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/marinonanona.png")));
-		lblMarina.setBounds(51, 66, 231, 442);
-		panel.add(lblMarina);
+		JLabel lblMarcaDAguaTokio = new JLabel("");
+		lblMarcaDAguaTokio.setIcon(
+				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/marca_d'agua_tokio.png")));
+		lblMarcaDAguaTokio.setBounds(54, 428, 233, 62);
+		panel.add(lblMarcaDAguaTokio);
 
-		JLabel lblAquiVocPode = new JLabel("Aqui você pode criar um cliente!");
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(
+				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/marina_InsertCliente.png")));
+		lblNewLabel.setBounds(25, 126, 271, 315);
+		panel.add(lblNewLabel);
+
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(
+				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/logo_codesquad_pequena.png")));
+		lblLogo.setBounds(911, 484, 104, 77);
+		panel.add(lblLogo);
+
+		JLabel labelLogo = new JLabel("");
+		labelLogo.setBounds(911, 487, 63, 63);
+		panel.add(labelLogo);
+
+		JLabel lblAquiVocPode = new JLabel("Certo! Aqui você pode prosseguir com o seu cadastro!");
 		lblAquiVocPode.setForeground(Color.WHITE);
-		lblAquiVocPode.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblAquiVocPode.setBounds(387, 43, 421, 88);
+		lblAquiVocPode.setFont(new Font("Tahoma", Font.BOLD, 23));
+		lblAquiVocPode.setBounds(286, 55, 688, 88);
 		panel.add(lblAquiVocPode);
 
 		JPanel panel_1 = new JPanel();
@@ -90,26 +107,31 @@ public class InsertClienteGUI {
 		panel.add(panel_1);
 
 		JLabel lblTelefone = new JLabel("Telefone:");
+		lblTelefone.setForeground(new Color(0, 51, 51));
 		lblTelefone.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
 		lblTelefone.setBounds(48, 199, 193, 25);
 		panel_1.add(lblTelefone);
 
 		JLabel lblCPF = new JLabel("CPF:");
+		lblCPF.setForeground(new Color(0, 51, 51));
 		lblCPF.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
 		lblCPF.setBounds(48, 135, 193, 25);
 		panel_1.add(lblCPF);
 
 		JLabel lblEmail = new JLabel("E-mail:");
+		lblEmail.setForeground(new Color(0, 51, 51));
 		lblEmail.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
 		lblEmail.setBounds(341, 135, 193, 25);
 		panel_1.add(lblEmail);
 
 		JLabel lblDataNasc = new JLabel("Data de nascimento:");
+		lblDataNasc.setForeground(new Color(0, 51, 51));
 		lblDataNasc.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
 		lblDataNasc.setBounds(341, 66, 193, 25);
 		panel_1.add(lblDataNasc);
 
 		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setForeground(new Color(0, 51, 51));
 		lblNome.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
 		lblNome.setBounds(48, 66, 193, 25);
 		panel_1.add(lblNome);
@@ -140,6 +162,7 @@ public class InsertClienteGUI {
 		panel_1.add(txtEmailInsert);
 
 		JLabel lblGenero = new JLabel("Genero:");
+		lblGenero.setForeground(new Color(0, 51, 51));
 		lblGenero.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
 		lblGenero.setBounds(341, 199, 193, 25);
 		panel_1.add(lblGenero);
@@ -150,28 +173,30 @@ public class InsertClienteGUI {
 		comboGenero.setBounds(341, 219, 207, 33);
 		panel_1.add(comboGenero);
 
-		JButton btnCriarCliente = new JButton("Criar cliente");
+		JButton btnCriarCliente = new JButton("Criar conta");
 		btnCriarCliente.setForeground(new Color(255, 255, 255));
-		btnCriarCliente.setBackground(new Color(58, 168, 137));
-		btnCriarCliente.setBounds(424, 278, 124, 43);
+		btnCriarCliente.setBackground(new Color(39, 153, 11));
+		btnCriarCliente.setBounds(418, 288, 130, 33);
 		panel_1.add(btnCriarCliente);
 
-		JLabel lblTxtInsiraClientes = new JLabel("Insira os dados do cliente:");
-		lblTxtInsiraClientes.setBounds(173, -11, 275, 77);
+		JLabel lblTxtInsiraClientes = new JLabel("Informe seus dados:");
+		lblTxtInsiraClientes.setBounds(189, 0, 275, 77);
 		panel_1.add(lblTxtInsiraClientes);
-		lblTxtInsiraClientes.setForeground(new Color(0, 0, 0));
-		lblTxtInsiraClientes.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblTxtInsiraClientes.setForeground(new Color(0, 51, 51));
+		lblTxtInsiraClientes.setFont(new Font("Tahoma", Font.PLAIN, 21));
 
-		JComboBox<String> comboTipoVeic = new JComboBox<String>();
-		comboTipoVeic.setModel(
-				new DefaultComboBoxModel<String>(new String[] { "<Selecione uma opção>", "Carro", "Moto", "Caminhão" }));
-		comboTipoVeic.setBounds(48, 283, 207, 33);
-		panel_1.add(comboTipoVeic);
-
-		JLabel lblTipoVeic = new JLabel("Tipo Veiculo:");
-		lblTipoVeic.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblTipoVeic.setBounds(48, 263, 193, 25);
-		panel_1.add(lblTipoVeic);
+		JButton btnJaSouCliente = new JButton("Ja tenho cadastro");
+		btnJaSouCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ChatbotGUI chatBot = new ChatbotGUI();
+				chatBot.newScreen();
+				insertCliente.dispose();
+			}
+		});
+		btnJaSouCliente.setForeground(new Color(0, 0, 0));
+		btnJaSouCliente.setBackground(new Color(208, 196, 100));
+		btnJaSouCliente.setBounds(48, 288, 147, 33);
+		panel_1.add(btnJaSouCliente);
 
 		btnCriarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -186,35 +211,19 @@ public class InsertClienteGUI {
 				} else if (comboGenero.getSelectedItem().equals("Prefiro não dizer")) {
 					Genero = "Prefiro não dizer";
 				}
-				
 				Inserir();
-				
-				if(comboTipoVeic.getSelectedItem().equals("<Selecione uma opção>")) {
-					JOptionPane.showMessageDialog(null, "Erro");
-				} else if(comboTipoVeic.getSelectedItem().equals("Carro")) {
-					control.setCPF(txtCPFInsert.getText());
-					DadosCarroGUI areaInsertCarro = new DadosCarroGUI();
-					insertCliente.dispose();
-					areaInsertCarro.importarNome(control);
-					areaInsertCarro.frameDadosCarro.setVisible(true);
-				} else if(comboTipoVeic.getSelectedItem().equals("Moto")) {
-					DadosMotoGUI areaInsertMoto = new DadosMotoGUI();
-					insertCliente.dispose();
-					areaInsertMoto.frameDadosMoto.setVisible(true);
-				} else if(comboTipoVeic.getSelectedItem().equals("Caminhão")) {
-					DadosCaminhaoGUI areaInsertCaminhao = new DadosCaminhaoGUI();
-					insertCliente.dispose();
-					areaInsertCaminhao.frameDadosCaminhao.setVisible(true);
-				}
-
+				ChatbotGUI chatBot = new ChatbotGUI();
+				chatBot.newScreen();
+				insertCliente.dispose();
+				;
 			}
 		});
 
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(
+		JLabel lblFundoImagem = new JLabel("");
+		lblFundoImagem.setIcon(
 				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
-		lblNewLabel.setBounds(0, 0, 984, 561);
-		panel.add(lblNewLabel);
+		lblFundoImagem.setBounds(0, 0, 984, 561);
+		panel.add(lblFundoImagem);
 
 	}
 

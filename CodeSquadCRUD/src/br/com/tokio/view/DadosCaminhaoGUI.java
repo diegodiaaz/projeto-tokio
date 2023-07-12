@@ -26,7 +26,6 @@ public class DadosCaminhaoGUI {
 	private JTextField txtMarcaCaminhao;
 	private JTextField txtProprietarioCaminhao;
 	private JTextField txtCorCaminhao;
-	private JTextField txtIdCaminhao;
 	private JTextField txtContratoCaminhao;
 
 	/**
@@ -71,8 +70,8 @@ public class DadosCaminhaoGUI {
 		JButton btnVoltar = new JButton("");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InsertClienteGUI insertCliente = new InsertClienteGUI();
-				insertCliente.insertCliente.setVisible(true);
+				CrudClienteGUI telaCrud = new CrudClienteGUI();
+				telaCrud.frameCliente.setVisible(true);		
 				frameDadosCaminhao.dispose();
 			}
 		});
@@ -91,53 +90,49 @@ public class DadosCaminhaoGUI {
 		lblNewLabel_1.setBounds(0, 77, 231, 442);
 		panel.add(lblNewLabel_1);
 		
-		JButton btnAdicionarMoto = new JButton("Adicionar caminhão");
-		btnAdicionarMoto.setBounds(845, 493, 129, 43);
-		panel.add(btnAdicionarMoto);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBounds(206, 77, 611, 459);
 		panel.add(panel_1);
 		
-		JLabel lblNewLabel_2_3 = new JLabel("Modelo:");
-		lblNewLabel_2_3.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_3.setBounds(53, 259, 193, 25);
-		panel_1.add(lblNewLabel_2_3);
+		JLabel lblModelo = new JLabel("Modelo:");
+		lblModelo.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblModelo.setBounds(44, 195, 193, 25);
+		panel_1.add(lblModelo);
 		
-		JLabel lblNewLabel_2_4 = new JLabel("Ano:");
-		lblNewLabel_2_4.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_4.setBounds(53, 195, 193, 25);
-		panel_1.add(lblNewLabel_2_4);
+		JLabel lblAno = new JLabel("Ano:");
+		lblAno.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblAno.setBounds(44, 131, 193, 25);
+		panel_1.add(lblAno);
 		
-		JLabel lblNewLabel_2_3_1 = new JLabel("Tipo de combustível:");
-		lblNewLabel_2_3_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_3_1.setBounds(344, 60, 193, 25);
-		panel_1.add(lblNewLabel_2_3_1);
+		JLabel lblTipoComb = new JLabel("Tipo de combustível:");
+		lblTipoComb.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblTipoComb.setBounds(344, 60, 193, 25);
+		panel_1.add(lblTipoComb);
 		
-		JLabel lblNewLabel_2_4_1 = new JLabel("Porte:");
-		lblNewLabel_2_4_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_4_1.setBounds(344, 250, 193, 25);
-		panel_1.add(lblNewLabel_2_4_1);
+		JLabel lblPorte = new JLabel("Porte:");
+		lblPorte.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblPorte.setBounds(344, 250, 193, 25);
+		panel_1.add(lblPorte);
 		
-		JLabel lblNewLabel_2_4_2 = new JLabel("Placa:");
-		lblNewLabel_2_4_2.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_4_2.setBounds(53, 128, 193, 25);
-		panel_1.add(lblNewLabel_2_4_2);
+		JLabel lblPlaca = new JLabel("Placa:");
+		lblPlaca.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblPlaca.setBounds(44, 64, 193, 25);
+		panel_1.add(lblPlaca);
 		
 		txtPlacaCaminhao = new JTextField();
 		txtPlacaCaminhao.setColumns(10);
-		txtPlacaCaminhao.setBounds(53, 151, 207, 33);
+		txtPlacaCaminhao.setBounds(44, 87, 207, 33);
 		panel_1.add(txtPlacaCaminhao);
 		
 		txtAnoCaminhao = new JTextField();
 		txtAnoCaminhao.setColumns(10);
-		txtAnoCaminhao.setBounds(53, 215, 207, 33);
+		txtAnoCaminhao.setBounds(44, 151, 207, 33);
 		panel_1.add(txtAnoCaminhao);
 		
 		txtModeloCaminhao = new JTextField();
 		txtModeloCaminhao.setColumns(10);
-		txtModeloCaminhao.setBounds(53, 279, 207, 33);
+		txtModeloCaminhao.setBounds(44, 215, 207, 33);
 		panel_1.add(txtModeloCaminhao);
 		
 		txtPorteCaminhao = new JTextField();
@@ -156,30 +151,30 @@ public class DadosCaminhaoGUI {
 		lblInsiraOsDados.setBounds(87, 11, 419, 49);
 		panel_1.add(lblInsiraOsDados);
 		
-		JLabel lblNewLabel_2_3_2 = new JLabel("CEP per noite:");
-		lblNewLabel_2_3_2.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_3_2.setBounds(344, 124, 193, 25);
-		panel_1.add(lblNewLabel_2_3_2);
+		JLabel lblCEP = new JLabel("CEP per noite:");
+		lblCEP.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblCEP.setBounds(344, 124, 193, 25);
+		panel_1.add(lblCEP);
 		
 		txtCepCaminhao = new JTextField();
 		txtCepCaminhao.setColumns(10);
 		txtCepCaminhao.setBounds(344, 144, 207, 33);
 		panel_1.add(txtCepCaminhao);
 		
-		JLabel lblNewLabel_2_3_3 = new JLabel("Marca:");
-		lblNewLabel_2_3_3.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_3_3.setBounds(53, 320, 193, 25);
-		panel_1.add(lblNewLabel_2_3_3);
+		JLabel lblMarca = new JLabel("Marca:");
+		lblMarca.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblMarca.setBounds(44, 256, 193, 25);
+		panel_1.add(lblMarca);
 		
 		txtMarcaCaminhao = new JTextField();
 		txtMarcaCaminhao.setColumns(10);
-		txtMarcaCaminhao.setBounds(53, 340, 207, 33);
+		txtMarcaCaminhao.setBounds(44, 276, 207, 33);
 		panel_1.add(txtMarcaCaminhao);
 		
-		JLabel lblNewLabel_2_3_2_1 = new JLabel("Proprietário:");
-		lblNewLabel_2_3_2_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_3_2_1.setBounds(344, 185, 193, 25);
-		panel_1.add(lblNewLabel_2_3_2_1);
+		JLabel lblProprietario = new JLabel("Proprietário:");
+		lblProprietario.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblProprietario.setBounds(344, 185, 193, 25);
+		panel_1.add(lblProprietario);
 		
 		txtProprietarioCaminhao = new JTextField();
 		txtProprietarioCaminhao.setColumns(10);
@@ -188,33 +183,27 @@ public class DadosCaminhaoGUI {
 		
 		txtCorCaminhao = new JTextField();
 		txtCorCaminhao.setColumns(10);
-		txtCorCaminhao.setBounds(53, 404, 207, 33);
+		txtCorCaminhao.setBounds(44, 340, 207, 33);
 		panel_1.add(txtCorCaminhao);
 		
-		JLabel lblNewLabel_2_3_3_1 = new JLabel("Cor:");
-		lblNewLabel_2_3_3_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_3_3_1.setBounds(53, 384, 193, 25);
-		panel_1.add(lblNewLabel_2_3_3_1);
+		JLabel lblCor = new JLabel("Cor:");
+		lblCor.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblCor.setBounds(44, 320, 193, 25);
+		panel_1.add(lblCor);
 		
-		JLabel lblNewLabel_2_4_1_1 = new JLabel("Id:");
-		lblNewLabel_2_4_1_1.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_4_1_1.setBounds(53, 60, 193, 25);
-		panel_1.add(lblNewLabel_2_4_1_1);
-		
-		txtIdCaminhao = new JTextField();
-		txtIdCaminhao.setColumns(10);
-		txtIdCaminhao.setBounds(53, 83, 207, 33);
-		panel_1.add(txtIdCaminhao);
-		
-		JLabel lblNewLabel_2_4_1_2 = new JLabel("Contrato:");
-		lblNewLabel_2_4_1_2.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNewLabel_2_4_1_2.setBounds(344, 317, 193, 25);
-		panel_1.add(lblNewLabel_2_4_1_2);
+		JLabel lblContrato = new JLabel("Contrato:");
+		lblContrato.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
+		lblContrato.setBounds(344, 317, 193, 25);
+		panel_1.add(lblContrato);
 		
 		txtContratoCaminhao = new JTextField();
 		txtContratoCaminhao.setColumns(10);
 		txtContratoCaminhao.setBounds(344, 340, 207, 33);
 		panel_1.add(txtContratoCaminhao);
+		
+		JButton btnAdicionarMoto = new JButton("Adicionar caminhão");
+		btnAdicionarMoto.setBounds(422, 384, 129, 43);
+		panel_1.add(btnAdicionarMoto);
 		
 		JLabel labelGradiente = new JLabel("");
 		labelGradiente.setBounds(0, 0, 984, 561);

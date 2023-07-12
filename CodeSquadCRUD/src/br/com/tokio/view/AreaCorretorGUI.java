@@ -67,53 +67,64 @@ public class AreaCorretorGUI {
 		frmT.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmT.getContentPane().setLayout(null);
 		
-		JLabel lblTelefone = new JLabel("TELEFONE");
+		JButton btnGerarContrato = new JButton("Gerar contrato");
+		btnGerarContrato.setForeground(new Color(0, 51, 51));
+		btnGerarContrato.setBounds(182, 355, 115, 29);
+		frmT.getContentPane().add(btnGerarContrato);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(AreaCorretorGUI.class.getResource("/br/com/tokio/images/logo_codesquad_pequena.png")));
+		lblNewLabel.setBounds(23, 462, 104, 77);
+		frmT.getContentPane().add(lblNewLabel);
+		
+		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setForeground(Color.WHITE);
 		lblTelefone.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblTelefone.setBounds(869, 166, 92, 14);
 		frmT.getContentPane().add(lblTelefone);
 		
-		JLabel lblGenero = new JLabel("GÊNERO");
+		JLabel lblGenero = new JLabel("Gênero:");
 		lblGenero.setForeground(Color.WHITE);
 		lblGenero.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblGenero.setBounds(768, 166, 82, 14);
 		frmT.getContentPane().add(lblGenero);
 		
-		JLabel lblEmail = new JLabel("E-MAIL");
+		JLabel lblEmail = new JLabel("E-mail:");
 		lblEmail.setForeground(Color.WHITE);
 		lblEmail.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblEmail.setBounds(667, 166, 82, 14);
 		frmT.getContentPane().add(lblEmail);
 		
-		JLabel lblDataNasc = new JLabel("DATA NASC");
+		JLabel lblDataNasc = new JLabel("Data Nasc:");
 		lblDataNasc.setForeground(Color.WHITE);
 		lblDataNasc.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblDataNasc.setBounds(534, 165, 104, 14);
 		frmT.getContentPane().add(lblDataNasc);
 		
-		JLabel lblNome = new JLabel("NOME");
+		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setForeground(Color.WHITE);
 		lblNome.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNome.setBounds(451, 165, 82, 14);
 		frmT.getContentPane().add(lblNome);
 		
-		JLabel lblCpf = new JLabel("CPF");
+		JLabel lblCpf = new JLabel("CPF:");
 		lblCpf.setForeground(new Color(255, 255, 255));
 		lblCpf.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblCpf.setBounds(359, 165, 82, 14);
 		frmT.getContentPane().add(lblCpf);
 		
 		JButton botaoLimparTabela = new JButton("Limpar Tela");
+		botaoLimparTabela.setForeground(new Color(0, 51, 51));
 		botaoLimparTabela.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limparTabela();
 			}
 		});
-		botaoLimparTabela.setBounds(96, 392, 121, 28);
+		botaoLimparTabela.setBounds(98, 315, 115, 29);
 		frmT.getContentPane().add(botaoLimparTabela);
 
 		txtCpf = new JTextField();
-		txtCpf.setBounds(23, 279, 259, 30); 
+		txtCpf.setBounds(10, 274, 287, 30); 
 		frmT.getContentPane().add(txtCpf);
 		txtCpf.setColumns(10);
 
@@ -122,7 +133,7 @@ public class AreaCorretorGUI {
 		linhaTextoClientes.setBounds(23, 201, 238, 5);
 		frmT.getContentPane().add(linhaTextoClientes);
 
-		JLabel labelTextoClientes = new JLabel("Consulte seus clientes aqui:");
+		JLabel labelTextoClientes = new JLabel("Consulte os possiveis aqui:");
 		labelTextoClientes.setForeground(new Color(255, 255, 255));
 		labelTextoClientes.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 17));
 		labelTextoClientes.setBounds(23, 147, 295, 88);
@@ -158,18 +169,9 @@ public class AreaCorretorGUI {
 		botaoVoltar.setBounds(10, 11, 46, 23);
 		frmT.getContentPane().add(botaoVoltar);
 
-		JButton botaoLimpar = new JButton("Limpar");
-		botaoLimpar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limpar();
-			}
-		});
-		botaoLimpar.setBounds(115, 355, 82, 29);
-
-		frmT.getContentPane().add(botaoLimpar);
-
 		JButton botaoExcluir = new JButton("Excluir\r\n");
-		botaoExcluir.setBounds(23, 355, 82, 29);
+		botaoExcluir.setForeground(new Color(0, 51, 51));
+		botaoExcluir.setBounds(10, 315, 78, 29);
 		frmT.getContentPane().add(botaoExcluir);
 		botaoExcluir.addActionListener(new ActionListener() {
 
@@ -192,10 +194,10 @@ public class AreaCorretorGUI {
 
 		});
 
-		JLabel labelCPF = new JLabel("CPF");
+		JLabel labelCPF = new JLabel("CPF:");
 		labelCPF.setFont(new Font("Tahoma", Font.BOLD, 15));
 		labelCPF.setForeground(new Color(255, 255, 255));
-		labelCPF.setBounds(26, 254, 46, 14);
+		labelCPF.setBounds(10, 256, 46, 14);
 		frmT.getContentPane().add(labelCPF);
 
 		JButton botaoBuscar = new JButton("Buscar");
@@ -211,7 +213,7 @@ public class AreaCorretorGUI {
 
 		});
 
-		botaoBuscar.setBounds(205, 354, 82, 31);
+		botaoBuscar.setBounds(223, 314, 74, 31);
 		frmT.getContentPane().add(botaoBuscar);
 
 		tableInfoClientes = new JTable();

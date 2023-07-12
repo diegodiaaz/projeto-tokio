@@ -26,218 +26,217 @@ public class ClienteDAO {
 	// -----------Operações de CRUD:-----------//
 
 	// -------------LOGIN Cliente------------- //
-	public ResultSet loginCliente(Cliente cliente) {
+//	public ResultSet loginCliente(Cliente cliente) {
+//
+//		try {
+//			String sql = "SELECT * FROM T_TOK_CLIENTE WHERE NR_CPF_CLI = ?";
+//
+//			PreparedStatement stmt = conexao.prepareStatement(sql);
+//			stmt.setString(1, cliente.getCpfCliente());
+//
+//			ResultSet rs = stmt.executeQuery();
+//	
+//			return rs;
+//			
+//			
+//
+//		} catch (SQLException e) {
+//			JOptionPane.showMessageDialog(null, "ClienteDAO: " + e);
+//			return null;
+//		}
+//
+//	}
+
+	// ------------Insert do Cliente------------
+	public void insertCadastroCliente(Cliente cliente) {
+
+		String sql = "insert into t_tok_cliente (NR_CPF_CLI, NM_CLIENTE, DT_NASCIMENTO, DS_EMAIL_CLI, NR_TELEFONE_CLI, DS_GENERO_CLI, DT_CADASTRO_CLI) values (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
-			String sql = "SELECT * FROM T_TOK_CLIENTE WHERE DS_EMAIL_CLI = ? AND NR_CPF_CLI = ?";
-
 			PreparedStatement stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, cliente.getEmailCliente());
-			stmt.setString(2, cliente.getCpfCliente());
+
+			// Complemento da query
+			stmt.setString(1, cliente.getCpfCliente());
+			stmt.setString(2, cliente.getNomeCliente());
+			stmt.setString(3, cliente.getDataNascimento());
+			stmt.setString(4, cliente.getEmailCliente());
+			stmt.setString(5, cliente.getTelefoneCliente());
+			stmt.setString(6, cliente.getGeneroCliente());
+			stmt.setDate(7, cliente.getDataCadastro());
+
+			// Executar a query
+			stmt.execute();
+
+			// Fechar a operação
+			stmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// ------------SelectAll------------
+	public List<Cliente> selectAll() {
+
+		List<Cliente> usuarios = new ArrayList<Cliente>();
+		String sql = "select * from t_tok_cliente order by nm_cliente";
+
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Cliente cliente = new Cliente();
+				cliente = new Cliente();
+				cliente.setNomeCliente(rs.getString("nm_cliente"));
+				cliente.setCpfCliente(rs.getString("nr_cpf_cli"));
+				cliente.setDataNascimento(rs.getString("dt_nascimento"));
+				cliente.setEmailCliente(rs.getString("ds_email_cli"));
+				cliente.setTelefoneCliente(rs.getString("nr_telefone_cli"));
+				cliente.setGeneroCliente(rs.getString("ds_genero_cli"));
+				cliente.setDataCadastro(rs.getDate("dt_Cadastro_cli"));
+				usuarios.add(cliente); // Cada objeto usuário adicionado a lista de usuários.
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return usuarios;
+	}
+
+	// ------------Select TipoSeguro by CPFCliente------------ //
+	public Cliente selectTipoSeguro(String cpf) {
+
+		Cliente cliente = null;
+		String sql = "SELECT" + "    P.NR_CPF ' -- '  TP_SEGURO  " + "	   FROM "
+				+ "    T_TOK_CLIENTE P INNER JOIN T_TOK_SEGURO D ON" + "    (P.NR_CPF = D.NR_CPF);";
+
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, cpf);
 
 			ResultSet rs = stmt.executeQuery();
 
-			return rs;
-
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "ClienteDAO: " + e);
-			return null;
+			if (rs.next()) {
+				cliente = new Cliente();
+				cliente.setNomeCliente(rs.getString("nm_cliente"));
+				cliente.setCpfCliente(rs.getString("nr_cpf_cli"));
+				cliente.setDataNascimento(rs.getString("dt_nascimento_cli"));
+				cliente.setEmailCliente(rs.getString("ds_email_cli"));
+				cliente.setTelefoneCliente(rs.getString("nr_telefone_cli"));
+				cliente.setGeneroCliente(rs.getString("ds_genero_cli"));
+				cliente.setDataCadastro(rs.getDate("dt_Cadastro_cli"));
+			} else {
+				System.out.println("Cliente não encontrado");
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
+		return cliente;
 	}
 
-	// ------------Insert do Cliente------------
-		public void insertCadastroCliente(Cliente cliente) {
+	// ------------SELECTBYCPF----------------//
+	public Cliente selectByCPF(String cpf) {
 
-			String sql = "insert into t_tok_cliente (NR_CPF_CLI, NM_CLIENTE, DT_NASCIMENTO, DS_EMAIL_CLI, NR_TELEFONE_CLI, DS_GENERO_CLI, DT_CADASTRO_CLI) values (?, ?, ?, ?, ?, ?, ?)";
+		Cliente cliente = null;
+		String sql = "select * from t_tok_cliente where nr_cpf_cli=?";
 
-			try {
-				PreparedStatement stmt = conexao.prepareStatement(sql);
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, cpf);
 
-				// Complemento da query
-				stmt.setString(1, cliente.getCpfCliente());
-				stmt.setString(2, cliente.getNomeCliente());
-				stmt.setString(3, cliente.getDataNascimento());
-				stmt.setString(4, cliente.getEmailCliente());
-				stmt.setString(5, cliente.getTelefoneCliente());
-				stmt.setString(6, cliente.getGeneroCliente());
-				stmt.setDate(7, cliente.getDataCadastro());
+			ResultSet rs = stmt.executeQuery();
 
-				// Executar a query
-				stmt.execute();
+			if (rs.next()) {
+				cliente = new Cliente();
+				cliente.setNomeCliente(rs.getString("nm_cliente"));
+				cliente.setCpfCliente(rs.getString("nr_cpf_cli"));
+				cliente.setDataNascimento(rs.getString("dt_nascimento"));
+				cliente.setEmailCliente(rs.getString("ds_email_cli"));
+				cliente.setTelefoneCliente(rs.getString("nr_telefone_cli"));
+				cliente.setGeneroCliente(rs.getString("ds_genero_cli"));
+				cliente.setDataCadastro(rs.getDate("dt_Cadastro_cli"));
 
-				// Fechar a operação
-				stmt.close();
-
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} else {
+				JOptionPane.showMessageDialog(null, "Cliente nao encontrado");
 			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return cliente;
+	}
 
-		// ------------SelectAll------------
-		public List<Cliente> selectAll() {
+	// ------------SelectByCPFAndName------------
 
-			List<Cliente> usuarios = new ArrayList<Cliente>();
-			String sql = "select * from t_tok_cliente order by nm_cliente";
+	public Cliente selectByCPFAndName(String cpf, String nome) {
 
-			try {
-				PreparedStatement stmt = conexao.prepareStatement(sql);
-				ResultSet rs = stmt.executeQuery();
+		Cliente cliente = null;
+		String sql = "select * from t_tok_cliente where nr_cpf_cli=? and nm_cliente=?";
 
-				while (rs.next()) {
-					Cliente cliente = new Cliente();
-					cliente = new Cliente();
-					cliente.setNomeCliente(rs.getString("nm_cliente"));
-					cliente.setCpfCliente(rs.getString("nr_cpf_cli"));
-					cliente.setDataNascimento(rs.getString("dt_nascimento"));
-					cliente.setEmailCliente(rs.getString("ds_email_cli"));
-					cliente.setTelefoneCliente(rs.getString("nr_telefone_cli"));
-					cliente.setGeneroCliente(rs.getString("ds_genero_cli"));
-					cliente.setDataCadastro(rs.getDate("dt_Cadastro_cli"));
-					usuarios.add(cliente); // Cada objeto usuário adicionado a lista de usuários.
-				}
-				rs.close();
-				stmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, cpf);
+			stmt.setString(2, nome);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				cliente = new Cliente();
+				cliente.setNomeCliente(rs.getString("nm_cliente"));
+				cliente.setCpfCliente(rs.getString("nr_cpf_cli"));
+				cliente.setDataNascimento(rs.getString("dt_nascimento"));
+				cliente.setEmailCliente(rs.getString("ds_email_cli"));
+				cliente.setTelefoneCliente(rs.getString("nr_telefone_cli"));
+				cliente.setGeneroCliente(rs.getString("ds_genero_cli"));
+				cliente.setDataCadastro(rs.getDate("dt_Cadastro_cli"));
+
+			} else {
+				JOptionPane.showMessageDialog(null, "Cliente nao encontrado");
 			}
-			return usuarios;
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return cliente;
+	}
 
-		// ------------Select TipoSeguro by CPFCliente------------ //
-		public Cliente selectTipoSeguro(String cpf) {
+	// ------------Update------------ DEVEMOS ALTERAR O METODO DE UPDATE CLIENTE JA
+	// QUE NAO TEM MAIS SENHA!!!! (RAFAEL FORTI)
+	public void updateCliente(Cliente cliente) {
 
-			Cliente cliente = null;
-			String sql = "SELECT" + "    P.NR_CPF ' -- '  TP_SEGURO  " + "	   FROM "
-					+ "    T_TOK_CLIENTE P INNER JOIN T_TOK_SEGURO D ON" + "    (P.NR_CPF = D.NR_CPF);";
+		String sql = "UPDATE T_TOK_CLIENTE SET nm_cliente=?, ds_email_cli=?, nr_telefone_cli =? WHERE nr_cpf_cli =?";
 
-			try {
-				PreparedStatement stmt = conexao.prepareStatement(sql);
-				stmt.setString(1, cpf);
-
-				ResultSet rs = stmt.executeQuery();
-
-				if (rs.next()) {
-					cliente = new Cliente();
-					cliente.setNomeCliente(rs.getString("nm_cliente"));
-					cliente.setCpfCliente(rs.getString("nr_cpf_cli"));
-					cliente.setDataNascimento(rs.getString("dt_nascimento_cli"));
-					cliente.setEmailCliente(rs.getString("ds_email_cli"));
-					cliente.setTelefoneCliente(rs.getString("nr_telefone_cli"));
-					cliente.setGeneroCliente(rs.getString("ds_genero_cli"));
-					cliente.setDataCadastro(rs.getDate("dt_Cadastro_cli"));
-				} else {
-					System.out.println("Cliente não encontrado");
-				}
-				rs.close();
-				stmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return cliente;
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, cliente.getNomeCliente());
+			stmt.setString(2, cliente.getEmailCliente());
+			stmt.setString(3, cliente.getTelefoneCliente());
+			stmt.setString(4, cliente.getCpfCliente());
+			stmt.execute();
+			stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		//------------SELECTBYCPF----------------//
-		public Cliente selectByCPF(String cpf) {
+	}
 
-			Cliente cliente = null;
-			String sql = "select * from t_tok_cliente where nr_cpf_cli=?";
+	// ------------Delete------------
+	public void deleteCliente(String CPF) {
 
-			try {
-				PreparedStatement stmt = conexao.prepareStatement(sql);
-				stmt.setString(1, cpf);
+		String sql = "delete from T_TOK_CLIENTE where (NR_CPF_cli = ?)";
 
-				ResultSet rs = stmt.executeQuery();
-
-				if (rs.next()) {
-					cliente = new Cliente();
-					cliente.setNomeCliente(rs.getString("nm_cliente"));
-					cliente.setCpfCliente(rs.getString("nr_cpf_cli"));
-					cliente.setDataNascimento(rs.getString("dt_nascimento"));
-					cliente.setEmailCliente(rs.getString("ds_email_cli"));
-					cliente.setTelefoneCliente(rs.getString("nr_telefone_cli"));
-					cliente.setGeneroCliente(rs.getString("ds_genero_cli"));
-					cliente.setDataCadastro(rs.getDate("dt_Cadastro_cli"));
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Cliente nao encontrado");
-				}
-				rs.close();
-				stmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return cliente;
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, CPF);
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-
-		// ------------SelectByCPFAndName------------
-
-		public Cliente selectByCPFAndName(String cpf, String nome) {
-
-			Cliente cliente = null;
-			String sql = "select * from t_tok_cliente where nr_cpf_cli=? and nm_cliente=?";
-
-			try {
-				PreparedStatement stmt = conexao.prepareStatement(sql);
-				stmt.setString(1, cpf);
-				stmt.setString(2, nome);
-
-				ResultSet rs = stmt.executeQuery();
-
-				if (rs.next()) {
-					cliente = new Cliente();
-					cliente.setNomeCliente(rs.getString("nm_cliente"));
-					cliente.setCpfCliente(rs.getString("nr_cpf_cli"));
-					cliente.setDataNascimento(rs.getString("dt_nascimento"));
-					cliente.setEmailCliente(rs.getString("ds_email_cli"));
-					cliente.setTelefoneCliente(rs.getString("nr_telefone_cli"));
-					cliente.setGeneroCliente(rs.getString("ds_genero_cli"));
-					cliente.setDataCadastro(rs.getDate("dt_Cadastro_cli"));
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Cliente nao encontrado");
-				}
-				rs.close();
-				stmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return cliente;
-		}
-
-		// ------------Update------------ DEVEMOS ALTERAR O METODO DE UPDATE CLIENTE JA
-		// QUE NAO TEM MAIS SENHA!!!! (RAFAEL FORTI)
-		public void updateCliente(Cliente cliente) {
-
-			String sql = "UPDATE T_TOK_CLIENTE SET nr_cpf_cli =?, nm_cliente=? ,ds_email_cli=?, nr_telefone_cli =?, ds_genero_cli=? WHERE nr_cpf_cli =?";
-
-			try {
-				PreparedStatement stmt = conexao.prepareStatement(sql);
-				stmt.setString(1, cliente.getCpfCliente());
-				stmt.setString(2, cliente.getNomeCliente());
-				stmt.setString(3, cliente.getEmailCliente());
-				stmt.setString(4, cliente.getTelefoneCliente());
-				stmt.setString(5, cliente.getGeneroCliente());
-				stmt.setString(6, cliente.getDataNascimento());
-				stmt.execute();
-				stmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		// ------------Delete------------
-		public void deleteCliente(String CPF) {
-
-			String sql = "delete from T_TOK_CLIENTE where (NR_CPF_cli = ?)";
-
-			try {
-				PreparedStatement stmt = conexao.prepareStatement(sql);
-				stmt.setString(1, CPF);
-				stmt.execute();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+	}
 
 }
