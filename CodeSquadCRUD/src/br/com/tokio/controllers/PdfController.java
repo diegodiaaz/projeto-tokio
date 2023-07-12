@@ -3,6 +3,8 @@ package br.com.tokio.controllers;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import javax.swing.JLabel;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -13,10 +15,8 @@ import br.com.tokio.repository.ClienteDAO;
 
 public class PdfController {
 	
-	public void construirPdf() {
-		
-		ClienteController clienteC = new ClienteController();
-		String cpfCli = clienteC.getCPF();
+	public void construirPdf(JLabel cpf) {
+		String cpfCli = cpf.getText(); 
 		
 		ClienteDAO daoCli = new ClienteDAO();
 		Cliente cliente = daoCli.selectByCPF(cpfCli);

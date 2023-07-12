@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import br.com.tokio.controllers.ClienteController;
 import br.com.tokio.model.Cliente;
 import br.com.tokio.repository.ClienteDAO;
 import java.awt.Toolkit;
@@ -29,6 +30,7 @@ public class InsertClienteGUI {
 	private JTextField txtTelefoneInsert;
 	private JTextField txtDataNascimentoInsert;
 	private JTextField txtEmailInsert;
+	ClienteController control = new ClienteController();
 	String Genero;
 
 	/**
@@ -190,8 +192,10 @@ public class InsertClienteGUI {
 				if(comboTipoVeic.getSelectedItem().equals("<Selecione uma opção>")) {
 					JOptionPane.showMessageDialog(null, "Erro");
 				} else if(comboTipoVeic.getSelectedItem().equals("Carro")) {
+					control.setCPF(txtCPFInsert.getText());
 					DadosCarroGUI areaInsertCarro = new DadosCarroGUI();
 					insertCliente.dispose();
+					areaInsertCarro.importarNome(control);
 					areaInsertCarro.frameDadosCarro.setVisible(true);
 				} else if(comboTipoVeic.getSelectedItem().equals("Moto")) {
 					DadosMotoGUI areaInsertMoto = new DadosMotoGUI();
