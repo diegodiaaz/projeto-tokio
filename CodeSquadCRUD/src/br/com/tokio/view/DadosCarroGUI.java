@@ -56,10 +56,10 @@ public class DadosCarroGUI {
 		initialize();
 	}
 	
-	public void importarCpf(ClienteController controller) {
-		lblCpfCliente.setText(controller.getCPF());
+	public void importarNome(ClienteController control) {
+		lblCpfCliente.setText(control.getCPF());
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -109,8 +109,7 @@ public class DadosCarroGUI {
 			public void actionPerformed(ActionEvent e) {
 				
 				PdfController pdf = new PdfController();
-				ClienteController cliController = new ClienteController();
-				pdf.construirPdf();
+				pdf.construirPdf(lblCpfCliente);
 				
 			}
 		});

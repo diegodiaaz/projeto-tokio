@@ -32,6 +32,8 @@ public class CrudClienteGUI {
 	ClienteDAO clienteDao = new ClienteDAO();
 	private JTextField txtGenero;
 	private JTextField txtTipoVeiculo;
+	ClienteController control = new ClienteController();
+	
 
 	/**
 	 * Launch the application.
@@ -91,10 +93,8 @@ public class CrudClienteGUI {
 		botaoInserir.setBackground(new Color(64, 128, 128));
 		botaoInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ClienteController control = new ClienteController();
+				
 				control.setCPF(txtCpf.getText());
-				DadosCarroGUI areaInsertCarro = new DadosCarroGUI();
-				areaInsertCarro.importarCpf(control);
 				Inserir();
 
 			}
@@ -215,8 +215,7 @@ public class CrudClienteGUI {
 		panel.add(txtTipoVeiculo);
 
 		JLabel lblPrincipal = new JLabel("");
-		lblPrincipal
-				.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
+		lblPrincipal .setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
 		lblPrincipal.setBounds(0, 0, 984, 561);
 		contentPane.add(lblPrincipal);
 	}
@@ -240,10 +239,10 @@ public class CrudClienteGUI {
 			
 			
 			DadosCarroGUI areaInsertCarro = new DadosCarroGUI();
-			
-			
 			frameCliente.dispose();
+			areaInsertCarro.importarNome(control);
 			areaInsertCarro.frameDadosCarro.setVisible(true);
+			
 		} else if (txtTipoVeiculo.getText().equalsIgnoreCase("moto")) {
 			DadosMotoGUI areaInsertMoto = new DadosMotoGUI();
 			frameCliente.dispose();
@@ -270,6 +269,7 @@ public class CrudClienteGUI {
 	
 	public String getTxtCpf() {
 		return txtCpf.toString();
+				
 	}
 
 	public void setTxtCpf(JTextField txtCpf) {
@@ -295,6 +295,9 @@ public class CrudClienteGUI {
 		txtGenero.setText(cliente.getGeneroCliente());
 		
 	}
+	
+
+	
 	
 }
 
