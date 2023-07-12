@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.com.tokio.connection.ConnectionFactory;
+import br.com.tokio.model.Carro;
 import br.com.tokio.model.Seguro;
 
 public class SeguroDAO {
@@ -39,6 +42,27 @@ public class SeguroDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	//SELECT CD_CONTRATO//
+	public void selectCdContrato(String cpf) {
+		String sql = "select cd_contrato from t_tok_seguro where nr_cpf_cli=?";
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, cpf);
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				Carro carro = new Carro();
+				carro.setCodigoContrato(rs.getString("cd_contrato"));
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
 
 	// ------------SelectAll------------
 	public List<Seguro> selectAllSeguro() {
@@ -71,7 +95,7 @@ public class SeguroDAO {
 
 	public Seguro selectByContrato(String codigoContrato) {
 
-		Seguro seguro = null;
+		Seguro seguro = new Seguro();
 		String sql = "select tp_seguro from t_tok_seguro where cd_contrato = ?";
 
 		try {

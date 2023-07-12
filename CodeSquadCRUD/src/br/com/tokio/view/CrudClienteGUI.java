@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,9 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import br.com.tokio.controllers.ClienteController;
 import br.com.tokio.model.Cliente;
 import br.com.tokio.repository.ClienteDAO;
 
@@ -31,12 +30,11 @@ public class CrudClienteGUI {
 	private JTextField txtEmail;
 	ClienteDAO clienteDao = new ClienteDAO();
 	private JTextField txtGenero;
-	private JTextField txtTipoVeiculo;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void newscreen(String[] args) {
+	public static void newScreen(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -59,8 +57,7 @@ public class CrudClienteGUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	
-	
+
 	private void initialize() {
 		frameCliente = new JFrame();
 		frameCliente.setTitle("TOKIO MARINE SEGURADORA");
@@ -80,53 +77,25 @@ public class CrudClienteGUI {
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frameCliente.dispose();
-				LoginUsuarioGUI loginUsuario = new LoginUsuarioGUI();
-				loginUsuario.newScreen();
+				ChatbotGUI areaChat = new ChatbotGUI();
+				areaChat.newScreen();
 
 			}
 		});
 
-		JButton botaoInserir = new JButton("Inserir");
-		botaoInserir.setForeground(new Color(255, 255, 255));
-		botaoInserir.setBackground(new Color(64, 128, 128));
-		botaoInserir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ClienteController control = new ClienteController();
-				control.setCPF(txtCpf.getText());
-				DadosCarroGUI areaInsertCarro = new DadosCarroGUI();
-				areaInsertCarro.importarCpf(control);
-				Inserir();
-
-			}
-		});
-		
-		JButton botaoPreencher = new JButton("Preencher dados");
-		botaoPreencher.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				preencherCampos();
-			}
-		});
-		botaoPreencher.setBounds(427, 477, 153, 36);
-		contentPane.add(botaoPreencher);
-		botaoInserir.setBounds(686, 477, 89, 36);
-		contentPane.add(botaoInserir);
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(
+				new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/logo_codesquad_pequena.png")));
+		lblLogo.setBounds(15, 473, 104, 77);
+		contentPane.add(lblLogo);
 		botaoVoltar.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
 		botaoVoltar.setBounds(20, 20, 47, 30);
 		contentPane.add(botaoVoltar);
 
-		JButton botaoEditar = new JButton("Editar");
-		botaoEditar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Alterar();
-			}
-		});
-		botaoEditar.setBounds(589, 477, 89, 36);
-		contentPane.add(botaoEditar);
-
 		JLabel lblSejaBemvindoaA = new JLabel("Seja bem-vindo(a) a área do cliente!");
 		lblSejaBemvindoaA.setForeground(Color.WHITE);
 		lblSejaBemvindoaA.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblSejaBemvindoaA.setBounds(278, 22, 489, 88);
+		lblSejaBemvindoaA.setBounds(254, 36, 489, 88);
 		contentPane.add(lblSejaBemvindoaA);
 
 		JLabel labelMarina = new JLabel("");
@@ -135,125 +104,140 @@ public class CrudClienteGUI {
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		panel.setBounds(190, 132, 585, 331);
+		panel.setBounds(190, 135, 585, 331);
 		contentPane.add(panel);
 
 		JLabel lblIconeUsuario = new JLabel("");
 		lblIconeUsuario
 				.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/usuario_Foto.png")));
-		lblIconeUsuario.setBounds(27, 27, 70, 70);
+		lblIconeUsuario.setBounds(27, 20, 70, 70);
 		panel.add(lblIconeUsuario);
 
 		JLabel lblTelefone = new JLabel("Telefone:");
+		lblTelefone.setForeground(new Color(0, 51, 51));
 		lblTelefone.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblTelefone.setBounds(27, 241, 193, 25);
+		lblTelefone.setBounds(350, 101, 193, 25);
 		panel.add(lblTelefone);
 
 		JLabel lblCpf = new JLabel("CPF:");
+		lblCpf.setForeground(new Color(0, 51, 51));
 		lblCpf.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblCpf.setBounds(27, 177, 193, 25);
+		lblCpf.setBounds(27, 101, 193, 25);
 		panel.add(lblCpf);
 
 		JLabel lblEmail = new JLabel("E-mail:");
+		lblEmail.setForeground(new Color(0, 51, 51));
+		lblEmail.setHorizontalAlignment(SwingConstants.LEFT);
 		lblEmail.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblEmail.setBounds(321, 177, 193, 25);
+		lblEmail.setBounds(350, 168, 193, 25);
 		panel.add(lblEmail);
 
 		JLabel lblDataNasc = new JLabel("Data de nascimento:");
+		lblDataNasc.setForeground(new Color(0, 51, 51));
 		lblDataNasc.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblDataNasc.setBounds(321, 108, 193, 25);
+		lblDataNasc.setBounds(27, 165, 193, 25);
 		panel.add(lblDataNasc);
 
 		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setForeground(new Color(0, 51, 51));
 		lblNome.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNome.setBounds(27, 108, 193, 25);
+		lblNome.setBounds(107, 23, 193, 25);
 		panel.add(lblNome);
 
 		txtNomeCliente = new JTextField();
-		txtNomeCliente.setBounds(27, 131, 207, 33);
+		txtNomeCliente.setBounds(107, 47, 207, 33);
 		panel.add(txtNomeCliente);
 		txtNomeCliente.setColumns(10);
 
 		txtCpf = new JTextField();
+		txtCpf.setEditable(false);
 		txtCpf.setColumns(10);
-		txtCpf.setBounds(27, 197, 207, 33);
+		txtCpf.setBounds(27, 121, 207, 33);
 		panel.add(txtCpf);
 
 		txtTelefone = new JTextField();
 		txtTelefone.setColumns(10);
-		txtTelefone.setBounds(27, 261, 207, 33);
+		txtTelefone.setBounds(350, 124, 207, 33);
 		panel.add(txtTelefone);
 
 		txtDataNascimento = new JTextField();
+		txtDataNascimento.setEditable(false);
 		txtDataNascimento.setColumns(10);
-		txtDataNascimento.setBounds(321, 131, 207, 33);
+		txtDataNascimento.setBounds(27, 188, 207, 33);
 		panel.add(txtDataNascimento);
 
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
-		txtEmail.setBounds(321, 197, 207, 33);
+		txtEmail.setBounds(350, 188, 207, 33);
 		panel.add(txtEmail);
 
 		txtGenero = new JTextField();
-		txtGenero.setBounds(321, 261, 207, 33);
+		txtGenero.setEditable(false);
+		txtGenero.setBounds(27, 252, 207, 33);
 		panel.add(txtGenero);
 		txtGenero.setColumns(10);
 
-		JLabel lblGenero = new JLabel("Genero:");
+		JLabel lblGenero = new JLabel("Gênero:");
+		lblGenero.setForeground(new Color(0, 51, 51));
 		lblGenero.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblGenero.setBounds(321, 241, 193, 25);
+		lblGenero.setBounds(27, 232, 193, 25);
 		panel.add(lblGenero);
 
-		JLabel lblTipoVeiculo = new JLabel("Tipo Veiculo:");
-		lblTipoVeiculo.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblTipoVeiculo.setBounds(321, 27, 193, 25);
-		panel.add(lblTipoVeiculo);
+		JButton botaoEditar = new JButton("Editar");
+		botaoEditar.setForeground(new Color(255, 255, 255));
+		botaoEditar.setBounds(487, 250, 70, 36);
+		panel.add(botaoEditar);
+		botaoEditar.setBackground(new Color(39, 153, 11));
 
-		txtTipoVeiculo = new JTextField();
-		txtTipoVeiculo.setColumns(10);
-		txtTipoVeiculo.setBounds(321, 51, 207, 33);
-		panel.add(txtTipoVeiculo);
+		JButton botaoPreencher = new JButton("Preencher dados");
+		botaoPreencher.setForeground(new Color(0, 51, 51));
+		botaoPreencher.setBounds(323, 250, 154, 36);
+		panel.add(botaoPreencher);
+
+		JButton btnCadastrarVeiculo = new JButton("Cadastrar veículo");
+		btnCadastrarVeiculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				String[] options = { "Caminhão", "Carro", "Moto"};
+
+				int veiculo = JOptionPane.showOptionDialog(null, "Selecione seu veículo:",
+						"TOKIO MARINE SEGURADORA", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options,
+						options[0]);
+
+				if (veiculo == 0) {
+					DadosCaminhaoGUI dadosCaminhao = new DadosCaminhaoGUI();
+					dadosCaminhao.frameDadosCaminhao.setVisible(true);
+					frameCliente.dispose();
+				} else if (veiculo == 1) {
+					DadosCarroGUI dadosCarro = new DadosCarroGUI();
+					dadosCarro.frameDadosCarro.setVisible(true);
+					frameCliente.dispose();
+				} else {
+					DadosMotoGUI dadosMoto = new DadosMotoGUI();
+					dadosMoto.frameDadosMoto.setVisible(true);
+					frameCliente.dispose();
+				}
+			}
+		});
+		btnCadastrarVeiculo.setForeground(new Color(0, 51, 51));
+		btnCadastrarVeiculo.setBounds(403, 45, 154, 36);
+		panel.add(btnCadastrarVeiculo);
+		botaoPreencher.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				preencherCampos();
+			}
+		});
+		botaoEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Alterar();
+			}
+		});
 
 		JLabel lblPrincipal = new JLabel("");
 		lblPrincipal
 				.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
 		lblPrincipal.setBounds(0, 0, 984, 561);
 		contentPane.add(lblPrincipal);
-	}
-
-	public void Inserir() {
-
-		Cliente cliente = new Cliente();
-		Date data;
-		data = new Date(System.currentTimeMillis());
-		cliente.setNomeCliente(txtNomeCliente.getText());
-		cliente.setCpfCliente(txtCpf.getText());
-		cliente.setTelefoneCliente(txtTelefone.getText());
-		cliente.setDataNascimento(txtDataNascimento.getText());
-		cliente.setEmailCliente(txtEmail.getText());
-		cliente.setGeneroCliente(txtGenero.getText());
-		cliente.setDataCadastro(data);
-		clienteDao.insertCadastroCliente(cliente);
-
-		if (txtTipoVeiculo.getText().equalsIgnoreCase("carro")) {
-
-			
-			
-			DadosCarroGUI areaInsertCarro = new DadosCarroGUI();
-			
-			
-			frameCliente.dispose();
-			areaInsertCarro.frameDadosCarro.setVisible(true);
-		} else if (txtTipoVeiculo.getText().equalsIgnoreCase("moto")) {
-			DadosMotoGUI areaInsertMoto = new DadosMotoGUI();
-			frameCliente.dispose();
-			areaInsertMoto.frameDadosMoto.setVisible(true);
-		} else if (txtTipoVeiculo.getText().equalsIgnoreCase("caminhao")) {
-			DadosCaminhaoGUI areaInsertCaminhao = new DadosCaminhaoGUI();
-			frameCliente.dispose();
-			areaInsertCaminhao.frameDadosCaminhao.setVisible(true);
-		}
-
 	}
 
 	public void Alterar() {
@@ -267,7 +251,7 @@ public class CrudClienteGUI {
 		clienteDao.updateCliente(update);
 
 	}
-	
+
 	public String getTxtCpf() {
 		return txtCpf.toString();
 	}
@@ -293,23 +277,6 @@ public class CrudClienteGUI {
 		txtEmail.setText(cliente.getEmailCliente());
 		txtDataNascimento.setText(cliente.getDataNascimento());
 		txtGenero.setText(cliente.getGeneroCliente());
-		
+
 	}
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

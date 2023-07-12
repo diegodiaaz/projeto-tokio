@@ -1,20 +1,21 @@
 package br.com.tokio.view;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Toolkit;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class InicioFrameGUI {
 
+	
 	public JFrame frameInicio;
 
 	public static void main(String[] args) {
@@ -48,11 +49,12 @@ public class InicioFrameGUI {
 		panel_principal.setLayout(null);
 		
 		JButton botaoComecar = new JButton("Vamos começar?");
-		botaoComecar.setBackground(new Color(0, 204, 102));
+		botaoComecar.setForeground(new Color(0, 51, 51));
+		botaoComecar.setBackground(new Color(255, 255, 255));
 		botaoComecar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				InsertClienteGUI insertCliente = new InsertClienteGUI();
-                insertCliente.newScreen();
+				insertCliente.insertCliente.setVisible(true);
                 frameInicio.dispose();
 			}
 		});
@@ -73,13 +75,13 @@ public class InicioFrameGUI {
 		labelSubTitulo.setForeground(new Color(255, 255, 255));
 		labelSubTitulo.setBounds(295, 41, 567, 104);
 		panel_principal.add(labelSubTitulo);
-		botaoComecar.setFont(new Font("Arial", Font.BOLD, 14));
+		botaoComecar.setFont(new Font("Arial", Font.BOLD, 17));
 		botaoComecar.setBounds(413, 273, 268, 72);
 		panel_principal.add(botaoComecar);
 		
 		JLabel labelMarinaImagem = new JLabel("");
 		labelMarinaImagem.setIcon(new ImageIcon(InicioFrameGUI.class.getResource("/br/com/tokio/images/marinona.png")));
-		labelMarinaImagem.setBounds(10, 27, 277, 536);
+		labelMarinaImagem.setBounds(10, 26, 277, 536);
 		panel_principal.add(labelMarinaImagem);
 		
 		JLabel labelFundoGradient = new JLabel("");

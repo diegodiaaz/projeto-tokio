@@ -8,7 +8,6 @@ public class TestView {
 
 		InicioFrameGUI window = new InicioFrameGUI();
 		window.frameInicio.setVisible(true);
-
 	}
 
 }

@@ -17,12 +17,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import br.com.tokio.repository.ChatbotDAO;
-import javax.swing.JScrollPane;
 
 public class ChatbotGUI {
 
@@ -112,8 +112,8 @@ public class ChatbotGUI {
 		JButton botaoAreaCliente = new JButton("");
 		botaoAreaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoginUsuarioGUI usuario = new LoginUsuarioGUI();
-				usuario.newScreen();
+				CrudClienteGUI clienteTela = new CrudClienteGUI();
+				clienteTela.newScreen(null);
 				frmUsuario.dispose();
 			}
 		});

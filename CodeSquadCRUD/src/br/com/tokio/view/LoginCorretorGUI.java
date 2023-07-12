@@ -122,33 +122,33 @@ public class LoginCorretorGUI {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				
-				String emailCorretor, senhaCorretor;
-				emailCorretor = emailTextField.getText();
-				senhaCorretor = txtSenha.getText();
-
-				try {
-					// VALIDAÇÃO DO LOGIN
-
-					Corretor objCorretor = new Corretor();
-					objCorretor.setEmailCorretor(emailCorretor);
-					objCorretor.setSenhaCorretor(senhaCorretor);
-
-					CorretorDAO CorretorDAO = new CorretorDAO();
-					ResultSet rsCorretorDAO = CorretorDAO.loginCorretor(objCorretor);
-
-					if (rsCorretorDAO.next()) {
-						// CHAMAR TELA PARA ABRIR
-						AreaCorretorGUI corretor = new AreaCorretorGUI();
-						corretor.frmT.setVisible(true);
+//				String emailCorretor, senhaCorretor;
+//				emailCorretor = emailTextField.getText();
+//				senhaCorretor = txtSenha.getText();
+//
+//				try {
+//					// VALIDAÇÃO DO LOGIN
+//
+//					Corretor objCorretor = new Corretor();
+//					objCorretor.setEmailCorretor(emailCorretor);
+//					objCorretor.setSenhaCorretor(senhaCorretor);
+//
+//					CorretorDAO CorretorDAO = new CorretorDAO();
+//					ResultSet rsCorretorDAO = CorretorDAO.loginCorretor(objCorretor);
+//
+//					if (rsCorretorDAO.next()) {
+//						// CHAMAR TELA PARA ABRIR
+						AreaSeguroGUI seguro = new AreaSeguroGUI();
+						seguro.frmTokioMarineSeguradora.setVisible(true);
 						frmCorretor.dispose();
-					} else {
-						// ENVIAR MENSAGEM "LOGIN INCORRETO"
-						JOptionPane.showMessageDialog(null, "Email ou Senha invalido");
-					}
-
-				} catch (SQLException erro) {
-					JOptionPane.showMessageDialog(null, "VALIDACAO DE LOGIN: " + erro);
-				}
+//					} else {
+//						// ENVIAR MENSAGEM "LOGIN INCORRETO"
+//						JOptionPane.showMessageDialog(null, "Email ou Senha invalido");
+//					}
+//
+//				} catch (SQLException erro) {
+//					JOptionPane.showMessageDialog(null, "VALIDACAO DE LOGIN: " + erro);
+//				}
 
 			}
 		});

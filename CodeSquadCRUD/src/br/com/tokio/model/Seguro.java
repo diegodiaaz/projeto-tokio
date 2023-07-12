@@ -3,6 +3,7 @@ package br.com.tokio.model;
 public class Seguro {
 
 	private String tipoSeguro, cpfCliente, emailCorretor;
+	private int codigoContrato;
 
 	public Seguro(String tipoSeguro, String cpfCliente, String emailCorretor) {
 		this.tipoSeguro = tipoSeguro;
@@ -34,8 +35,20 @@ public class Seguro {
 		this.cpfCliente = cpfCliente;
 	}
 
+	public int getCodigoContrato() {
+		return codigoContrato;
+	}
+
+	public void setCodigoContrato(int codigoContrato) {
+		this.codigoContrato = codigoContrato;
+	}
+
 	public void setTipoSeguro(String tipoSeguro) {
 		this.tipoSeguro = tipoSeguro;
 	}
+
+	
+
+	
 
 }

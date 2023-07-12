@@ -22,36 +22,37 @@ public class CorretorDAO {
 	}
 
 	// -------------LOGIN CORRETOR------------- //
-		public ResultSet loginCorretor(Corretor corretor) {
-
-			try {
-				String sql = "SELECT * FROM T_TOK_CORRETOR WHERE DS_EMAIL_COR = ? AND DS_SENHA_COR = ?";
-
-				PreparedStatement stmt = conexao.prepareStatement(sql);
-				stmt.setString(1, corretor.getEmailCorretor());
-				stmt.setString(2, corretor.getSenhaCorretor());
-
-				ResultSet rs = stmt.executeQuery();
-
-				return rs;
-
-			} catch (SQLException e) {
-				JOptionPane.showMessageDialog(null, "CorretorDAO: " + e);
-				return null;
-			}
-
-		}
+//		public ResultSet loginCorretor(Corretor corretor) {
+//
+//			try {
+//				String sql = "SELECT * FROM T_TOK_CORRETOR WHERE DS_EMAIL_COR = ? AND DS_SENHA_COR = ?";
+//
+//				PreparedStatement stmt = conexao.prepareStatement(sql);
+//				stmt.setString(1, corretor.getEmailCorretor());
+//				stmt.setString(2, corretor.getSenhaCorretor());
+//
+//				ResultSet rs = stmt.executeQuery();
+//
+//				return rs;
+//
+//			} catch (SQLException e) {
+//				JOptionPane.showMessageDialog(null, "CorretorDAO: " + e);
+//				return null;
+//			}
+//
+//		}
 
 	// ------------Insert Corretor------------
 	public void insertCorretor(Corretor corretor) {
 
-		String sql = "insert into t_tok_corretor (DS_EMAIL_COR, DS_SENHA_COR) values (?, ?)";
+		String sql = "insert into t_tok_corretor (DS_EMAIL_COR, nm_corretor, DS_SENHA_COR) values (?, ?, ?)";
 
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 
 			stmt.setString(1, corretor.getEmailCorretor());
-			stmt.setString(2, corretor.getSenhaCorretor());
+			stmt.setString(2, corretor.getNomeCorretor());
+			stmt.setString(3, corretor.getSenhaCorretor());
 
 			stmt.execute();
 
