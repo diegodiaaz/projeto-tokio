@@ -23,7 +23,7 @@ import java.awt.Color;
 
 public class AreaSeguroGUI {
 
-	public JFrame frmTokioMarineSeguradora;
+	public JFrame frmAreaInicio;
 	private JTextField txtCPFCliente;
 	private JTextField txtEmailCorretor;
 	String tipoVeic;
@@ -36,7 +36,7 @@ public class AreaSeguroGUI {
 			public void run() {
 				try {
 					AreaSeguroGUI areaSeguro = new AreaSeguroGUI();
-					areaSeguro.frmTokioMarineSeguradora.setVisible(true);
+					areaSeguro.frmAreaInicio.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,19 +55,31 @@ public class AreaSeguroGUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmTokioMarineSeguradora = new JFrame();
-		frmTokioMarineSeguradora.setIconImage(Toolkit.getDefaultToolkit()
+		frmAreaInicio = new JFrame();
+		frmAreaInicio.setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(AreaSeguroGUI.class.getResource("/br/com/tokio/images/logo_tokio.png")));
-		frmTokioMarineSeguradora.setTitle("TOKIO MARINE SEGURADORA");
-		frmTokioMarineSeguradora.setBounds(100, 100, 1000, 600);
-		frmTokioMarineSeguradora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmTokioMarineSeguradora.getContentPane().setLayout(null);
+		frmAreaInicio.setTitle("TOKIO MARINE SEGURADORA");
+		frmAreaInicio.setBounds(100, 100, 1000, 600);
+		frmAreaInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAreaInicio.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 984, 561);
-		frmTokioMarineSeguradora.getContentPane().add(panel);
+		frmAreaInicio.getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		JButton botaoVoltar = new JButton("");
+		botaoVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmAreaInicio.dispose();
+				AreaCorretorGUI areaCorretor = new AreaCorretorGUI();
+				areaCorretor.frameCorretor.setVisible(true);
+			}
+		});
+		botaoVoltar.setIcon(new ImageIcon(AreaSeguroGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
+		botaoVoltar.setBounds(10, 11, 46, 31);
+		panel.add(botaoVoltar);
+
 		JLabel lbl = new JLabel("Bem vindo de volta, corretor(a)!");
 		lbl.setForeground(new Color(255, 255, 255));
 		lbl.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 24));
@@ -75,8 +87,8 @@ public class AreaSeguroGUI {
 		panel.add(lbl);
 
 		JLabel labelMarinaImagem = new JLabel("");
-		labelMarinaImagem
-				.setIcon(new ImageIcon(AreaSeguroGUI.class.getResource("/br/com/tokio/images/marina_InsertCliente.png")));
+		labelMarinaImagem.setIcon(
+				new ImageIcon(AreaSeguroGUI.class.getResource("/br/com/tokio/images/marina_InsertCliente.png")));
 		labelMarinaImagem.setBounds(55, 11, 277, 536);
 		panel.add(labelMarinaImagem);
 
@@ -120,18 +132,42 @@ public class AreaSeguroGUI {
 		txtEmailCorretor.setBounds(326, 212, 222, 40);
 		panel_1.add(txtEmailCorretor);
 
-		JButton btnBotaoProximaEtapa = new JButton("Próxima etapa");
+		JButton btnBotaoProximaEtapa = new JButton("Finalizar contrato");
+		btnBotaoProximaEtapa.setForeground(new Color(255, 255, 255));
+		btnBotaoProximaEtapa.setBackground(new Color(0, 128, 64));
 		btnBotaoProximaEtapa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InserirSeguro();
-				AreaCorretorGUI areaCorretor = new AreaCorretorGUI();
-				areaCorretor.frmT.setVisible(true);
-				frmTokioMarineSeguradora.dispose();
+				if (comboTipoVeic.getSelectedItem().equals("<Selecione uma opção>")) {
+					JOptionPane.showMessageDialog(null, "Erro");
+				} else if (comboTipoVeic.getSelectedItem().equals("Carro")) {
+					tipoVeic = "Carro";
+					JOptionPane.showMessageDialog(null, "Cadastro feito.");
+					InserirSeguro();
+					AreaCorretorGUI areaCorretor = new AreaCorretorGUI();
+					areaCorretor.frameCorretor.setVisible(true);
+					frmAreaInicio.dispose();
+				} else if (comboTipoVeic.getSelectedItem().equals("Moto")) {
+					tipoVeic = "Moto";
+					JOptionPane.showMessageDialog(null, "Cadastro feito.");
+					InserirSeguro();
+					AreaCorretorGUI areaCorretor = new AreaCorretorGUI();
+					areaCorretor.frameCorretor.setVisible(true);
+					frmAreaInicio.dispose();
+				} else if (comboTipoVeic.getSelectedItem().equals("Caminhão")) {
+					tipoVeic = "Caminhão";
+					JOptionPane.showMessageDialog(null, "Cadastro feito.");
+					InserirSeguro();
+					AreaCorretorGUI areaCorretor = new AreaCorretorGUI();
+					areaCorretor.frameCorretor.setVisible(true);
+					frmAreaInicio.dispose();
+				}	
+				
+				
 			}
-			
+
 		});
 
-		btnBotaoProximaEtapa.setBounds(429, 284, 118, 43);
+		btnBotaoProximaEtapa.setBounds(398, 284, 149, 43);
 		panel_1.add(btnBotaoProximaEtapa);
 
 		JLabel lbltxtConfirme = new JLabel("Confirme as informações abaixo:");
@@ -140,23 +176,19 @@ public class AreaSeguroGUI {
 		panel_1.add(lbltxtConfirme);
 
 		JLabel lblFundo = new JLabel("");
-		lblFundo
-				.setIcon(new ImageIcon(AreaSeguroGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
+		lblFundo.setIcon(new ImageIcon(AreaSeguroGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
 		lblFundo.setBounds(0, 0, 994, 561);
 		panel.add(lblFundo);
 	}
-	
+
 	public void InserirSeguro() {
 		SeguroDAO seguroDao = new SeguroDAO();
 		Seguro seguro = new Seguro();
-		
+
 		seguro.setCpfCliente(txtCPFCliente.getText());
 		seguro.setEmailCorretor(txtEmailCorretor.getText());
 		seguro.setTipoSeguro(tipoVeic);
-	
-		seguroDao.insertCadastroSeguro(seguro);
-		
-		
 
+		seguroDao.insertCadastroSeguro(seguro);
 	}
 }

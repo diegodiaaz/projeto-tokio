@@ -77,7 +77,7 @@ public class CrudClienteGUI {
 		botaoVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frameCliente.dispose();
-				ChatbotGUI areaChat = new ChatbotGUI();
+				AreaInicioGUI areaChat = new AreaInicioGUI();
 				areaChat.newScreen();
 
 			}
@@ -251,6 +251,18 @@ public class CrudClienteGUI {
 		clienteDao.updateCliente(update);
 
 	}
+	
+	public void preencherCampos() {
+		String cpf = JOptionPane.showInputDialog(null, "Digite o CPF:");
+		Cliente cliente = clienteDao.selectByCPF(cpf);
+		txtCpf.setText(cliente.getCpfCliente());
+		txtNomeCliente.setText(cliente.getNomeCliente());
+		txtTelefone.setText(cliente.getTelefoneCliente());
+		txtEmail.setText(cliente.getEmailCliente());
+		txtDataNascimento.setText(cliente.getDataNascimento());
+		txtGenero.setText(cliente.getGeneroCliente());
+
+	}
 
 	public String getTxtCpf() {
 		return txtCpf.toString();
@@ -268,15 +280,5 @@ public class CrudClienteGUI {
 		this.txtTelefone = txtTelefone;
 	}
 
-	public void preencherCampos() {
-		String cpf = JOptionPane.showInputDialog(null, "Digite o CPF:");
-		Cliente cliente = clienteDao.selectByCPF(cpf);
-		txtCpf.setText(cliente.getCpfCliente());
-		txtNomeCliente.setText(cliente.getNomeCliente());
-		txtTelefone.setText(cliente.getTelefoneCliente());
-		txtEmail.setText(cliente.getEmailCliente());
-		txtDataNascimento.setText(cliente.getDataNascimento());
-		txtGenero.setText(cliente.getGeneroCliente());
 
-	}
 }

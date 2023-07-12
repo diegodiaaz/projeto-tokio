@@ -138,17 +138,17 @@ public class CarroDAO {
 	}
 
 	// ------------Delete------------
-	public boolean deleteCarro(String Placa) {
-		String sql = "delete from T_TOK_CARRO where (cd_placa = ?)";
+	public boolean deleteCarro(String codigoContrato) {
+		String sql = "delete from T_TOK_CARRO where cd_contrato=?";
 		
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, Placa);
+			stmt.setString(1, codigoContrato);
 			stmt.executeUpdate();
 			return true;
 					
 		} catch (SQLException e) {
-			System.out.println("Placa nao existente");
+			System.out.println("codigo nao encontrado");
 			e.printStackTrace();
 			return false;
 		}

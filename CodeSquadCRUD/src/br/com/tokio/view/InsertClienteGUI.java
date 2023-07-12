@@ -188,7 +188,7 @@ public class InsertClienteGUI {
 		JButton btnJaSouCliente = new JButton("Ja tenho cadastro");
 		btnJaSouCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ChatbotGUI chatBot = new ChatbotGUI();
+				AreaInicioGUI chatBot = new AreaInicioGUI();
 				chatBot.newScreen();
 				insertCliente.dispose();
 			}
@@ -212,7 +212,7 @@ public class InsertClienteGUI {
 					Genero = "Prefiro não dizer";
 				}
 				Inserir();
-				ChatbotGUI chatBot = new ChatbotGUI();
+				AreaInicioGUI chatBot = new AreaInicioGUI();
 				chatBot.newScreen();
 				insertCliente.dispose();
 				;

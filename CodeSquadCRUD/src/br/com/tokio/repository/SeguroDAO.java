@@ -22,7 +22,7 @@ public class SeguroDAO {
 		this.conexao = new ConnectionFactory().conectar();
 	}
 
-	// ------------Insert da SEGURO------------
+	// ------------INSERT SEGURO------------
 	public void insertCadastroSeguro(Seguro seguro) {
 
 		String sql = "insert into t_tok_seguro (TP_SEGURO, nr_cpf_cli, ds_email_cor) values (?, ?, ?)";
@@ -39,26 +39,6 @@ public class SeguroDAO {
 			stmt.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	//SELECT CD_CONTRATO//
-	public void selectCdContrato(String cpf) {
-		String sql = "select cd_contrato from t_tok_seguro where nr_cpf_cli=?";
-		try {
-			PreparedStatement stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, cpf);
-			ResultSet rs = stmt.executeQuery();
-			
-			if(rs.next()) {
-				Carro carro = new Carro();
-				carro.setCodigoContrato(rs.getString("cd_contrato"));
-			}
-			rs.close();
-			stmt.close();
-		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
 	}
@@ -93,20 +73,23 @@ public class SeguroDAO {
 
 	// ------------SelectByCodigoContrato------------
 
-	public Seguro selectByContrato(String codigoContrato) {
+	public Seguro selectByContrato(String cpf) {
 
 		Seguro seguro = new Seguro();
-		String sql = "select tp_seguro from t_tok_seguro where cd_contrato = ?";
+		String sql = "select * from t_tok_seguro where nr_cpf_cli=?";
 
 		try {
 			PreparedStatement stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, codigoContrato);
+			stmt.setString(1, cpf);
 
 			ResultSet rs = stmt.executeQuery();
 
 			if (rs.next()) {
 				seguro = new Seguro();
 				seguro.setTipoSeguro(rs.getString("tp_seguro"));
+				seguro.setCodigoContrato(rs.getInt("cd_contrato"));
+				seguro.setCpfCliente(rs.getString("nr_cpf_cli"));
+				seguro.setEmailCorretor(rs.getString("ds_email_cor"));
 			} else {
 				System.out.println("Contrato nao encontrado");
 			}
@@ -120,5 +103,20 @@ public class SeguroDAO {
 	}
 
 	// ------------Delete------------
-
+	public boolean deleteSeguro(String codigoContrato) {
+		String sql = "delete from T_TOK_SEGURO where cd_contrato=?";
+		
+		try {
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, codigoContrato);
+			stmt.executeUpdate();
+			return true;
+					
+		} catch (SQLException e) {
+			System.out.println("codigo nao encontrado");
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
 }

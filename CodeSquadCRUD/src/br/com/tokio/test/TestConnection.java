@@ -1,11 +1,8 @@
 package br.com.tokio.test;
 
-import br.com.tokio.model.Carro;
 import br.com.tokio.model.Corretor;
-import br.com.tokio.model.Seguro;
 import br.com.tokio.repository.ClienteDAO;
 import br.com.tokio.repository.CorretorDAO;
-import br.com.tokio.repository.SeguroDAO;
 
 public class TestConnection {
 
@@ -50,7 +47,7 @@ public class TestConnection {
 //		}
 
 //		 --------SELECTBYCPF CLIENTE-------- TESTADO! 
-//		Cliente cliente = daoCliente.selectByCPF("35557777777");
+//		Cliente cliente = daoCliente.selectByCPF("24452799841");
 //		System.out.println("Nome: " + cliente.getNomeCliente());
 //		System.out.println("CPF: " + cliente.getCpfCliente());
 //		System.out.println("Data Nascimento: " + cliente.getDataNascimento());
@@ -164,9 +161,14 @@ public class TestConnection {
 //		daoCaminhao.updateCaminhao(upCaminhao);
 
 		// --------INSERT CORRETOR ----------- //
+		
+		
 //		CorretorDAO daoCorretor = new CorretorDAO();
-//		Corretor Mariane = new Corretor("mariane@gmail.com", "Mariane", "1234");
-//		daoCorretor.insertCorretor(Mariane);
+//		Corretor Thiago = new Corretor("thiago@gmail.com", "thiago", "12345");
+//		daoCorretor.insertCorretor(Thiago);
+//		
+//		Corretor Mauricio = new Corretor("mauricio@gmail.com", "mauricio", "123456");
+//		daoCorretor.insertCorretor(Mauricio);
 
 //		CorretorDAO daoCorretor = new CorretorDAO();
 //		Corretor lucas = new Corretor("lucas@gmail.com", "lucas", "1234");
@@ -192,6 +194,13 @@ public class TestConnection {
 		
 //		daoSeguro.selectByContrato("1025");
 //		System.out.println("Contrato: " + seguro.getTipoSeguro());
+		
+//		SeguroDAO seguroDao = new SeguroDAO();
+//		Seguro seguro = seguroDao.selectByContrato("24456788972");
+//		System.out.println("cd contrato: " + seguro.getCodigoContrato());
+//		System.out.println("cpf: " + seguro.getCpfCliente());
+//		System.out.println("email " + seguro.getEmailCorretor());
+//		System.out.println("tipo seguro: " + seguro.getTipoSeguro());
 
 	}
 }
