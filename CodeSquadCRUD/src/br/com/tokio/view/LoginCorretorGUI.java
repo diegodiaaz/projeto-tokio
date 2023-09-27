@@ -50,13 +50,13 @@ public class LoginCorretorGUI {
 		frmCorretor.setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(LoginCorretorGUI.class.getResource("/br/com/tokio/images/logo_tokio.png")));
 		frmCorretor.setTitle("TOKIO MARINE SEGURADORA");
-		frmCorretor.setBounds(100, 100, 1000, 600);
+		frmCorretor.setBounds(100, 100, 1275, 675);
 		frmCorretor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCorretor.getContentPane().setLayout(null);
 
 		JPanel panel_principal = new JPanel();
 		panel_principal.setBackground(new Color(127, 181, 119));
-		panel_principal.setBounds(0, 0, 984, 561);
+		panel_principal.setBounds(0, 0, 1259, 636);
 		frmCorretor.getContentPane().add(panel_principal);
 		panel_principal.setLayout(null);
 
@@ -75,19 +75,19 @@ public class LoginCorretorGUI {
 
 		JLabel labelMensagemMarina = new JLabel("Bem-vindo à área de login do corretor.");
 		labelMensagemMarina.setForeground(new Color(255, 255, 255));
-		labelMensagemMarina.setFont(new Font("Arial", Font.BOLD, 18));
-		labelMensagemMarina.setBounds(330, 77, 434, 68);
+		labelMensagemMarina.setFont(new Font("Tahoma", Font.BOLD, 20));
+		labelMensagemMarina.setBounds(440, 84, 434, 68);
 		panel_principal.add(labelMensagemMarina);
 
 		JLabel labelMarinaIcone = new JLabel("");
 		labelMarinaIcone.setIcon(new ImageIcon(LoginCorretorGUI.class.getResource("/br/com/tokio/images/marinaaaa.png")));
-		labelMarinaIcone.setBounds(458, 10, 105, 93);
+		labelMarinaIcone.setBounds(606, 20, 105, 93);
 		panel_principal.add(labelMarinaIcone);
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(0, 153, 102), new Color(0, 153, 51)));
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(309, 145, 385, 375);
+		panel.setBounds(444, 143, 385, 375);
 		panel_principal.add(panel);
 		panel.setLayout(null);
 
@@ -97,9 +97,9 @@ public class LoginCorretorGUI {
 		lbl_msg_login.setBounds(123, 40, 152, 43);
 		panel.add(lbl_msg_login);
 
-		JLabel lbl_email = new JLabel("Usuário:");
+		JLabel lbl_email = new JLabel("E-mail:");
 		lbl_email.setForeground(new Color(0, 51, 51));
-		lbl_email.setFont(new Font("Arial", Font.BOLD, 14));
+		lbl_email.setFont(new Font("Arial", Font.BOLD, 15));
 		lbl_email.setBounds(45, 93, 105, 43);
 		panel.add(lbl_email);
 
@@ -113,7 +113,7 @@ public class LoginCorretorGUI {
 
 		JLabel lbl_senha = new JLabel("Senha:");
 		lbl_senha.setForeground(new Color(0, 51, 51));
-		lbl_senha.setFont(new Font("Arial", Font.BOLD, 14));
+		lbl_senha.setFont(new Font("Arial", Font.BOLD, 15));
 		lbl_senha.setBounds(44, 180, 124, 37);
 		panel.add(lbl_senha);
 
@@ -153,7 +153,7 @@ public class LoginCorretorGUI {
 			}
 		});
 		btn_entrar.setFont(new Font("Arial", Font.BOLD, 14));
-		btn_entrar.setBounds(123, 288, 136, 37);
+		btn_entrar.setBounds(123, 288, 152, 43);
 		panel.add(btn_entrar);
 		
 		txtSenha = new JPasswordField();
@@ -165,8 +165,13 @@ public class LoginCorretorGUI {
 		labelFundoGradient
 				.setIcon(new ImageIcon(LoginCorretorGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
 		labelFundoGradient.setBackground(new Color(240, 240, 240));
-		labelFundoGradient.setBounds(0, 0, 984, 561);
+		labelFundoGradient.setBounds(0, 0, 1263, 640);
 		panel_principal.add(labelFundoGradient);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(LoginCorretorGUI.class.getResource("/br/com/tokio/images/CodeSquadLogo.png")));
+		lblNewLabel.setBounds(34, 441, 207, 165);
+		panel_principal.add(lblNewLabel);
 	}
 
 	public void run() {

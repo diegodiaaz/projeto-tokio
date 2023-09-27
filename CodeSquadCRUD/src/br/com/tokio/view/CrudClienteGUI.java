@@ -63,14 +63,14 @@ public class CrudClienteGUI {
 		frameCliente.setTitle("TOKIO MARINE SEGURADORA");
 		frameCliente.setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(CrudClienteGUI.class.getResource("/br/com/tokio/images/logo_tokio.png")));
-		frameCliente.setBounds(100, 100, 1000, 600);
+		frameCliente.setBounds(100, 100, 1275, 765);
 		frameCliente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameCliente.getContentPane().setLayout(null);
 
 		JPanel contentPane = new JPanel();
 		contentPane.setLayout(null);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setBounds(0, 0, 984, 561);
+		contentPane.setBounds(0, 0, 1259, 726);
 		frameCliente.getContentPane().add(contentPane);
 
 		JButton botaoVoltar = new JButton("");
@@ -85,8 +85,8 @@ public class CrudClienteGUI {
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(
-				new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/logo_codesquad_pequena.png")));
-		lblLogo.setBounds(15, 473, 104, 77);
+				new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/CodeSquadLogo.png")));
+		lblLogo.setBounds(20, 532, 229, 183);
 		contentPane.add(lblLogo);
 		botaoVoltar.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/botao_voltar.png")));
 		botaoVoltar.setBounds(20, 20, 47, 30);
@@ -94,8 +94,8 @@ public class CrudClienteGUI {
 
 		JLabel lblSejaBemvindoaA = new JLabel("Seja bem-vindo(a) a área do cliente!");
 		lblSejaBemvindoaA.setForeground(Color.WHITE);
-		lblSejaBemvindoaA.setFont(new Font("Tahoma", Font.BOLD, 26));
-		lblSejaBemvindoaA.setBounds(254, 36, 489, 88);
+		lblSejaBemvindoaA.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblSejaBemvindoaA.setBounds(381, 48, 607, 88);
 		contentPane.add(lblSejaBemvindoaA);
 
 		JLabel labelMarina = new JLabel("");
@@ -104,97 +104,99 @@ public class CrudClienteGUI {
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		panel.setBounds(190, 135, 585, 331);
+		panel.setBounds(292, 147, 758, 420);
 		contentPane.add(panel);
 
 		JLabel lblIconeUsuario = new JLabel("");
 		lblIconeUsuario
 				.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/usuario_Foto.png")));
-		lblIconeUsuario.setBounds(27, 20, 70, 70);
+		lblIconeUsuario.setBounds(67, 43, 70, 70);
 		panel.add(lblIconeUsuario);
 
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setForeground(new Color(0, 51, 51));
-		lblTelefone.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblTelefone.setBounds(350, 101, 193, 25);
+		lblTelefone.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+		lblTelefone.setBounds(449, 136, 193, 25);
 		panel.add(lblTelefone);
 
 		JLabel lblCpf = new JLabel("CPF:");
 		lblCpf.setForeground(new Color(0, 51, 51));
-		lblCpf.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblCpf.setBounds(27, 101, 193, 25);
+		lblCpf.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+		lblCpf.setBounds(67, 137, 193, 25);
 		panel.add(lblCpf);
 
 		JLabel lblEmail = new JLabel("E-mail:");
 		lblEmail.setForeground(new Color(0, 51, 51));
 		lblEmail.setHorizontalAlignment(SwingConstants.LEFT);
-		lblEmail.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblEmail.setBounds(350, 168, 193, 25);
+		lblEmail.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+		lblEmail.setBounds(449, 213, 193, 25);
 		panel.add(lblEmail);
 
 		JLabel lblDataNasc = new JLabel("Data de nascimento:");
 		lblDataNasc.setForeground(new Color(0, 51, 51));
-		lblDataNasc.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblDataNasc.setBounds(27, 165, 193, 25);
+		lblDataNasc.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+		lblDataNasc.setBounds(67, 211, 193, 25);
 		panel.add(lblDataNasc);
 
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setForeground(new Color(0, 51, 51));
-		lblNome.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblNome.setBounds(107, 23, 193, 25);
+		lblNome.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+		lblNome.setBounds(147, 54, 193, 25);
 		panel.add(lblNome);
 
 		txtNomeCliente = new JTextField();
-		txtNomeCliente.setBounds(107, 47, 207, 33);
+		txtNomeCliente.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtNomeCliente.setBounds(147, 80, 220, 33);
 		panel.add(txtNomeCliente);
 		txtNomeCliente.setColumns(10);
 
 		txtCpf = new JTextField();
 		txtCpf.setEditable(false);
 		txtCpf.setColumns(10);
-		txtCpf.setBounds(27, 121, 207, 33);
+		txtCpf.setBounds(67, 160, 220, 33);
 		panel.add(txtCpf);
 
 		txtTelefone = new JTextField();
 		txtTelefone.setColumns(10);
-		txtTelefone.setBounds(350, 124, 207, 33);
+		txtTelefone.setBounds(453, 159, 220, 33);
 		panel.add(txtTelefone);
 
 		txtDataNascimento = new JTextField();
 		txtDataNascimento.setEditable(false);
 		txtDataNascimento.setColumns(10);
-		txtDataNascimento.setBounds(27, 188, 207, 33);
+		txtDataNascimento.setBounds(67, 234, 220, 33);
 		panel.add(txtDataNascimento);
 
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
-		txtEmail.setBounds(350, 188, 207, 33);
+		txtEmail.setBounds(449, 233, 220, 33);
 		panel.add(txtEmail);
 
 		txtGenero = new JTextField();
 		txtGenero.setEditable(false);
-		txtGenero.setBounds(27, 252, 207, 33);
+		txtGenero.setBounds(67, 310, 220, 33);
 		panel.add(txtGenero);
 		txtGenero.setColumns(10);
 
 		JLabel lblGenero = new JLabel("Gênero:");
 		lblGenero.setForeground(new Color(0, 51, 51));
-		lblGenero.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblGenero.setBounds(27, 232, 193, 25);
+		lblGenero.setFont(new Font("Bahnschrift", Font.PLAIN, 16));
+		lblGenero.setBounds(67, 290, 193, 25);
 		panel.add(lblGenero);
 
 		JButton botaoEditar = new JButton("Editar");
 		botaoEditar.setForeground(new Color(255, 255, 255));
-		botaoEditar.setBounds(487, 250, 70, 36);
+		botaoEditar.setBounds(603, 301, 70, 42);
 		panel.add(botaoEditar);
 		botaoEditar.setBackground(new Color(39, 153, 11));
 
 		JButton botaoPreencher = new JButton("Preencher dados");
 		botaoPreencher.setForeground(new Color(0, 51, 51));
-		botaoPreencher.setBounds(323, 250, 154, 36);
+		botaoPreencher.setBounds(439, 301, 154, 42);
 		panel.add(botaoPreencher);
 
 		JButton btnCadastrarVeiculo = new JButton("Cadastrar veículo");
+		btnCadastrarVeiculo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCadastrarVeiculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -220,7 +222,7 @@ public class CrudClienteGUI {
 			}
 		});
 		btnCadastrarVeiculo.setForeground(new Color(0, 51, 51));
-		btnCadastrarVeiculo.setBounds(403, 45, 154, 36);
+		btnCadastrarVeiculo.setBounds(502, 76, 171, 36);
 		panel.add(btnCadastrarVeiculo);
 		botaoPreencher.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -235,8 +237,8 @@ public class CrudClienteGUI {
 
 		JLabel lblPrincipal = new JLabel("");
 		lblPrincipal
-				.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
-		lblPrincipal.setBounds(0, 0, 984, 561);
+				.setIcon(new ImageIcon(CrudClienteGUI.class.getResource("/br/com/tokio/images/background_redimensionado.png")));
+		lblPrincipal.setBounds(0, 0, 1260, 728);
 		contentPane.add(lblPrincipal);
 	}
 

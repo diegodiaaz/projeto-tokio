@@ -64,31 +64,31 @@ public class InsertClienteGUI {
 		insertCliente.setTitle("TOKIO MARINE SEGURADORA");
 		insertCliente.setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(InsertClienteGUI.class.getResource("/br/com/tokio/images/logo_tokio.png")));
-		insertCliente.setBounds(100, 100, 1000, 600);
+		insertCliente.setBounds(100, 100, 1276, 675);
 		insertCliente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		insertCliente.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 984, 561);
+		panel.setBounds(0, 0, 1401, 636);
 		insertCliente.getContentPane().add(panel);
 		panel.setLayout(null);
 
 		JLabel lblMarcaDAguaTokio = new JLabel("");
 		lblMarcaDAguaTokio.setIcon(
 				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/marca_d'agua_tokio.png")));
-		lblMarcaDAguaTokio.setBounds(54, 428, 233, 62);
+		lblMarcaDAguaTokio.setBounds(70, 473, 233, 62);
 		panel.add(lblMarcaDAguaTokio);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(
-				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/marina_InsertCliente.png")));
-		lblNewLabel.setBounds(25, 126, 271, 315);
+				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/marina_pensando.png")));
+		lblNewLabel.setBounds(44, 170, 271, 315);
 		panel.add(lblNewLabel);
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setIcon(
-				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/logo_codesquad_pequena.png")));
-		lblLogo.setBounds(911, 484, 104, 77);
+				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/CodeSquadLogo.png")));
+		lblLogo.setBounds(1082, 454, 216, 171);
 		panel.add(lblLogo);
 
 		JLabel labelLogo = new JLabel("");
@@ -98,18 +98,18 @@ public class InsertClienteGUI {
 		JLabel lblAquiVocPode = new JLabel("Certo! Aqui você pode prosseguir com o seu cadastro!");
 		lblAquiVocPode.setForeground(Color.WHITE);
 		lblAquiVocPode.setFont(new Font("Tahoma", Font.BOLD, 23));
-		lblAquiVocPode.setBounds(286, 55, 688, 88);
+		lblAquiVocPode.setBounds(320, 54, 688, 88);
 		panel.add(lblAquiVocPode);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
-		panel_1.setBounds(307, 143, 585, 342);
+		panel_1.setBounds(307, 143, 668, 392);
 		panel.add(panel_1);
 
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setForeground(new Color(0, 51, 51));
 		lblTelefone.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblTelefone.setBounds(48, 199, 193, 25);
+		lblTelefone.setBounds(48, 209, 193, 25);
 		panel_1.add(lblTelefone);
 
 		JLabel lblCPF = new JLabel("CPF:");
@@ -137,55 +137,62 @@ public class InsertClienteGUI {
 		panel_1.add(lblNome);
 
 		txtNomeInsert = new JTextField();
+		txtNomeInsert.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtNomeInsert.setColumns(10);
-		txtNomeInsert.setBounds(48, 89, 207, 33);
+		txtNomeInsert.setBounds(48, 89, 241, 41);
 		panel_1.add(txtNomeInsert);
 
 		txtCPFInsert = new JTextField();
+		txtCPFInsert.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtCPFInsert.setColumns(10);
-		txtCPFInsert.setBounds(48, 155, 207, 33);
+		txtCPFInsert.setBounds(48, 155, 241, 41);
 		panel_1.add(txtCPFInsert);
 
 		txtTelefoneInsert = new JTextField();
+		txtTelefoneInsert.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtTelefoneInsert.setColumns(10);
-		txtTelefoneInsert.setBounds(48, 219, 207, 33);
+		txtTelefoneInsert.setBounds(48, 229, 241, 41);
 		panel_1.add(txtTelefoneInsert);
 
 		txtDataNascimentoInsert = new JTextField();
+		txtDataNascimentoInsert.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtDataNascimentoInsert.setColumns(10);
-		txtDataNascimentoInsert.setBounds(341, 89, 207, 33);
+		txtDataNascimentoInsert.setBounds(341, 89, 241, 41);
 		panel_1.add(txtDataNascimentoInsert);
 
 		txtEmailInsert = new JTextField();
+		txtEmailInsert.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtEmailInsert.setColumns(10);
-		txtEmailInsert.setBounds(341, 155, 207, 33);
+		txtEmailInsert.setBounds(341, 155, 243, 41);
 		panel_1.add(txtEmailInsert);
 
 		JLabel lblGenero = new JLabel("Genero:");
 		lblGenero.setForeground(new Color(0, 51, 51));
 		lblGenero.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
-		lblGenero.setBounds(341, 199, 193, 25);
+		lblGenero.setBounds(339, 209, 193, 25);
 		panel_1.add(lblGenero);
 
 		JComboBox<String> comboGenero = new JComboBox<String>();
 		comboGenero.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "<Selecione o Gênero>", "Masculino", "Feminino", "Outros", "Prefiro não dizer" }));
-		comboGenero.setBounds(341, 219, 207, 33);
+		comboGenero.setBounds(339, 229, 243, 41);
 		panel_1.add(comboGenero);
 
 		JButton btnCriarCliente = new JButton("Criar conta");
+		btnCriarCliente.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnCriarCliente.setForeground(new Color(255, 255, 255));
 		btnCriarCliente.setBackground(new Color(39, 153, 11));
-		btnCriarCliente.setBounds(418, 288, 130, 33);
+		btnCriarCliente.setBounds(430, 299, 154, 41);
 		panel_1.add(btnCriarCliente);
 
 		JLabel lblTxtInsiraClientes = new JLabel("Informe seus dados:");
-		lblTxtInsiraClientes.setBounds(189, 0, 275, 77);
+		lblTxtInsiraClientes.setBounds(222, 0, 275, 77);
 		panel_1.add(lblTxtInsiraClientes);
 		lblTxtInsiraClientes.setForeground(new Color(0, 51, 51));
 		lblTxtInsiraClientes.setFont(new Font("Tahoma", Font.PLAIN, 21));
 
 		JButton btnJaSouCliente = new JButton("Ja tenho cadastro");
+		btnJaSouCliente.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnJaSouCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ChatbotGUI chatBot = new ChatbotGUI();
@@ -195,7 +202,7 @@ public class InsertClienteGUI {
 		});
 		btnJaSouCliente.setForeground(new Color(0, 0, 0));
 		btnJaSouCliente.setBackground(new Color(208, 196, 100));
-		btnJaSouCliente.setBounds(48, 288, 147, 33);
+		btnJaSouCliente.setBounds(48, 299, 154, 41);
 		panel_1.add(btnJaSouCliente);
 
 		btnCriarCliente.addActionListener(new ActionListener() {
@@ -221,8 +228,8 @@ public class InsertClienteGUI {
 
 		JLabel lblFundoImagem = new JLabel("");
 		lblFundoImagem.setIcon(
-				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
-		lblFundoImagem.setBounds(0, 0, 984, 561);
+				new ImageIcon(InsertClienteGUI.class.getResource("/br/com/tokio/images/background_redimensionado.png")));
+		lblFundoImagem.setBounds(0, 0, 1265, 636);
 		panel.add(lblFundoImagem);
 
 	}

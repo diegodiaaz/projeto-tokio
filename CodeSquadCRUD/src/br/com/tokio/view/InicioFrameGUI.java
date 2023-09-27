@@ -39,12 +39,12 @@ public class InicioFrameGUI {
 		frameInicio = new JFrame();
 		frameInicio.setIconImage(Toolkit.getDefaultToolkit().getImage(InicioFrameGUI.class.getResource("/br/com/tokio/images/logo_tokio.png")));
 		frameInicio.setTitle("TOKIO MARINE SEGURADORA\r\n");
-		frameInicio.setBounds(100, 100, 1000, 600);
+		frameInicio.setBounds(100, 100, 1275, 675);
 		frameInicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameInicio.getContentPane().setLayout(null);
 		
 		JPanel panel_principal = new JPanel();
-		panel_principal.setBounds(0, 0, 986, 563);
+		panel_principal.setBounds(0, 0, 1249, 636);
 		frameInicio.getContentPane().add(panel_principal);
 		panel_principal.setLayout(null);
 		
@@ -61,32 +61,33 @@ public class InicioFrameGUI {
 		
 		JLabel labelCodeSquadLogo = new JLabel("");
 		labelCodeSquadLogo.setIcon(new ImageIcon(InicioFrameGUI.class.getResource("/br/com/tokio/images/CodeSquadLogo.png")));
-		labelCodeSquadLogo.setBounds(806, 377, 170, 175);
+		labelCodeSquadLogo.setBounds(1036, 425, 170, 175);
 		panel_principal.add(labelCodeSquadLogo);
 		
 		JLabel labelTitulo = new JLabel("Seja muito bem-vindo(a) ao nosso CRUD!");
 		labelTitulo.setForeground(new Color(255, 255, 255));
 		labelTitulo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		labelTitulo.setBounds(354, 116, 408, 54);
+		labelTitulo.setBounds(469, 163, 408, 54);
 		panel_principal.add(labelTitulo);
 		
 		JLabel labelSubTitulo = new JLabel("Code Squad - Sementes do Brasil Tech");
+		labelSubTitulo.setBackground(new Color(0, 51, 51));
 		labelSubTitulo.setFont(new Font("Tahoma", Font.BOLD, 26));
 		labelSubTitulo.setForeground(new Color(255, 255, 255));
-		labelSubTitulo.setBounds(295, 41, 567, 104);
+		labelSubTitulo.setBounds(410, 88, 567, 104);
 		panel_principal.add(labelSubTitulo);
-		botaoComecar.setFont(new Font("Arial", Font.BOLD, 17));
-		botaoComecar.setBounds(413, 273, 268, 72);
+		botaoComecar.setFont(new Font("Arial", Font.BOLD, 19));
+		botaoComecar.setBounds(513, 306, 304, 92);
 		panel_principal.add(botaoComecar);
 		
 		JLabel labelMarinaImagem = new JLabel("");
-		labelMarinaImagem.setIcon(new ImageIcon(InicioFrameGUI.class.getResource("/br/com/tokio/images/marinona.png")));
-		labelMarinaImagem.setBounds(10, 26, 277, 536);
+		labelMarinaImagem.setIcon(new ImageIcon(InicioFrameGUI.class.getResource("/br/com/tokio/images/marina_img_principal.png")));
+		labelMarinaImagem.setBounds(95, 52, 277, 536);
 		panel_principal.add(labelMarinaImagem);
 		
 		JLabel labelFundoGradient = new JLabel("");
-		labelFundoGradient.setIcon(new ImageIcon(InicioFrameGUI.class.getResource("/br/com/tokio/images/fundo_login_maior.png")));
-		labelFundoGradient.setBounds(0, 0, 986, 563);
+		labelFundoGradient.setIcon(new ImageIcon(InicioFrameGUI.class.getResource("/br/com/tokio/images/background_redimensionado.png")));
+		labelFundoGradient.setBounds(0, 0, 1272, 639);
 		panel_principal.add(labelFundoGradient);
 	}
 }

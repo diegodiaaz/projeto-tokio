@@ -169,22 +169,24 @@ public class ChatbotGUI {
 
 			if (mensagem.equalsIgnoreCase("Olá" + "Oi")) {
 				resposta = "\nInsira seu CPF.";
-				chatbot.insertDadosCliente(mensagem = cpf);
-			} else if (mensagem.equalsIgnoreCase(textMensagem.getText())) {
-				resposta = "Certo! Insira seu nome:";
-				chatbot.insertDadosCliente(mensagem = Nome);
-			} else if (mensagem.equalsIgnoreCase(textMensagem.getText())) {
-				resposta = "Coloque sua data de nascimento: ";
-				chatbot.insertDadosCliente(mensagem = dtNascimento);
-			} else if (mensagem.equalsIgnoreCase(textMensagem.getText())) {
-				resposta = "Insira seu e-mail: ";
-				chatbot.insertDadosCliente(mensagem = email);
-			} else if (mensagem.equalsIgnoreCase(textMensagem.getText())) {
-				resposta = "Coloque seu número de telefone: ";
-				chatbot.insertDadosCliente(mensagem = telefone);
-			} else if (mensagem.equalsIgnoreCase(textMensagem.getText())) {
-				resposta = "Coloque seu gênero: ";
-				chatbot.insertDadosCliente(mensagem = genero);
+				
+			} else if (mensagem.equalsIgnoreCase("50020030011")) {
+				resposta = "Certo! Insira seu nome: \n";
+				
+			} else if (mensagem.equalsIgnoreCase("Rafael Forti")) {
+				resposta = "Coloque sua data de nascimento: \n";
+				
+			} else if (mensagem.equalsIgnoreCase("11/01/2005")) {
+				resposta = "Insira seu e-mail: \n";
+				
+			} else if (mensagem.equalsIgnoreCase("rafael@gmail.com")) {
+				resposta = "Coloque seu número de telefone: \n";
+				
+			} else if (mensagem.equalsIgnoreCase("11963284175")) {
+				resposta = "Coloque seu gênero: \n";
+				
+			} else if (mensagem.equalsIgnoreCase("Masculino")) {
+				resposta = "Suas informações foram enviadas! Em breve entraremos em contato. ";
 			}
 			
 			String[] dadosBot = {};
